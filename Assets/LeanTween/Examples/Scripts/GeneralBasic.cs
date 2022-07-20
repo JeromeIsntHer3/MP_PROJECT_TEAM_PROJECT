@@ -73,7 +73,7 @@ public class GeneralBasic : MonoBehaviour {
 				// Alpha Out, and destroy
 				LeanTween.alpha(dude, 0f, 0.6f).setDelay(9.2f + i*0.4f).setDestroyOnComplete(true).setOnComplete(
 					()=>{
-						Destroy( rotator ); // destroying parent as well
+						Destroy( rotator ); // destroying buffHolder as well
 					}
 				);	
 			}

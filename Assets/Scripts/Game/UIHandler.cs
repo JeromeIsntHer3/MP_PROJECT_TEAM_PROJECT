@@ -119,7 +119,7 @@ public class UIHandler : MonoBehaviour
         AnimateUI(pauseMenu, false, 0.3f);
     }
 
-    public void BackToMenu()
+    public void BackToPauseMenu()
     {
         AnimateUI(pauseMenu, true, 0.3f);
         AnimateUI(settingsMenu, false, 0.3f);

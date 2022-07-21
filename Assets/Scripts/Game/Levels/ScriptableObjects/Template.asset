@@ -10,7 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6f3977e658dceda4884e2c78deed0ea5, type: 3}
-  m_Name: Tutorial
+  m_Name: Template
   m_EditorClassIdentifier: 
-  sceneName: Tutorial_Demo
-  levelNumber: 3
+  sceneName: Template_Scene

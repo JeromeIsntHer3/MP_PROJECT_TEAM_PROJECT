@@ -40,6 +40,7 @@ public class UIHandler : MonoBehaviour
     {
         if (TriggerZone.GameOver == false)
         {
+            if (!playerInput) return;
             if (Input.GetKeyDown(playerInput.swapKey))
             {
                 SwapPerspective();

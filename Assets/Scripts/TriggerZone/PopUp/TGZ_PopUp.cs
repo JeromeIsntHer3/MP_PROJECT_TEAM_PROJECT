@@ -1,5 +1,7 @@
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "TriggerZone", menuName = "TriggerZoneData/Pop Up")]
+
 public class TGZ_PopUp : TriggerZoneData
 {
     public PopUp thisPopUp;

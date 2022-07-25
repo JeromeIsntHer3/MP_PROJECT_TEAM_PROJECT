@@ -52,6 +52,8 @@ public class MultiBuffHandler : MonoBehaviour
             {
                 int index = ids.IndexOf(collectedBuff.id);
                 durationTimes[index] += collectedBuff.buffDuration;
+
+                if (!displayBuffHandler) return;
                 displayBuffHandler.ExistingBuffPickedUp(collectedBuff.name,collectedBuff.buffDuration);
             }
             else
@@ -59,6 +61,8 @@ public class MultiBuffHandler : MonoBehaviour
                 ids.Add(collectedBuff.id);
                 activeBuffs.Add(collectedBuff);
                 durationTimes.Add(collectedBuff.buffDuration);
+
+                if (!displayBuffHandler) return;
                 displayBuffHandler.NewBuffPickedUp(durationTimes.IndexOf(collectedBuff.buffDuration),
                     collectedBuff.name,collectedBuff.buffSprite);
 

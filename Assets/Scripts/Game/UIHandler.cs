@@ -30,6 +30,7 @@ public class UIHandler : MonoBehaviour
     private PlayerInput playerInput;
     private bool swap;
     private bool gamePaused;
+    private string SceneToLoad;
 
     void Start()
     {
@@ -128,26 +129,34 @@ public class UIHandler : MonoBehaviour
     public void Quit()
     {
         Time.timeScale = 1;
+        SceneToLoad = "Menu_Demo";
         SoundManager.Instance.PlaySound(SoundManager.Instance.buttonSound);
         AnimateUI(pauseMenu, false, 0.3f,LoadScene);
     }
 
-    void LoadScene()
-    {
-        SceneManager.LoadScene("Menu_Demo");
-    }
     #endregion
 
     #region Defeat/GameOver Functions
     public void TryAgain()
     {
+        TriggerZone.GameOver = false;
         Time.timeScale = 1;
-        SceneManager.LoadScene("In-Game_Demo");
         SoundManager.Instance.PlaySound(SoundManager.Instance.buttonSound);
+        AnimateUI(gameOver, false, 0.1f, ReloadScene);
+    }
+
+    void ReloadScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     #endregion
 
     #region Animation Function
+    void LoadScene()
+    {
+        SceneManager.LoadScene(SceneToLoad);
+    }
+
     void AnimateUI(GameObject go, bool active, float duration, Action func = null)
     {
         if (active)

@@ -40,6 +40,7 @@ public class UIHandler : MonoBehaviour
     {
         if (TriggerZone.GameOver == false)
         {
+            if (!playerInput) return;
             if (Input.GetKeyDown(playerInput.swapKey))
             {
                 SwapPerspective();
@@ -118,7 +119,7 @@ public class UIHandler : MonoBehaviour
         AnimateUI(pauseMenu, false, 0.3f);
     }
 
-    public void BackToMenu()
+    public void BackToPauseMenu()
     {
         AnimateUI(pauseMenu, true, 0.3f);
         AnimateUI(settingsMenu, false, 0.3f);

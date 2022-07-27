@@ -25,11 +25,13 @@ public class TimeHandler : MonoBehaviour
     {
         timeCountdown = timeCycle;
         GameObject display = GameObject.Find("Time");
+        if (!display) return;
         timeDisplay = display.transform.GetComponent<TextMeshProUGUI>();
     }
 
     void TimeCycle()
     {
+        if (!timeDisplay) return;
         if (timeCountdown > 0)
         {
             timeCountdown -= tick * Time.deltaTime;

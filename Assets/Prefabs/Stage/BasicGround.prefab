@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 482791618006678911}
   - component: {fileID: 482791618006678910}
   m_Layer: 3
-  m_Name: GroundBasic
+  m_Name: BasicGround
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

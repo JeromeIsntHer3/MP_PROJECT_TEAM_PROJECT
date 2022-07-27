@@ -4,7 +4,7 @@ using System;
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(CapsuleCollider2D))]
 
-public class Player : MonoBehaviour, HealthInterfaces, ProgressInterfaces
+public class Player : MonoBehaviour
 {
     [Header("Set Health and Progress")]
     [SerializeField]

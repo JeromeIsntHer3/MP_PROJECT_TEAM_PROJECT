@@ -9,9 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88e32e2ca83e78e42b407024b16d96d8, type: 3}
-  m_Name: LEVEL_Holder
+  m_Script: {fileID: 11500000, guid: 0a30e4b1abfbe7647b71fb5a5f08a4e6, type: 3}
+  m_Name: TriggerZone_Heal
   m_EditorClassIdentifier: 
-  Levels:
-  - {fileID: 11400000, guid: d0f7b140c08ed424fa89f22f68528754, type: 2}
-  - {fileID: 11400000, guid: 153ee26d31b905d429d25f307ce697b5, type: 2}
+  healAmount: -10

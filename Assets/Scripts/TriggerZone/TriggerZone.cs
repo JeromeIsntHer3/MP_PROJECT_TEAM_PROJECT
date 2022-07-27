@@ -34,4 +34,12 @@ public class TriggerZone : MonoBehaviour
         //    popUpHandler.SetUpPopUp(popUp);
         //}
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Player")
+        {
+            thisTrigger.TriggerZoneFunction();
+        }
+    }
 }

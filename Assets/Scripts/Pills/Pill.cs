@@ -10,7 +10,7 @@ public class Pill : MonoBehaviour
     private float thisProgressCap;
 
     private Player player;
-    private SpriteRenderer sr;
+    private Renderer rdr;
 
     private enum ColorType
     {
@@ -22,24 +22,24 @@ public class Pill : MonoBehaviour
 
     void Awake()
     {
-        sr = GetComponent<SpriteRenderer>();
+        rdr = GetComponent<Renderer>();
         switch (colourType)
         {
             case ColorType.Red:
-                sr.color = Color.red;
+                rdr.material.color = Color.red;
                 break;
             case ColorType.Green:
-                sr.color = Color.green;
+                rdr.material.color = Color.green;
                 break;
             case ColorType.Blue:
-                sr.color = Color.blue;
+                rdr.material.color = Color.blue;
                 break;
             default:
                 break;
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {

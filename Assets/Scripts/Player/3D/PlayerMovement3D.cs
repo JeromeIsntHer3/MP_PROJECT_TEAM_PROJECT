@@ -8,9 +8,12 @@ using UnityEngine;
 public class PlayerMovement3D : MonoBehaviour
 {
     //Component Variables
-    private Rigidbody rb;
+    [HideInInspector]
+    public Rigidbody rb;
     private CapsuleCollider capsuleCol;
-    private PlayerInput playerInput;
+    [HideInInspector]
+    public PlayerInput playerInput;
+    private PlayerAnimation playerAnim;
 
     [Header("Movement Attributes")]
     [SerializeField]
@@ -49,6 +52,7 @@ public class PlayerMovement3D : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         capsuleCol = GetComponent<CapsuleCollider>();
         playerInput = GetComponent<PlayerInput>();
+        playerAnim = GetComponent<PlayerAnimation>();
     }
 
     void Move()
@@ -57,6 +61,11 @@ public class PlayerMovement3D : MonoBehaviour
         topSpeedX = Mathf.Lerp(rb.velocity.x, topSpeedX, lerpAmount);
         rb.velocity = new Vector2(topSpeedX, rb.velocity.y);
         rb.AddForce(transform.right * topSpeedX);
+        playerAnim.SetSpeed("Speed",topSpeedX/10);
+        if (topSpeedX < 0)
+        {
+            playerAnim.SetSpeed("Speed", -topSpeedX/10);
+        }
     }
 
     void CheckFaceDir(bool isMovingRight)
@@ -98,7 +107,6 @@ public class PlayerMovement3D : MonoBehaviour
     {
         if (IsGrounded())
         {
-            Debug.Log("IS Grounded");
             lastGroundedTime = Time.time;
             noOfJumps = noOfJumpsAllowed;
         }
@@ -106,13 +114,15 @@ public class PlayerMovement3D : MonoBehaviour
         {
             if (CoyoteJumpPossible())
             {
+                playerAnim.TriggerJump("Jump");
                 rb.velocity = new Vector3(rb.velocity.x, jumpForce,rb.velocity.z);
                 if (!SoundManager.Instance) return;
                 SoundManager.Instance.PlaySound(SoundManager.Instance.JumpSound);
             }
             else if (noOfJumps > 0)
             {
-                rb.velocity = new Vector3(rb.velocity.x, jumpForce);
+                playerAnim.TriggerJump("Jump");
+                rb.velocity = new Vector3(rb.velocity.x, jumpForce,rb.velocity.z);
             }
         }
         if (playerInput.jumpReleased)

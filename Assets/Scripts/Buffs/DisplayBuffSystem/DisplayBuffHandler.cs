@@ -24,6 +24,7 @@ public class DisplayBuffHandler : MonoBehaviour
         {
             newSlot.gameObject.name = buffName;
             newSlot.durationOverlay.sprite = buffSprite;
+            newSlot.backdrop.sprite = buffSprite;
             newSlot.maxDuration = buffHandler.durationTimes[index];
         }
     }

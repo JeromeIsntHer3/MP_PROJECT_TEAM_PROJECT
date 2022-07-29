@@ -6,8 +6,7 @@ using UnityEngine.UI;
 public class DisplayBuffSlot : MonoBehaviour
 {
     public Image durationOverlay;
-    [SerializeField]
-    private Image backdrop;
+    public Image backdrop;
 
     [HideInInspector]
     public float maxDuration;
@@ -17,7 +16,6 @@ public class DisplayBuffSlot : MonoBehaviour
     void Start()
     {
         currDuration = maxDuration;
-        backdrop = durationOverlay;
     }
 
     void Update()

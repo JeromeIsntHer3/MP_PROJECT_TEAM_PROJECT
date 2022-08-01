@@ -8,35 +8,15 @@ public class Pill : MonoBehaviour
     private float thisProgressAmount;
     [SerializeField]
     private float thisProgressCap;
+    [SerializeField]
+    private GameObject[] pills; 
 
     private Player player;
-    private Renderer rdr;
-
-    private enum ColorType
-    {
-        Red,Green,Blue
-    }
-
-    [SerializeField]
-    private ColorType colourType;
 
     void Awake()
     {
-        rdr = GetComponent<Renderer>();
-        switch (colourType)
-        {
-            case ColorType.Red:
-                rdr.material.color = Color.red;
-                break;
-            case ColorType.Green:
-                rdr.material.color = Color.green;
-                break;
-            case ColorType.Blue:
-                rdr.material.color = Color.blue;
-                break;
-            default:
-                break;
-        }
+        int index = Random.Range(0, pills.Length);
+        Instantiate(pills[index], this.transform);
     }
 
     private void OnTriggerEnter(Collider other)

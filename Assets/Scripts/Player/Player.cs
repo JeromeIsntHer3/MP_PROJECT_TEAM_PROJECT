@@ -19,7 +19,6 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private GameObject barrier;
-    private float barrierDuration;
 
     [HideInInspector]
     public TimeHandler timeHandler;
@@ -132,7 +131,6 @@ public class Player : MonoBehaviour
     public void EnableBarrier()
     {
         barrier.SetActive(true);
-        barrierDuration = 10f;
     }
 
     public void DisableBarrier()
@@ -147,15 +145,5 @@ public class Player : MonoBehaviour
 
         HealthChanged();
         ProgressChanged();
-
-        if (barrier == null) return;
-        if (barrier.activeInHierarchy && barrierDuration > 0)
-        {
-            barrierDuration -= Time.deltaTime;
-        }
-        else
-        {
-            DisableBarrier();
-        }
     }
 }

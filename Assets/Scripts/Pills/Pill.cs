@@ -24,7 +24,6 @@ public class Pill : MonoBehaviour
         if (other.tag == "Player")
         {
             player = other.GetComponent<Player>();
-            player.EnableBarrier();
             player.DoDOT = false;
             float currTime = player.timeHandler.TimeCountDown;
             if (5 > currTime && currTime > 0)

@@ -53,7 +53,7 @@ Material:
     - _CastShadows: 1
     - _Cull: 0
     - _DstBlend: 0
-    - _Outline_Thickness: 0.08
+    - _Outline_Thickness: 0.07
     - _QueueControl: 0
     - _QueueOffset: 0
     - _SrcBlend: 1
@@ -62,5 +62,5 @@ Material:
     - _ZWrite: 1
     - _ZWriteControl: 0
     m_Colors:
-    - _Color: {r: 0.78991634, g: 0.9150943, b: 0.8517512, a: 0}
+    - _Color: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []

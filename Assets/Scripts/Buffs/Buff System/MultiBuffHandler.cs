@@ -45,7 +45,7 @@ public class MultiBuffHandler : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Buff")
+        if (other.GetComponent<GameObjectBuffHolder>())
         {
             collectedBuff = other.GetComponent<GameObjectBuffHolder>().thisBuff;
             if (ids.Contains(collectedBuff.id))

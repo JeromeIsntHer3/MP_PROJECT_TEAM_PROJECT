@@ -31,8 +31,8 @@ public class Bacteria3D : MonoBehaviour
         //Diff Method
         if (DistToPlayer() < range)
         {
-            transform.LookAt(player.transform);
-            Vector3 direction = (new Vector3(player.position.x,player.position.y + 1, player.position.z) - transform.position).normalized;
+            transform.LookAt(new Vector3(player.position.x, player.position.y + 2, player.position.z));
+            Vector3 direction = (new Vector3(player.position.x,player.position.y + 2, player.position.z) - transform.position).normalized;
             moveDir = direction;
             rb.velocity = new Vector2(moveDir.x, moveDir.y) * speed;
         }

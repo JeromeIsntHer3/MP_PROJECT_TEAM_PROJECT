@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SoundManager : MonoBehaviour
 {
@@ -20,6 +21,9 @@ public class SoundManager : MonoBehaviour
     [Header("SoundTrack")]
     public AudioClip mainMenuTheme;
     public AudioClip inGameTheme;
+    [Header("Sliders")]
+    public Slider fx;
+    public Slider music;
 
     void Awake()
     {
@@ -32,8 +36,8 @@ public class SoundManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        effectsSource.volume = 1;
-        musicSource.volume = 1;
+        effectsSource.volume = fx.value;
+        musicSource.volume = music.value;
     }
 
     void Start()

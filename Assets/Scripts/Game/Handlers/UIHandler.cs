@@ -35,6 +35,7 @@ public class UIHandler : MonoBehaviour
     void Start()
     {
         playerInput = FindObjectOfType<PlayerInput>();
+        SetAllOff();
     }
 
     void Update()
@@ -101,6 +102,7 @@ public class UIHandler : MonoBehaviour
     {
         pauseMenu.SetActive(false);
         gameOver.SetActive(false);
+        settingsMenu.SetActive(false);
         reality.SetActive(false);
         body.SetActive(false);
         time.SetActive(false);

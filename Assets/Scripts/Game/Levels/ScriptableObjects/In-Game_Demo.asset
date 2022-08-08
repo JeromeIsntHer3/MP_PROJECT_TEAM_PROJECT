@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: In-Game_Demo
   m_EditorClassIdentifier: 
   sceneName: In-Game_Demo
-  levelNumber: 1
+  unlocked: 1

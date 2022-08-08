@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class SoundManager : MonoBehaviour
 {
-    public static SoundManager Instance;
     [SerializeField]
     private AudioSource musicSource, effectsSource;
 
@@ -18,30 +18,23 @@ public class SoundManager : MonoBehaviour
     public AudioClip JumpSound;
     public AudioClip landSound;
     public AudioClip buttonSound;
+
     [Header("SoundTrack")]
     public AudioClip mainMenuTheme;
     public AudioClip inGameTheme;
-    [Header("Sliders")]
-    public Slider fx;
-    public Slider music;
 
-    void Awake()
-    {
-        if(Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-        effectsSource.volume = fx.value;
-        musicSource.volume = music.value;
-    }
+    [Header("Sliders")]
+    public Slider fxSlider;
+    public TextMeshProUGUI fxValueText;
+    public Slider musicSlider;
+    public TextMeshProUGUI musicValueText;
 
     void Start()
     {
+        effectsSource.volume = fxSlider.value/100;
+        musicSource.volume = musicSlider.value/100;
+        fxValueText.text = fxSlider.value.ToString();
+        musicValueText.text = musicSlider.value.ToString();
         PlayLoop(inGameTheme);
     }
 
@@ -57,13 +50,19 @@ public class SoundManager : MonoBehaviour
         musicSource.Play();
     }
 
-    public void ChangeMasterVolume(float volume)
-    {
-        AudioListener.volume = volume;
-    }
-
     public void StopMusic()
     {
         musicSource.Stop();
+    }
+    public void SetEffectsVolume(float volume)
+    {
+        EffectsSource.volume = volume / 100;
+        fxValueText.text = volume.ToString();
+    }
+
+    public void SetMusicVolume(float mVolume)
+    {
+        MusicSource.volume = mVolume / 100;
+        musicValueText.text = mVolume.ToString();
     }
 }

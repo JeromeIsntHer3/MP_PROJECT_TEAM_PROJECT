@@ -9,7 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f3977e658dceda4884e2c78deed0ea5, type: 3}
-  m_Name: Template
+  m_Script: {fileID: 11500000, guid: 1dd213b195e6eda41846894ca8d649db, type: 3}
+  m_Name: Persistant Data
   m_EditorClassIdentifier: 
-  sceneName: Template_Scene
+  musicVolume: 50
+  fxVolume: 50
+  playerHealth: 100
+  playerProgress: 0

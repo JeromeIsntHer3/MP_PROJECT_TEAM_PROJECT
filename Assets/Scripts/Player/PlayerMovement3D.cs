@@ -116,8 +116,6 @@ public class PlayerMovement3D : MonoBehaviour
             {
                 playerAnim.TriggerJump("Jump");
                 rb.velocity = new Vector3(rb.velocity.x, jumpForce,rb.velocity.z);
-                if (!SoundManager.Instance) return;
-                SoundManager.Instance.PlaySound(SoundManager.Instance.JumpSound);
             }
             else if (noOfJumps > 0)
             {

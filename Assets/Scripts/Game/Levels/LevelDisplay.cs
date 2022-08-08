@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelHandler : MonoBehaviour
+public class LevelDisplay : MonoBehaviour
 {
     [SerializeField]
     private LevelHolder levelHolder;
@@ -24,13 +24,21 @@ public class LevelHandler : MonoBehaviour
 
     void SetUpLevels()
     {
-        foreach(LevelData level in levelHolder.Levels)
+        for(int i = 0;i < levelHolder.Levels.Count;i++)
         {
             GameObject temp = Instantiate(levelPrefab, levelPanel.transform.position, levelPanel.transform.rotation, levelPanel.transform);
             Level thisLevel = temp.GetComponent<Level>();
             if (thisLevel)
             {
-                thisLevel.SetLevelInfo(level, levelHolder.Levels.IndexOf(level) + 1);
+                thisLevel.SetLevelInfo(levelHolder.Levels[i], levelHolder.Levels.IndexOf(levelHolder.Levels[i]) + 1);
+            }
+            if (levelHolder.Levels[i].unlocked)
+            {
+                thisLevel.gameObject.SetActive(true);
+            }
+            else
+            {
+                thisLevel.gameObject.SetActive(false);
             }
         }
     }

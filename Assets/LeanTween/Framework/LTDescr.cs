@@ -2209,7 +2209,7 @@ public class LTDescr
 	}
 
 	/**
-	* Set the onComplete method to be called at the beginning of the tween (it will still be called when it is completed as well)
+	* Set the onComplete method to be called at the beginning of the tween (it will still be called when it is unlocked as well)
 	* @method setOnCompleteOnStart
 	* @param {bool} isOn:bool does call onComplete at the start of the tween
 	* @return {LTDescr} LTDescr an object that distinguishes the tween

@@ -1,5 +1,11 @@
 {
   "dependencies": {
+    "com.febucci.custom-hierarchy": {
+      "version": "file:C:/Users/jerom/Downloads/unitypackage-custom-hierarchy-1.2.0/unitypackage-custom-hierarchy-1.2.0",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {}
+    },
     "com.unity.2d.animation": {
       "version": "7.0.6",
       "depth": 1,

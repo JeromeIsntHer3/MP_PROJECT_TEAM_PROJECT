@@ -28,6 +28,7 @@ public class UIHandler : MonoBehaviour
     private GameObject camera_2;
 
     private PlayerInput playerInput;
+    private SoundManager soundManager;
     private bool swap;
     private bool gamePaused;
     private string SceneToLoad;
@@ -35,6 +36,7 @@ public class UIHandler : MonoBehaviour
     void Start()
     {
         playerInput = FindObjectOfType<PlayerInput>();
+        soundManager = FindObjectOfType<SoundManager>();
         SetAllOff();
         reality.SetActive(true);
     }
@@ -165,6 +167,7 @@ public class UIHandler : MonoBehaviour
         {
             StartCoroutine(WaitForAnimAfter(duration, go, func));
         }
+        soundManager.PlaySound(soundManager.buttonSound);
     }
     #endregion
 

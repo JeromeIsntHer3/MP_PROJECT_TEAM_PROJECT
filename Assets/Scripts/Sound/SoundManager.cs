@@ -16,7 +16,7 @@ public class SoundManager : MonoBehaviour
     public AudioClip HitSound;
     public AudioClip DieSound;
     public AudioClip JumpSound;
-    public AudioClip landSound;
+    public AudioClip pickUpSound;
     public AudioClip buttonSound;
 
     [Header("SoundTrack")]
@@ -40,8 +40,7 @@ public class SoundManager : MonoBehaviour
 
     public void PlaySound(AudioClip clip)
     {
-        effectsSource.clip = clip;
-        effectsSource.Play();
+        effectsSource.PlayOneShot(clip);
     }
 
     public void PlayLoop(AudioClip clip)

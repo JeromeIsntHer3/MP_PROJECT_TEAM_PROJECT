@@ -55,6 +55,7 @@ public class Bacteria3D : MonoBehaviour
             Player player = other.GetComponent<Player>();
             player.DOTDam = damage;
             player.DoDOT = true;
+            soundManager.PlaySound(soundManager.HitSound);
             Destroy(gameObject);
         }
     }

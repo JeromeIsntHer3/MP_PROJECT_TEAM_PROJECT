@@ -46,6 +46,7 @@ public class PlayerMovement3D : MonoBehaviour
     public LayerMask groundLayerMask;
 
     private bool _isFacingRight;
+    private SoundManager soundManager;
 
     void Awake()
     {
@@ -53,6 +54,7 @@ public class PlayerMovement3D : MonoBehaviour
         capsuleCol = GetComponent<CapsuleCollider>();
         playerInput = GetComponent<PlayerInput>();
         playerAnim = GetComponent<PlayerAnimation>();
+        soundManager = FindObjectOfType<SoundManager>();
     }
 
     void Move()
@@ -116,11 +118,13 @@ public class PlayerMovement3D : MonoBehaviour
             {
                 playerAnim.TriggerJump("Jump");
                 rb.velocity = new Vector3(rb.velocity.x, jumpForce,rb.velocity.z);
+                soundManager.PlaySound(soundManager.JumpSound);
             }
             else if (noOfJumps > 0)
             {
                 playerAnim.TriggerJump("Jump");
                 rb.velocity = new Vector3(rb.velocity.x, jumpForce,rb.velocity.z);
+                soundManager.PlaySound(soundManager.JumpSound);
             }
         }
         if (playerInput.jumpReleased)

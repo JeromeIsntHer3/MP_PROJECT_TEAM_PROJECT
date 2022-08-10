@@ -24,8 +24,8 @@ public class Player : MonoBehaviour
     public TimeHandler timeHandler;
 
     //PROPERTIES
-    public float CurrHealth { get { return _currHealth; } }
-    public float CurrProgress { get { return _currProgress; } }
+    public float CurrHealth { get { return _currHealth; } set { _currHealth = value; } }
+    public float CurrProgress { get { return _currProgress; } set { _currProgress = value; } }
     public float DOTDam { get { return dotDam; } set { dotDam = value; } }
     public float HOTDam { get { return hotHeal; } set { hotHeal = value; } }
     public bool DoDOT { get { return doDOT; } set { doDOT = value; } }
@@ -136,6 +136,11 @@ public class Player : MonoBehaviour
     public void DisableBarrier()
     {
         barrier.SetActive(false);
+    }
+
+    public void SetHealth(float healthSet)
+    {
+        _currHealth = healthSet;
     }
 
     void Update()

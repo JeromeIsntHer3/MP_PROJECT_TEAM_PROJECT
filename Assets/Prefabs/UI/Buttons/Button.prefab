@@ -381,8 +381,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6be8034601842c34bb78ef9d3655f5da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  increasedSize: 1.05
+  hoverSize: 1.05
+  hoverRotation: 1
   animSpeed: 0.1
+  text: {fileID: 0}
+  textHoverRotation: 0
 --- !u!114 &7414374522184712700
 MonoBehaviour:
   m_ObjectHideFlags: 0

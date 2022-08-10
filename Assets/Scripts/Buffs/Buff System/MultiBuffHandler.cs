@@ -6,6 +6,7 @@ public class MultiBuffHandler : MonoBehaviour
 {
     private Buff collectedBuff;
     private DisplayBuffHandler displayBuffHandler;
+    private SoundManager sm;
 
     public List<int> ids;
 
@@ -16,6 +17,7 @@ public class MultiBuffHandler : MonoBehaviour
     void Awake()
     {
         displayBuffHandler = FindObjectOfType<DisplayBuffHandler>();
+        sm = FindObjectOfType<SoundManager>();
     }
 
     void Update()
@@ -47,6 +49,8 @@ public class MultiBuffHandler : MonoBehaviour
     {
         if (other.GetComponent<GameObjectBuffHolder>())
         {
+            sm.PlaySound(sm.pickUpSound);
+
             collectedBuff = other.GetComponent<GameObjectBuffHolder>().thisBuff;
             if (ids.Contains(collectedBuff.id))
             {

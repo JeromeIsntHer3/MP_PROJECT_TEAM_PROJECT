@@ -38,6 +38,7 @@ public class Pill : MonoBehaviour
             }
             else
             {
+                player.ProgressIncrease(thisProgressAmount / 4, thisProgressCap);
                 player.Damage(10);
             }
             Destroy(gameObject);

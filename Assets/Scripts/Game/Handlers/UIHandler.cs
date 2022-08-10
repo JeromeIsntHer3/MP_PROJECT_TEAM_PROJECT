@@ -28,6 +28,7 @@ public class UIHandler : MonoBehaviour
     private GameObject camera_2;
 
     private PlayerInput playerInput;
+    private SoundManager soundManager;
     private bool swap;
     private bool gamePaused;
     private string SceneToLoad;
@@ -35,7 +36,9 @@ public class UIHandler : MonoBehaviour
     void Start()
     {
         playerInput = FindObjectOfType<PlayerInput>();
+        soundManager = FindObjectOfType<SoundManager>();
         SetAllOff();
+        reality.SetActive(true);
     }
 
     void Update()
@@ -80,14 +83,12 @@ public class UIHandler : MonoBehaviour
     #region General Functions
     public void Pause()
     {
-        Time.timeScale = 0;
         gamePaused = true;
         AnimateUI(pauseMenu,true,0.2f);
     }
 
     public void Unpause()
     {
-        Time.timeScale = 1;
         gamePaused = false;
         AnimateUI(pauseMenu, false, 0.2f);
     }
@@ -113,7 +114,6 @@ public class UIHandler : MonoBehaviour
     public void Resume()
     {
         Unpause();
-        SoundManager.Instance.PlaySound(SoundManager.Instance.buttonSound);
     }
 
     public void Settings()
@@ -124,7 +124,6 @@ public class UIHandler : MonoBehaviour
 
     public void BackToPauseMenu()
     {
-        Debug.Log("bruh");
         AnimateUI(pauseMenu, true, 0.3f);
         AnimateUI(settingsMenu, false, 0.3f);
     }
@@ -133,7 +132,6 @@ public class UIHandler : MonoBehaviour
     {
         Time.timeScale = 1;
         SceneToLoad = "Menu_Demo";
-        SoundManager.Instance.PlaySound(SoundManager.Instance.buttonSound);
         AnimateUI(pauseMenu, false, 0.3f,LoadScene);
     }
 
@@ -144,7 +142,6 @@ public class UIHandler : MonoBehaviour
     {
         TriggerZone.GameOver = false;
         Time.timeScale = 1;
-        SoundManager.Instance.PlaySound(SoundManager.Instance.buttonSound);
         AnimateUI(gameOver, false, 0.1f, ReloadScene);
     }
 
@@ -170,6 +167,7 @@ public class UIHandler : MonoBehaviour
         {
             StartCoroutine(WaitForAnimAfter(duration, go, func));
         }
+        soundManager.PlaySound(soundManager.buttonSound);
     }
     #endregion
 

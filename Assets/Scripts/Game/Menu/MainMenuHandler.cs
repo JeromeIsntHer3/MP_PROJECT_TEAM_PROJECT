@@ -6,9 +6,11 @@ public class MainMenuHandler : MonoBehaviour
 {
     [SerializeField]
     private GameObject mainMenu, levelMenu, settingsMenu;
+    private SoundManager soundManager;
 
     void Awake()
     {
+        soundManager = FindObjectOfType<SoundManager>();
         TurnOffAll();
         mainMenu.SetActive(true);
     }
@@ -41,6 +43,7 @@ public class MainMenuHandler : MonoBehaviour
     #region Animation Function
     void AnimateUI(GameObject go, bool active, float duration, Action func = null)
     {
+        soundManager.PlaySound(soundManager.buttonSound);
         if (active)
         {
             StartCoroutine(WaitForAnimBefore(duration, go, func));

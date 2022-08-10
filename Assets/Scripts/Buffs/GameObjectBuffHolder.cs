@@ -8,12 +8,11 @@ public class GameObjectBuffHolder : MonoBehaviour
 
     [SerializeField]
     GameObject[] buffs;
-    int index;
 
     void Awake()
     {
         if (buffs.Length == 0) return;
-        index = Random.Range(0, buffs.Length);
+        int index = Random.Range(0, buffs.Length);
         Instantiate(buffs[index], this.transform);
     }
 }

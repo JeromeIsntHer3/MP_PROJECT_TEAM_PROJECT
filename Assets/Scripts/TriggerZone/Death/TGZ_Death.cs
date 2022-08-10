@@ -13,7 +13,6 @@ public class TGZ_Death : TriggerZoneData
         if (player)
         {
             Destroy(player.gameObject);
-            SoundManager.Instance.PlaySound(SoundManager.Instance.DieSound);
             TriggerZone.GameOver = true;
         }
     }

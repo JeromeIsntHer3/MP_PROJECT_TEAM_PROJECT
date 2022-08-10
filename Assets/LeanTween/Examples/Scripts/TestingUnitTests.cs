@@ -498,7 +498,7 @@ namespace DentedPixel.LTExamples
                 float end = Time.realtimeSinceStartup;
                 float diff = end - start;
 
-                LeanTest.expect(Mathf.Abs(expectedTime - diff) < 0.06f, "SCALED TIMING DIFFERENCE", "expected to complete in roughly " + expectedTime + " but completed in " + diff);
+                LeanTest.expect(Mathf.Abs(expectedTime - diff) < 0.06f, "SCALED TIMING DIFFERENCE", "expected to complete in roughly " + expectedTime + " but unlocked in " + diff);
                 LeanTest.expect(Mathf.Approximately(cube1.transform.position.x, -5f), "SCALED ENDING POSITION", "expected to end at -5f, but it ended at " + cube1.transform.position.x);
                 LeanTest.expect(onUpdateWasCalled, "ON UPDATE FIRED");
             });

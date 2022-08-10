@@ -39,6 +39,8 @@ public class TriggerZone : MonoBehaviour
     {
         if(other.tag == "Player")
         {
+            SoundManager sm = FindObjectOfType<SoundManager>();
+            sm.PlaySound(sm.DieSound);
             thisTrigger.TriggerZoneFunction();
         }
     }

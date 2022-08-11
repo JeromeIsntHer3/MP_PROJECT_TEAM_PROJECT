@@ -22,7 +22,7 @@ public class InfectionTriggerZone : MonoBehaviour
 
     private void Awake()
     {
-        rdr = GetComponentInParent<Renderer>();
+        rdr = GetComponentInChildren<Renderer>();
         enemyHandler = FindObjectOfType<BacteriaHandler>();
     }
 

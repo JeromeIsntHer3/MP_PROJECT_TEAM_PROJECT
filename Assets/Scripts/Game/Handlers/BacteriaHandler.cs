@@ -5,7 +5,7 @@ using UnityEngine;
 public class BacteriaHandler : MonoBehaviour
 {
     [SerializeField]
-    private GameObject bacteria;
+    private GameObject[] bacteria;
     [SerializeField]
     private float spawnAgainTime;
     [SerializeField]
@@ -36,10 +36,11 @@ public class BacteriaHandler : MonoBehaviour
         {
             for (int i = 0; i < numberOfSpawns; i++)
             {
+                int index = Random.Range(0, bacteria.Length);
                 spawnSpot.position = new Vector2(Random.Range(0,25),Random.Range(-14,14));
                 spawnSpot.position = new Vector2(Random.Range(gameObject.transform.position.x - xLength, gameObject.transform.position.x + xLength),
                     Random.Range(gameObject.transform.position.y - yLength, gameObject.transform.position.y + yLength));
-                Instantiate(bacteria, spawnSpot.position, spawnSpot.rotation, transform);
+                Instantiate(bacteria[index], spawnSpot.position, spawnSpot.rotation, transform);
             }
             toSpawn = false;
             timeToSpawn = spawnAgainTime;

@@ -12,6 +12,8 @@ public class UIHandler : MonoBehaviour
     private GameObject gameOver;
     [SerializeField]
     private GameObject settingsMenu;
+    [SerializeField]
+    private GameObject darkOverlay;
 
     [Header("Perspective UI")]
     [SerializeField]
@@ -85,18 +87,21 @@ public class UIHandler : MonoBehaviour
     public void Pause()
     {
         gamePaused = true;
+        darkOverlay.SetActive(true);
         AnimateUI(pauseMenu,true,0.2f);
     }
 
     public void Unpause()
     {
         gamePaused = false;
+        darkOverlay.SetActive(false);
         AnimateUI(pauseMenu, false, 0.2f);
     }
 
     public void GameOver()
     {
         SetAllOff();
+        darkOverlay.SetActive(true);
         gameOver.SetActive(true);
     }
 

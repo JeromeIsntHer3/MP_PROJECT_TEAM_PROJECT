@@ -1530,7 +1530,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8925e03e0a7895b48b82f09673f6e74b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bacteria: {fileID: 3625888495923390242, guid: 9dab1597cda9e8f4d9ceeb919bd586ac, type: 3}
+  bacteria:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   spawnAgainTime: 3
   xLength: 15
   yLength: 15
@@ -7096,8 +7099,8 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 10
   m_StandbyUpdate: 2
-  m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 0}
+  m_LookAt: {fileID: 2001743678219343632}
+  m_Follow: {fileID: 2001743678219343632}
   m_Lens:
     FieldOfView: 90
     OrthographicSize: 10
@@ -7213,7 +7216,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2065378301}
   - {fileID: 1688085266}
   m_Father: {fileID: 1095566085}
   m_RootOrder: 0
@@ -8222,6 +8224,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 573908419}
+  - {fileID: 2065378301}
   m_Father: {fileID: 0}
   m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11147,7 +11150,7 @@ RectTransform:
   - {fileID: 262486086}
   - {fileID: 2127248988}
   m_Father: {fileID: 1079347071}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -12630,6 +12633,7 @@ MonoBehaviour:
   pauseMenu: {fileID: 1079347070}
   gameOver: {fileID: 1976424069}
   settingsMenu: {fileID: 1350238836}
+  darkOverlay: {fileID: 2065378300}
   realityUI: {fileID: 1464160733}
   bodyUI: {fileID: 1110330526}
   timeUI: {fileID: 1902976623}
@@ -14194,7 +14198,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2065378301
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14207,8 +14211,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1079347071}
-  m_RootOrder: 0
+  m_Father: {fileID: 1187592734}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -15758,6 +15762,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _currHealth: 100
   _currProgress: 0
+  _infectionProgress: 0
+  infectionAmount: 0
+  recoveryAmount: 0
   barrier: {fileID: 2001743679258066917}
   timeHandler: {fileID: 0}
 --- !u!1 &2001743678219343635

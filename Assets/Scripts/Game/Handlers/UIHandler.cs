@@ -15,11 +15,11 @@ public class UIHandler : MonoBehaviour
 
     [Header("Perspective UI")]
     [SerializeField]
-    private GameObject reality;
+    private GameObject realityUI;
     [SerializeField]
-    private GameObject body;
+    private GameObject bodyUI;
     [SerializeField]
-    private GameObject time;
+    private GameObject timeUI;
 
     [Header("Cameras")]
     [SerializeField]
@@ -38,7 +38,8 @@ public class UIHandler : MonoBehaviour
         playerInput = FindObjectOfType<PlayerInput>();
         soundManager = FindObjectOfType<SoundManager>();
         SetAllOff();
-        reality.SetActive(true);
+        realityUI.SetActive(true);
+        timeUI.SetActive(true);
     }
 
     void Update()
@@ -68,15 +69,15 @@ public class UIHandler : MonoBehaviour
         {
             camera_1.SetActive(true);
             camera_2.SetActive(false);
-            reality.SetActive(true);
-            body.SetActive(false);
+            realityUI.SetActive(true);
+            bodyUI.SetActive(false);
         }
         else
         {
             camera_1.SetActive(false);
             camera_2.SetActive(true);
-            reality.SetActive(false);
-            body.SetActive(true);
+            realityUI.SetActive(false);
+            bodyUI.SetActive(true);
         }
     }
 
@@ -104,9 +105,9 @@ public class UIHandler : MonoBehaviour
         pauseMenu.SetActive(false);
         gameOver.SetActive(false);
         settingsMenu.SetActive(false);
-        reality.SetActive(false);
-        body.SetActive(false);
-        time.SetActive(false);
+        realityUI.SetActive(false);
+        bodyUI.SetActive(false);
+        timeUI.SetActive(false);
     }
     #endregion
 

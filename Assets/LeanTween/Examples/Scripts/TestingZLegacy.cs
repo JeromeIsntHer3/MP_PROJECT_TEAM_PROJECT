@@ -72,13 +72,13 @@ public class TestingZLegacy : MonoBehaviour {
 					Time.timeScale = val;
 				}).setEase(LeanTweenType.easeInQuad).setUseEstimatedTime(true).setRepeat(-1).id;
 			}else{
-				Debug.Log("cancel variable time");
+				Debug.Log("cancel variable timeUI");
 				LeanTween.cancel( descrTimeScaleChangeId );
 			}
 		}
 		gameObject.BroadcastMessage( exampleFunctions[ exampleIter ] );
 
-		// Debug.Log("cycleThroughExamples time:"+Time.time + " useEstimatedTime:"+useEstimatedTime);
+		// Debug.Log("cycleThroughExamples timeUI:"+Time.timeUI + " useEstimatedTime:"+useEstimatedTime);
 		float delayTime = 1.1f;
 		LeanTween.delayedCall( gameObject, delayTime, cycleThroughExamples).setUseEstimatedTime(useEstimatedTime);
 

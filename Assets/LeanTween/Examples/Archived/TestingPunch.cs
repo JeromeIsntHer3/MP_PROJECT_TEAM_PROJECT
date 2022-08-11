@@ -20,7 +20,7 @@ public class TestingPunch : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Q))
         {
             //LeanTween.scale(this.gameObject, Vector3.one*3f, 1.0f).setEase(LeanTweenType.easeSpring).setUseManualTime(true);            
-            //print("scale punch time independent!");
+            //print("scale punch timeUI independent!");
 
             LeanTween.moveLocalX(gameObject, 5, 1).setOnComplete( () => {
             Debug.Log("on complete move local X");

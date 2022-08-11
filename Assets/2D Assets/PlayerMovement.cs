@@ -164,7 +164,7 @@ public class PlayerMovement : MonoBehaviour
     //{
     //    if (IsGrounded())
     //    {
-    //        lastGroundedTime = Time.time;
+    //        lastGroundedTime = Time.timeUI;
     //        numberOfJumps = NoOfJumpsAllowed;
     //    }
     //    if (playerInput.jumpPressed && CoyoteTime() && numberOfJumps > 0)

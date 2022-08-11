@@ -10,10 +10,10 @@ public class PlayerMovement3D : MonoBehaviour
     //Component Variables
     [HideInInspector]
     public Rigidbody rb;
-    private CapsuleCollider capsuleCol;
     [HideInInspector]
     public PlayerInput playerInput;
     private PlayerAnimation playerAnim;
+    private GroundCheck groundCheck;
 
     [Header("Movement Attributes")]
     [SerializeField]
@@ -42,18 +42,15 @@ public class PlayerMovement3D : MonoBehaviour
     private int noOfJumps;
     private float? lastGroundedTime;
 
-    [Header("Ground Check")]
-    public LayerMask groundLayerMask;
-
     private bool _isFacingRight;
     private SoundManager soundManager;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        capsuleCol = GetComponent<CapsuleCollider>();
         playerInput = GetComponent<PlayerInput>();
         playerAnim = GetComponent<PlayerAnimation>();
+        groundCheck = GetComponentInChildren<GroundCheck>();
         soundManager = FindObjectOfType<SoundManager>();
     }
 
@@ -98,16 +95,9 @@ public class PlayerMovement3D : MonoBehaviour
         }
     }
 
-    bool IsGrounded()
-    {
-        bool raycastHit = Physics.BoxCast(capsuleCol.bounds.center,transform.localScale, Vector3.down,
-            transform.rotation,extraHeight, groundLayerMask);
-        return raycastHit;
-    }
-
     void Jump()
     {
-        if (IsGrounded())
+        if (groundCheck.isGrounded)
         {
             lastGroundedTime = Time.time;
             noOfJumps = noOfJumpsAllowed;

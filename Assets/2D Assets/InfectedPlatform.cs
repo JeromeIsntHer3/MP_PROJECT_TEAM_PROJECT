@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InfectedPlatform : MonoBehaviour
 {
@@ -21,6 +22,9 @@ public class InfectedPlatform : MonoBehaviour
 
     [SerializeField]
     private string tagCompare;
+
+    [SerializeField]
+    private Image image;
 
     private void Awake()
     {

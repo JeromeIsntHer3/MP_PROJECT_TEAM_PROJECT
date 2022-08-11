@@ -10,7 +10,6 @@ public class GroundCheck : MonoBehaviour
         if(other.tag == "Ground")
         {
             isGrounded = true;
-            Debug.Log("Ground is Gorund");
         }
     }
 

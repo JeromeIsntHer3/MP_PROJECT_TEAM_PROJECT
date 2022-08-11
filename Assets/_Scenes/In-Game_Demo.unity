@@ -2557,10 +2557,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8925e03e0a7895b48b82f09673f6e74b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bacteria: {fileID: 3625888495923390242, guid: 9dab1597cda9e8f4d9ceeb919bd586ac, type: 3}
+  bacteria:
+  - {fileID: 4629529469528257837, guid: 1bb5ef125796c124a9d8420665640fb3, type: 3}
+  - {fileID: 2938061889150894552, guid: 868a67a33e249474d91d1b287ab0a3a5, type: 3}
+  - {fileID: 3625888495923390242, guid: 9dab1597cda9e8f4d9ceeb919bd586ac, type: 3}
+  - {fileID: 6125150097096751132, guid: 84ecbbfafbda3ae40aa7e9bf4f81336c, type: 3}
   spawnAgainTime: 3
-  xLength: 15
-  yLength: 15
+  xLength: 10
+  yLength: 10
   spawnSpot: {fileID: 1515850442}
 --- !u!4 &668406105
 Transform:
@@ -2618,7 +2622,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 789506456}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 5.4038076, y: 2.2250495, z: 1}
@@ -5463,6 +5467,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _currHealth: 100
   _currProgress: 0
+  _infectionProgress: 0
+  infectionAmount: 5
+  recoveryAmount: 10
   barrier: {fileID: 1398980881}
   timeHandler: {fileID: 0}
 --- !u!114 &1554753957
@@ -22953,14 +22960,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f640336298e0c5f4e8971c43e7e9454a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 74411d6f338d9a84baaf43cef044820f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

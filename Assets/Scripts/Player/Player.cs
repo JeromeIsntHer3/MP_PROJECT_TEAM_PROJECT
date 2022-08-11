@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System;
 
 public class Player : MonoBehaviour
@@ -14,6 +15,15 @@ public class Player : MonoBehaviour
     private bool doDOT;
     private bool doHOT;
 
+    [Header("Infection")]
+    [SerializeField]
+    private float _infectionProgress;
+    [SerializeField]
+    private float infectionAmount;
+    [SerializeField]
+    private float recoveryAmount;
+    private bool beingInfected;
+
     private float prevHealth;
     private float prevProgress;
 
@@ -22,6 +32,9 @@ public class Player : MonoBehaviour
 
     [HideInInspector]
     public TimeHandler timeHandler;
+    private BacteriaHandler bacteriaHandler;
+
+    private Image image;
 
     //PROPERTIES
     public float CurrHealth { get { return _currHealth; } set { _currHealth = value; } }
@@ -37,7 +50,7 @@ public class Player : MonoBehaviour
     //and ProgressChanged
     public event EventHandler OnHealthChange, OnProgressChange;
 
-    #region HealthChangedEventTrigger
+
 
     //This is the function that will run when event is fired
     //Add Functions to this function if want to run during
@@ -49,9 +62,8 @@ public class Player : MonoBehaviour
             OnHealthChange?.Invoke(this, EventArgs.Empty);
         }
     }
-    #endregion
 
-    #region ProgressChangedEventTrigger
+
     //This is the function that will run when event is fired
     //Add Functions to this function if want to run during
     //Progress Change
@@ -63,11 +75,11 @@ public class Player : MonoBehaviour
         }
     }
 
-    #endregion
-
     void Awake()
     {
         timeHandler = FindObjectOfType<TimeHandler>();
+        bacteriaHandler = FindObjectOfType<BacteriaHandler>();
+        image = FindObjectOfType<AnimateOverlay>().gameObject.GetComponent<Image>();
     }
 
     void Start() { }
@@ -143,6 +155,28 @@ public class Player : MonoBehaviour
         _currHealth = healthSet;
     }
 
+    void Infection()
+    {
+        if (beingInfected)
+        {
+            _infectionProgress += infectionAmount * Time.deltaTime;
+            
+            if(_infectionProgress >= 100)
+            {
+                _infectionProgress = 100;
+            }
+        }
+        else 
+        {
+            _infectionProgress -= recoveryAmount * Time.deltaTime;
+            if(_infectionProgress <= 0)
+            {
+                _infectionProgress = 0;
+            }
+        }
+        image.color = Color.Lerp(Color.black, Color.magenta,_infectionProgress/100);
+    }
+
     void Update()
     {
         DOT(doDOT);
@@ -150,5 +184,28 @@ public class Player : MonoBehaviour
 
         HealthChanged();
         ProgressChanged();
+
+        Infection();
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if(other.tag == "Infected")
+        {
+            beingInfected = true;
+            if(_infectionProgress >= 100)
+            {
+                if (bacteriaHandler.BacteriaCount() > 25) { return; }
+                bacteriaHandler.SpawnBacteria(bacteriaHandler.BacteriaCount());
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.tag == "Infected")
+        {
+            beingInfected = false;
+        }
     }
 }

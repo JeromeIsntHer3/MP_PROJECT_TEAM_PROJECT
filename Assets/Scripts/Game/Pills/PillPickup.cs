@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Pill : MonoBehaviour
+public class PillPickup : MonoBehaviour
 {
     [SerializeField]
     private float thisHealAmount;

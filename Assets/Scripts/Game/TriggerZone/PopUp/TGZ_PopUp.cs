@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class TGZ_PopUp : TriggerZoneData
 {
-    //public PopUp thisPopUp;
+    public Vector3 popUpSize;
+    public Vector3 popUpPosition;
+    [Multiline]
+    public string textToShow;
+    public bool seen = false;
 
-    //public override void TriggerZoneFunction()
-    //{
-    //    base.TriggerZoneFunction();
-    //    PopUpHandler popUpHandler = FindObjectOfType<PopUpHandler>();
-    //    popUpHandler.SetUpPopUp(thisPopUp);
-    //}
+    public override void TriggerZoneFunction()
+    {
+        base.TriggerZoneFunction();
+        if (seen) return;
+        PopUp popUp = FindObjectOfType<PopUp>();
+        popUp.SetUpPopUp(popUpPosition, popUpSize, textToShow);
+        //seen = true;
+    }
 }

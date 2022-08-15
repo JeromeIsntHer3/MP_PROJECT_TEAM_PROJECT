@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b50388d4fde7e04898db543cb5d63e9, type: 3}
   m_Name: TriggerZone_PopUp
   m_EditorClassIdentifier: 
-  popUpSize: {x: 630, y: 325, z: 0}
+  popUpSize: {x: 500, y: 325, z: 0}
   popUpPosition: {x: -600, y: -335, z: 0}
   textToShow: Test Text Blah Blah this is how yo do nit
   seen: 0

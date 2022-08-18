@@ -5,18 +5,12 @@ public class TriggerZone : MonoBehaviour
 {
     public enum TriggerType
     {
-        Heal,Damage,Die,PopUp,Notification
+        Die,PopUp,Notification
     }
 
-    public TriggerType tt;
+    public TriggerType triggerType;
 
     private Player player;
-
-    [Header("Heal")]
-    public float healAmount;
-
-    [Header("Damage")]
-    public float damageAmount;
 
     [Header("PopUp")]
     public Vector3 popUpSize;
@@ -45,12 +39,8 @@ public class TriggerZone : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            switch (tt)
+            switch (triggerType)
             {
-                case TriggerType.Heal:
-                    player.Heal(healAmount);
-                    break;
-
                 case TriggerType.Die:
                     SoundManager sm = FindObjectOfType<SoundManager>();
                     sm.PlaySound(sm.DieSound);
@@ -59,10 +49,6 @@ public class TriggerZone : MonoBehaviour
                         Destroy(player.gameObject);
                         TriggerZone.GameOver = true;
                     }
-                    break;
-
-                case TriggerType.Damage:
-                    player.Damage(damageAmount);
                     break;
 
                 case TriggerType.Notification:
@@ -83,6 +69,7 @@ public class TriggerZone : MonoBehaviour
                         default:
                             return;
                     }
+                    Destroy(this);
                     break;
 
                 case TriggerType.PopUp:

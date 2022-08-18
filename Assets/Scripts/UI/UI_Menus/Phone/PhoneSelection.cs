@@ -11,6 +11,7 @@ public class PhoneSelection : MonoBehaviour
     private void Awake()
     {
         phone.SetActive(false);
+        app.SetActive(false);
         main.SetActive(true);
     }
 

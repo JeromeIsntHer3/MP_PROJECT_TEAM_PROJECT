@@ -11,6 +11,7 @@ public class GameObjectBuffHolder : MonoBehaviour
 
     void Awake()
     {
+        Destroy(GetComponent<MeshRenderer>());
         if (buffs.Length == 0) return;
         int index = Random.Range(0, buffs.Length);
         Instantiate(buffs[index], this.transform);

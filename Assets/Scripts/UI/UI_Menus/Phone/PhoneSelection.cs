@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class PhoneSelection : MonoBehaviour
 {
-    public GameObject phone, main, app1, app2, app3, app4, exit;
+    public GameObject phone, main, appButton1, appButton2, appButton3, appButton4, app, exit;
+
+    public AppDisplay appDisplay;
 
     private void Awake()
     {
@@ -12,7 +14,7 @@ public class PhoneSelection : MonoBehaviour
         main.SetActive(true);
     }
 
-    public void OnClickPhoneIcon()
+    public void OnClickPhoneButton()
     {
         if (phone.activeInHierarchy)
         {
@@ -31,42 +33,48 @@ public class PhoneSelection : MonoBehaviour
 
     public void OnClickApp1()
     {
-        OffAll();
-        app1.SetActive(true);
+        OnOff(false);
+        app.SetActive(true);
+        appDisplay.appType = AppDisplay.AppType.App1;
+        appDisplay.ClearSlots();
+        appDisplay.SetUpSlots();
     }
-
     public void OnClickApp2()
     {
-        OffAll();
-        app2.SetActive(true);
+        OnOff(false);
+        app.SetActive(true);
+        appDisplay.appType = AppDisplay.AppType.App2;
+        appDisplay.ClearSlots();
+        appDisplay.SetUpSlots();
     }
-
     public void OnClickApp3()
     {
-        OffAll();
-        app3.SetActive(true);
+        OnOff(false);
+        app.SetActive(true);
+        appDisplay.appType = AppDisplay.AppType.App3;
+        appDisplay.ClearSlots();
+        appDisplay.SetUpSlots();
     }
-
     public void OnClickApp4()
     {
-        OffAll();
-        app4.SetActive(true);
+        OnOff(false);
+        app.SetActive(true);
+        appDisplay.appType = AppDisplay.AppType.App4;
+        appDisplay.ClearSlots();
+        appDisplay.SetUpSlots();
     }
 
     public void BackToMain()
     {
-        OffAll();
+        OnOff(false);
         main.SetActive(true);
         exit.SetActive(true);
     }
 
-    void OffAll()
+    void OnOff(bool setting)
     {
-        main.SetActive(false);
-        app1.SetActive(false);
-        app2.SetActive(false);
-        app3.SetActive(false);
-        app4.SetActive(false);
-        exit.SetActive(false);
+        main.SetActive(setting);
+        app.SetActive(setting);
+        exit.SetActive(setting);
     }
 }

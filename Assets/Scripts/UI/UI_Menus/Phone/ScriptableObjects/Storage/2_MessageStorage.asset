@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab37c047fab0656468dad517e00dcc78, type: 3}
+  m_Name: 2_MessageStorage
+  m_EditorClassIdentifier: 
+  storageName: Connect
+  notificationList:
+  - {fileID: 11400000, guid: a3775ff7f1f6d0642b0ed809cd9e2213, type: 2}
+  - {fileID: 11400000, guid: 9db6f330d3ce6a643a896cd7a59ce973, type: 2}
+  - {fileID: 11400000, guid: 6c553a3ee402e5240857c33e5fff53ed, type: 2}

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: -6009433351836963991}
   - component: {fileID: 6783950077468648369}
   - component: {fileID: 722751318944878103}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bacteria_Tails
   m_TagString: Bacteria
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 7199967120553899301}
   - component: {fileID: 6379603022112558738}
   - component: {fileID: 4094439858537603422}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Roundcube
   m_TagString: Untagged
   m_Icon: {fileID: 0}

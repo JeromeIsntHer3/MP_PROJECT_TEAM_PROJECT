@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 340639822774118939}
   - component: {fileID: 4600918269712519596}
   - component: {fileID: 6882352027553463904}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Roundcube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 7278537088825690747}
   - component: {fileID: -8023202100199342139}
   - component: {fileID: -5519111672458083603}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bacteria_WormCluster
   m_TagString: Bacteria
   m_Icon: {fileID: 0}

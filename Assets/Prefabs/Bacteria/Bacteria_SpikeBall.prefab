@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8801355471031518217}
   - component: {fileID: 8799226656965602107}
   - component: {fileID: 9116868326828111944}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bacteria_SpikeBall
   m_TagString: Bacteria
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 8754085261804622815}
   - component: {fileID: 4764613779470461032}
   - component: {fileID: 2469651014359582628}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Roundcube
   m_TagString: Untagged
   m_Icon: {fileID: 0}

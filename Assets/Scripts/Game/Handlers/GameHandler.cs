@@ -16,6 +16,16 @@ public class GameHandler : MonoBehaviour
     [SerializeField]
     private Player player;
 
+    [Header("Notification Storage Data")]
+    [SerializeField]
+    private NotificationStorage net;
+    [SerializeField]
+    private NotificationStorage mes;
+    [SerializeField]
+    private NotificationStorage med;
+    [SerializeField]
+    private NotificationStorage info;
+
     void Start()
     {
         LoadData();
@@ -50,17 +60,34 @@ public class GameHandler : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        SaveData();
+    }
+
     public void ResetInfo()
     {
-        for(int i = 1; i < levelHolder.Levels.Count; i++)
+        for (int i = 1; i < levelHolder.Levels.Count; i++)
         {
             levelHolder.Levels[i].unlocked = false;
         }
         gameData.playerHealth = 100;
-    }
 
-    private void OnDestroy()
-    {
-        SaveData();
+        foreach (NotificationData data in net.notificationList)
+        {
+            data.seen = false;
+        }
+        foreach (NotificationData data in mes.notificationList)
+        {
+            data.seen = false;
+        }
+        foreach (NotificationData data in med.notificationList)
+        {
+            data.seen = false;
+        }
+        foreach (NotificationData data in info.notificationList)
+        {
+            data.seen = false;
+        }
     }
 }

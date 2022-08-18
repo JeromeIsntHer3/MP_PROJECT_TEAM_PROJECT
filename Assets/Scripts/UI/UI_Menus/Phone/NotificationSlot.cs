@@ -6,27 +6,33 @@ using UnityEngine.UI;
 
 public class NotificationSlot : MonoBehaviour
 {
-    NotificationData thisNotification;
+    public NotificationData notification;
     public TextMeshProUGUI thisHeader;
     public TextMeshProUGUI thisInfo;
     public Image thisImage;
+    public Image highlight;
 
     public void SetNotificationSlot(NotificationData newNotification)
     {
-        thisNotification = newNotification;
-        if (thisNotification)
+        notification = newNotification;
+        if (notification)
         {
-            thisImage.color = thisNotification.color;
-            thisHeader.text = thisNotification.header;
-            thisInfo.text = thisNotification.info;
+            thisImage.color = notification.color;
+            thisHeader.text = notification.header;
+            thisInfo.text = notification.info;
+            if(notification.seen == true)
+            {
+                highlight.color = new Vector4(1, 1, 1, 0);
+            }
         }
     }
 
-    //public void OnClicked()
-    //{
-    //    if (thisNotification)
-    //    {
-    //        thisDisplay.ClickOnDisplay(thisNotification.header);
-    //    }
-    //}
+    public void OnClicked()
+    {
+        if (notification)
+        {
+            highlight.color = new Vector4(1, 1, 1, 0);
+            notification.seen = true;
+        }
+    }
 }

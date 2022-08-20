@@ -18,17 +18,22 @@ public class GameHandler : MonoBehaviour
 
     [Header("Notification Storage Data")]
     [SerializeField]
-    private NotificationStorage net;
+    private NotificationStorage network;
     [SerializeField]
-    private NotificationStorage mes;
+    private NotificationStorage message;
     [SerializeField]
-    private NotificationStorage med;
+    private NotificationStorage medical;
     [SerializeField]
     private NotificationStorage info;
 
     void Start()
     {
         LoadData();
+    }
+
+    private void OnDestroy()
+    {
+        SaveData();
     }
 
     void LoadData()
@@ -60,11 +65,6 @@ public class GameHandler : MonoBehaviour
         }
     }
 
-    private void OnDestroy()
-    {
-        SaveData();
-    }
-
     public void ResetInfo()
     {
         for (int i = 1; i < levelHolder.Levels.Count; i++)
@@ -73,21 +73,21 @@ public class GameHandler : MonoBehaviour
         }
         gameData.playerHealth = 100;
 
-        foreach (NotificationData data in net.notificationList)
+        LoopStorage(network);
+        LoopStorage(message);
+        LoopStorage(medical);
+        LoopStorage(info);
+    }
+
+    void LoopStorage(NotificationStorage storage)
+    {
+        foreach(NotificationData data in storage.notificationList)
         {
             data.seen = false;
-        }
-        foreach (NotificationData data in mes.notificationList)
-        {
-            data.seen = false;
-        }
-        foreach (NotificationData data in med.notificationList)
-        {
-            data.seen = false;
-        }
-        foreach (NotificationData data in info.notificationList)
-        {
-            data.seen = false;
+            if(data.notficationType != storage.storageType)
+            {
+                storage.notificationList.Remove(data);
+            }
         }
     }
 }

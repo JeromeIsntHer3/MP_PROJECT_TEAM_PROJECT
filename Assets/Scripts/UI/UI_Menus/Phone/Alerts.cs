@@ -37,7 +37,7 @@ public class Alerts : MonoBehaviour
 
     void AlertStart(string text)
     {
-        alertText.text = text;
+        alertText.text = text + " has a new Alert!";
         LeanTween.move(uiTransform, new Vector3(0, 75, 0), animDurr).setEaseInSine();
     }
 

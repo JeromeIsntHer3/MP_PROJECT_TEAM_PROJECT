@@ -15,5 +15,4 @@ MonoBehaviour:
   storageName: Medical Today
   notificationList:
   - {fileID: 11400000, guid: 34704d6b487375846be006d49b6c1731, type: 2}
-  - {fileID: 11400000, guid: 2cdde6599f59ec144959dfc18a7b8071, type: 2}
-  - {fileID: 11400000, guid: ab87457ee365c9147b6a36b5abc63520, type: 2}
+  storageType: 2

@@ -35,7 +35,7 @@ public class Following : MonoBehaviour {
         LeanTween.followSpring(dude4, followArrow, LeanProp.localY, 1.1f, -1f, 1.5f, 0.8f);
         LeanTween.followLinear(dude5, followArrow, LeanProp.localY, 50f);
 
-        // Follow Arrow color
+        // Follow Arrow backgroundColor
         LeanTween.followDamp(dude1, followArrow, LeanProp.color, 1.1f);
         LeanTween.followSpring(dude2, followArrow, LeanProp.color, 1.1f);
         LeanTween.followBounceOut(dude3, followArrow, LeanProp.color, 1.1f);
@@ -75,7 +75,7 @@ public class Following : MonoBehaviour {
         fromY = LeanSmooth.spring(fromY, followArrow.localPosition.y, ref velocityY, 1.1f);
         fromVec3 = LeanSmooth.spring(fromVec3, dude5Title.localPosition, ref velocityVec3, 1.1f);
         fromColor = LeanSmooth.spring(fromColor, dude1.GetComponent<Renderer>().material.color, ref velocityColor, 1.1f);
-        Debug.Log("Smoothed y:" + fromY + " vec3:" + fromVec3 + " color:" + fromColor);
+        Debug.Log("Smoothed y:" + fromY + " vec3:" + fromVec3 + " backgroundColor:" + fromColor);
     }
 
 	private void moveArrow()

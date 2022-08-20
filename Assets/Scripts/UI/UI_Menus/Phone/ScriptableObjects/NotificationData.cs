@@ -1,12 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "NotificationData", menuName = "Notification/NotficationData")]
 public class NotificationData : ScriptableObject
 {
-    public string header;
+    public string notificationHeader;
     [Multiline]
-    public string info;
-    public Color color;
+    public string notificationText;
+    public Color backgroundColor;
+    public NotficationType notficationType;
     public bool seen = false;
+}
+
+public enum NotficationType
+{
+    Network, Message, Medical, Info
 }

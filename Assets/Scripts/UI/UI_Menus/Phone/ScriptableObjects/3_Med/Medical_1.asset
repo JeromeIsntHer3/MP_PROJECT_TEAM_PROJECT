@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d70099d9c27a2e4d82a10477ac18f7e, type: 3}
+  m_Script: {fileID: 11500000, guid: 26c2e7812936f244a8d3ee85c0de1c52, type: 3}
   m_Name: Medical_1
   m_EditorClassIdentifier: 
-  header: med1
-  info: 
-  color: {r: 0, g: 0, b: 0, a: 0}
+  notificationHeader: mm1
+  notificationText: mm1
+  backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+  notficationType: 2
   seen: 0

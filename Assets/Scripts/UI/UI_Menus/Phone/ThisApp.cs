@@ -31,12 +31,19 @@ public class ThisApp : MonoBehaviour
     void ChangeStorage()
     {
         display.ClearSlots();
-        display.SetUpSlots(thisStorage);
+        display.Storage = thisStorage;
+        display.SetUpSlots();
     }
 
     void OnEnable()
     {
         SetupAlerts();
+        GameHandler.OnPickUp += SetupAlerts;
+    }
+
+    private void OnDisable()
+    {
+        GameHandler.OnPickUp -= SetupAlerts;
     }
 
     public void SetupAlerts()

@@ -13,7 +13,5 @@ MonoBehaviour:
   m_Name: 1_NetStorage
   m_EditorClassIdentifier: 
   storageName: KrisTalk
-  notificationList:
-  - {fileID: 11400000, guid: 6b2ced806498fe44490724f77df7b78d, type: 2}
-  - {fileID: 11400000, guid: 3abac145da0e5624b91d1ff6183d9234, type: 2}
+  notificationList: []
   storageType: 0

@@ -48,6 +48,8 @@ public class TriggerZone : MonoBehaviour
 
                 case TriggerType.Notification:
                     sendToApp.AddNotification(notificationData);
+                    if(GameHandler.OnPickUp != null)
+                    GameHandler.OnPickUp();
                     break;
 
                 case TriggerType.PopUp:

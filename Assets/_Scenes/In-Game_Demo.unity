@@ -1383,10 +1383,11 @@ MonoBehaviour:
   gameData: {fileID: 11400000, guid: d04d6f4cbf8c1be4d8c0fee24d7c4956, type: 2}
   soundManager: {fileID: 529874731}
   player: {fileID: 1554753956}
-  network: {fileID: 11400000, guid: 41cc872c3ca10854aa34eaf3e6d826ce, type: 2}
-  message: {fileID: 11400000, guid: 8536d06e3263e55438120ed2fa928a75, type: 2}
-  medical: {fileID: 11400000, guid: 5cc329daacc5a7448918db30d991d237, type: 2}
-  info: {fileID: 11400000, guid: c8fda46883448a4419cecc791639784c, type: 2}
+  storages:
+  - {fileID: 11400000, guid: 41cc872c3ca10854aa34eaf3e6d826ce, type: 2}
+  - {fileID: 11400000, guid: 8536d06e3263e55438120ed2fa928a75, type: 2}
+  - {fileID: 11400000, guid: 5cc329daacc5a7448918db30d991d237, type: 2}
+  - {fileID: 11400000, guid: c8fda46883448a4419cecc791639784c, type: 2}
 --- !u!1 &254018717
 GameObject:
   m_ObjectHideFlags: 0
@@ -6794,8 +6795,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Press "X" To Close
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 656bbd3b8a56feb4fba78bc5b89c9027, type: 2}
+  m_sharedMaterial: {fileID: 4119015690437267689, guid: 656bbd3b8a56feb4fba78bc5b89c9027, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -8373,8 +8374,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Text Here
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 656bbd3b8a56feb4fba78bc5b89c9027, type: 2}
+  m_sharedMaterial: {fileID: 4119015690437267689, guid: 656bbd3b8a56feb4fba78bc5b89c9027, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -20834,6 +20835,7 @@ MonoBehaviour:
   display: {fileID: 5403842595944178183}
   notificationPrefab: {fileID: 1562013420936151709, guid: ca7fdfca9918f484a8ca0d47b00da5ef, type: 3}
   appTitle: {fileID: 5403842595866437354}
+  Storage: {fileID: 0}
 --- !u!114 &5403842595944178185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22832,7 +22834,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7748344, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

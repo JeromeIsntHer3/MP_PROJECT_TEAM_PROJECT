@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26c2e7812936f244a8d3ee85c0de1c52, type: 3}
   m_Name: Info_1
   m_EditorClassIdentifier: 
-  notificationHeader: 1m
-  notificationText: 1m
+  notificationHeader: Info 1
+  notificationText: Info 1
   backgroundColor: {r: 0, g: 0, b: 0, a: 0}
   notficationType: 3
   seen: 0

@@ -10,13 +10,28 @@ public class NotificationDisplay : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI appTitle;
 
-    //Runs at ThisApp.cs
-    public void SetUpSlots(NotificationStorage storage)
+    public NotificationStorage Storage;
+
+    void OnEnable()
     {
-        appTitle.text = storage.storageName;
+        GameHandler.OnPickUp += ClearSlots;
+        GameHandler.OnPickUp += SetUpSlots;
+    }
+
+    void OnDisable()
+    {
+        GameHandler.OnPickUp -= ClearSlots;
+        GameHandler.OnPickUp -= SetUpSlots;
+    }
+
+
+    //Runs at ThisApp.cs
+    public void SetUpSlots()
+    {
+        appTitle.text = Storage.storageName;
         if (display)
         {
-            foreach (NotificationData data in storage.notificationList)
+            foreach (NotificationData data in Storage.notificationList)
             {
                 GameObject temp = Instantiate(notificationPrefab, display.transform.position, Quaternion.identity, display.transform);
                 temp.transform.SetParent(display.transform);

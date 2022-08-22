@@ -15,5 +15,4 @@ MonoBehaviour:
   storageName: Connect
   notificationList:
   - {fileID: 11400000, guid: a3775ff7f1f6d0642b0ed809cd9e2213, type: 2}
-  - {fileID: 11400000, guid: 9db6f330d3ce6a643a896cd7a59ce973, type: 2}
-  - {fileID: 11400000, guid: 6c553a3ee402e5240857c33e5fff53ed, type: 2}
+  storageType: 1

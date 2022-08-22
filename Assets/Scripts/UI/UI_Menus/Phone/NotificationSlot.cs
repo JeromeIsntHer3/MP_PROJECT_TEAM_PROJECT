@@ -12,14 +12,14 @@ public class NotificationSlot : MonoBehaviour
     public Image thisImage;
     public Image highlight;
 
-    public void SetNotificationSlot(NotificationData newNotification)
+    public void SetNotificationSlot(NotificationData data)
     {
-        notification = newNotification;
+        notification = data;
         if (notification)
         {
-            thisImage.color = notification.color;
-            thisHeader.text = notification.header;
-            thisInfo.text = notification.info;
+            thisImage.color = notification.backgroundColor;
+            thisHeader.text = notification.notificationHeader;
+            thisInfo.text = notification.notificationText;
             if(notification.seen == true)
             {
                 highlight.color = new Vector4(1, 1, 1, 0);

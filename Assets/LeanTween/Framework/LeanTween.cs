@@ -233,8 +233,8 @@ public enum LeanProp
 * <h4>Example:</h4>
 * int id = LeanTween.moveX(gameObject, 1f, 1f).id;<br />
 * <a href="LTDescr.html">LTDescr</a> d = LeanTween.<a href="#method_LeanTween.descr">descr</a>( id );<br /><br />
-* if(d!=null){ <span style="color:gray">// if the tween has already finished it will return null</span><br />
-* <span style="color:gray">&#160;&#160; // change some parameters</span><br />
+* if(d!=null){ <span style="backgroundColor:gray">// if the tween has already finished it will return null</span><br />
+* <span style="backgroundColor:gray">&#160;&#160; // change some parameters</span><br />
 * &#160;&#160; d.setOnComplete( onCompleteFunc ).setEase( <a href="LeanTweenType.html">LeanTweenType</a>.easeInOutBack );<br />
 * }
 *
@@ -634,9 +634,9 @@ public class LeanTween : MonoBehaviour {
     * @method LeanTween.descr
     * @param {int} id:int unique id that represents that tween
     * @example int id = LeanTween.move( gameObject, new Vector3(0f,1f,2f), 1f).setOnComplete( oldMethod ).id; <br /><br />
-    * <div style="color:gray">// later I want decide I want to change onComplete method </div>
+    * <div style="backgroundColor:gray">// later I want decide I want to change onComplete method </div>
     * LTDescr descr = LeanTween.descr( id );<br />
-    * if(descr!=null) <span style="color:gray">// if the tween has already finished it will come back null</span><br />
+    * if(descr!=null) <span style="backgroundColor:gray">// if the tween has already finished it will come back null</span><br />
     * &#160;&#160;descr.setOnComplete( newMethod );<br />
     */
     public static LTDescr descr( int uniqueId ){
@@ -668,10 +668,10 @@ public class LeanTween : MonoBehaviour {
     * @method LeanTween.descriptions
     * @param {GameObject} id:GameObject object whose tween descriptions you want to retrieve
     * @example LeanTween.move( gameObject, new Vector3(0f,1f,2f), 1f).setOnComplete( oldMethod ); <br /><br />
-    * <div style="color:gray">// later I want decide I want to change onComplete method </div>
+    * <div style="backgroundColor:gray">// later I want decide I want to change onComplete method </div>
     * LTDescr[] descr = LeanTween.descriptions( gameObject );<br />
-    * if(descr.Length>0) <span style="color:gray">// make sure there is a valid description for this target</span><br />
-    * &#160;&#160;descr[0].setOnComplete( newMethod );<span style="color:gray">// in this case we only ever expect there to be one tween on this object</span><br />
+    * if(descr.Length>0) <span style="backgroundColor:gray">// make sure there is a valid description for this target</span><br />
+    * &#160;&#160;descr[0].setOnComplete( newMethod );<span style="backgroundColor:gray">// in this case we only ever expect there to be one tween on this object</span><br />
     */
     public static LTDescr[] descriptions(GameObject gameObject = null) {
         if (gameObject == null) return null;
@@ -1164,7 +1164,7 @@ public class LeanTween : MonoBehaviour {
     * <summary>This works by tweening the vertex colors directly</summary>
     <br />
     Vertex-based coloring is useful because you avoid making a copy of your
-    object's material for each instance that needs a different color.<br />
+    object's material for each instance that needs a different backgroundColor.<br />
     <br />
     A shader that supports vertex colors is required for it to work
     (for example the shaders in Mobile/Particles/)
@@ -1180,15 +1180,15 @@ public class LeanTween : MonoBehaviour {
     }
 
     /**
-    * <summary>Change a gameobject's material to a certain color value</summary>
+    * <summary>Change a gameobject's material to a certain backgroundColor value</summary>
     * 
-    * @method LeanTween.color
-    * @param {GameObject} gameObject:GameObject Gameobject that you wish to change the color
-    * @param {Color} to:Color the final color value ex: Color.Red, new Color(1.0f,1.0f,0.0f,0.8f)
+    * @method LeanTween.backgroundColor
+    * @param {GameObject} gameObject:GameObject Gameobject that you wish to change the backgroundColor
+    * @param {Color} to:Color the final backgroundColor value ex: Color.Red, new Color(1.0f,1.0f,0.0f,0.8f)
     * @param {float} timeUI:float The timeUI with which to fade the object
     * @return {LTDescr} LTDescr an object that distinguishes the tween
     * @example
-    * LeanTween.color(gameObject, Color.yellow, 1f) .setDelay(1f);
+    * LeanTween.backgroundColor(gameObject, Color.yellow, 1f) .setDelay(1f);
     */
     public static LTDescr color(GameObject gameObject, Color to, float time){
         LTDescr lt = pushNewTween( gameObject, new Vector3(1.0f, to.a, 0.0f), time, options().setColor().setPoint( new Vector3(to.r, to.g, to.b) ) );
@@ -1201,10 +1201,10 @@ public class LeanTween : MonoBehaviour {
 
     #if !UNITY_3_5 && !UNITY_4_0 && !UNITY_4_0_1 && !UNITY_4_1 && !UNITY_4_2 && !UNITY_4_3 && !UNITY_4_5
     /**
-    * <summary>Change the color a Unity UI Object</summary>
+    * <summary>Change the backgroundColor a Unity UI Object</summary>
     * 
     * @method LeanTween.colorText
-    * @param {RectTransform} rectTransform:RectTransform RectTransform attached to the Text Component whose color you want to change
+    * @param {RectTransform} rectTransform:RectTransform RectTransform attached to the Text Component whose backgroundColor you want to change
     * @param {Color} to:Color the final alpha value ex: Color.Red, new Color(1.0f,1.0f,0.0f,0.8f)
     * @param {float} timeUI:float The timeUI with which to fade the object
     * @return {LTDescr} LTDescr an object that distinguishes the tween
@@ -1865,11 +1865,11 @@ public class LeanTween : MonoBehaviour {
     }
 
     /**
-    * <summary>Tween from one color to another</summary>
+    * <summary>Tween from one backgroundColor to another</summary>
     * 
     * @method LeanTween.value (Color)
     * @param {GameObject} GameObject gameObject GameObject with which to tie the tweening with. This is only used when you need to cancel this tween, it does not actually perform any operations on this gameObject
-    * @param {Action<Color>} callOnUpdate:Action<Color> The function that is called on every Update frame, this function needs to accept a color value ex: function updateValue( Color val ){ }
+    * @param {Action<Color>} callOnUpdate:Action<Color> The function that is called on every Update frame, this function needs to accept a backgroundColor value ex: function updateValue( Color val ){ }
     * @param {Color} Color from The original value to start the tween from
     * @param {Color} Color to The value to end the tween on
     * @param {Color} Color timeUI The timeUI to complete the tween in
@@ -1878,13 +1878,13 @@ public class LeanTween : MonoBehaviour {
     * <i>Example Javascript: </i><br />
     * LeanTween.value( gameObject, updateValueExampleCallback, Color.red, Color.green, 1f).setEase(LeanTweenType.easeOutElastic);<br />
     * function updateValueExampleCallback( val:Color ){<br />
-    * &#160; Debug.Log("tweened color:"+val+" set this to whatever variable you are tweening...");<br />
+    * &#160; Debug.Log("tweened backgroundColor:"+val+" set this to whatever variable you are tweening...");<br />
     * }<br />
     * <br />
     * <i>Example C#: </i> <br />
     * LeanTween.value( gameObject, updateValueExampleCallback, Color.red, Color.green, 1f).setEase(LeanTweenType.easeOutElastic);<br />
     * void updateValueExampleCallback( Color val ){<br />
-    * &#160; Debug.Log("tweened color:"+val+" set this to whatever variable you are tweening...");<br />
+    * &#160; Debug.Log("tweened backgroundColor:"+val+" set this to whatever variable you are tweening...");<br />
     * }<br />
     */
 
@@ -2108,7 +2108,7 @@ public class LeanTween : MonoBehaviour {
     * @param {float} to:float The final Vector3 with which to tween to (localScale)
     * @param {float} timeUI:float The timeUI to complete the tween in
     * @return {LTDescr} LTDescr an object that distinguishes the tween
-    * @example LeanTween.color(gameObject.GetComponent&lt;RectTransform&gt;(), 0.5f, 1f).setDelay(1f);
+    * @example LeanTween.backgroundColor(gameObject.GetComponent&lt;RectTransform&gt;(), 0.5f, 1f).setDelay(1f);
     */
     public static LTDescr color(RectTransform rectTrans, Color to, float time){
         return pushNewTween( rectTrans.gameObject, new Vector3(1.0f, to.a, 0.0f), time, options().setCanvasColor().setRect( rectTrans ).setPoint( new Vector3(to.r, to.g, to.b) ) );
@@ -2459,12 +2459,12 @@ public class LeanTween : MonoBehaviour {
     // Mark: LeanTween Following
 
     /**
-    * <summary>Follow another transforms position/scale/color with a damp transition (eases in and out to destination with no overshoot)</summary>
+    * <summary>Follow another transforms position/scale/backgroundColor with a damp transition (eases in and out to destination with no overshoot)</summary>
     * 
     * @method LeanTween.followDamp
     * @param {Transform} transform:Transform the transform you wish to be the follower
     * @param {Transform} transform:Transform the transform you wish to follow
-    * @param {LeanProp} leanProp:LeanProp enum of the type of following you wish to do position, scale, color, etc.
+    * @param {LeanProp} leanProp:LeanProp enum of the type of following you wish to do position, scale, backgroundColor, etc.
     * @param {float} smoothTime:float roughly the timeUI it takes to reach the destination
     * @param {float} [maxSpeed]:float maximum speed at which it moves towards the destination
     * @example
@@ -2526,12 +2526,12 @@ public class LeanTween : MonoBehaviour {
     }
 
     /**
-    * <summary>Follow another transforms position/scale/color with a springy transition (eases in and out to destination with possible overshoot bounciness)</summary>
+    * <summary>Follow another transforms position/scale/backgroundColor with a springy transition (eases in and out to destination with possible overshoot bounciness)</summary>
     * 
     * @method LeanTween.followSpring
     * @param {Transform} transform:Transform the transform you wish to be the follower
     * @param {Transform} transform:Transform the transform you wish to follow
-    * @param {LeanProp} leanProp:LeanProp enum of the type of following you wish to do position, scale, color, etc.
+    * @param {LeanProp} leanProp:LeanProp enum of the type of following you wish to do position, scale, backgroundColor, etc.
     * @param {float} smoothTime:float roughly the timeUI it takes to reach the destination
     * @param {float} [maxSpeed]:float maximum speed at which it moves towards the destination
     * @param {float} [friction]:float rate at which the spring is slowed down once it reaches it's destination
@@ -2595,12 +2595,12 @@ public class LeanTween : MonoBehaviour {
     }
 
     /**
-    * <summary>Follow another transforms position/scale/color (with an ease that bounces back some when it reaches it's destination)</summary>
+    * <summary>Follow another transforms position/scale/backgroundColor (with an ease that bounces back some when it reaches it's destination)</summary>
     * 
     * @method LeanTween.followBounceOut
     * @param {Transform} transform:Transform the transform you wish to be the follower
     * @param {Transform} transform:Transform the transform you wish to follow
-    * @param {LeanProp} leanProp:LeanProp enum of the type of following you wish to do position, scale, color, etc.
+    * @param {LeanProp} leanProp:LeanProp enum of the type of following you wish to do position, scale, backgroundColor, etc.
     * @param {float} smoothTime:float roughly the timeUI it takes to reach the destination
     * @param {float} [maxSpeed]:float maximum speed at which it moves towards the destination
     * @param {float} [friction]:float rate at which the spring is slowed down once it reaches it's destination
@@ -2664,12 +2664,12 @@ public class LeanTween : MonoBehaviour {
     }
 
     /**
-    * <summary>Follow another transforms position/scale/color with a constant speed</summary>
+    * <summary>Follow another transforms position/scale/backgroundColor with a constant speed</summary>
     * 
     * @method LeanTween.followLinear
     * @param {Transform} transform:Transform the transform you wish to be the follower
     * @param {Transform} transform:Transform the transform you wish to follow
-    * @param {LeanProp} leanProp:LeanProp enum of the type of following you wish to do position, scale, color, etc.
+    * @param {LeanProp} leanProp:LeanProp enum of the type of following you wish to do position, scale, backgroundColor, etc.
     * @param {float} moveSpeed:float roughly the timeUI it takes to reach the destination
     * @example
     * LeanTween.followLinear(transform, followTransform, LeanProp.localY, 50f);
@@ -3114,7 +3114,7 @@ public class LTBezierPath {
         {
             float pm = (float)i / 120f;
             Vector3 currPt2 = point(pm);
-            //Gizmos.color = new Color(UnityEngine.Random.Range(0f,1f),UnityEngine.Random.Range(0f,1f),UnityEngine.Random.Range(0f,1f),1);
+            //Gizmos.backgroundColor = new Color(UnityEngine.Random.Range(0f,1f),UnityEngine.Random.Range(0f,1f),UnityEngine.Random.Range(0f,1f),1);
             Gizmos.color = (previousBezier == currentBezier) ? Color.magenta : Color.grey;
             Gizmos.DrawLine(currPt2, prevPt);
             prevPt = currPt2;
@@ -3441,7 +3441,7 @@ public class LTSpline {
         for (int i = 0; i < ptsAdjLength; i++) {
             Vector3 currPt2 = ptsAdj[i];
             // Debug.Log("currPt2:"+currPt2);
-            //Gizmos.color = new Color(UnityEngine.Random.Range(0f,1f),UnityEngine.Random.Range(0f,1f),UnityEngine.Random.Range(0f,1f),1);
+            //Gizmos.backgroundColor = new Color(UnityEngine.Random.Range(0f,1f),UnityEngine.Random.Range(0f,1f),UnityEngine.Random.Range(0f,1f),1);
             Gizmos.DrawLine(prevPt, currPt2);
             prevPt = currPt2;
         }
@@ -3993,7 +3993,7 @@ public class LTGUI {
         }
         if(rect.type==LTGUI.Element_Type.Label && rect.style!=null){
             if(rect.style.normal.textColor.a<=0f){
-                Debug.LogWarning("Your GUI normal color has an alpha of zero, and will not be rendered.");
+                Debug.LogWarning("Your GUI normal backgroundColor has an alpha of zero, and will not be rendered.");
             }
         }
         if(rect.relativeRect.width==float.PositiveInfinity){

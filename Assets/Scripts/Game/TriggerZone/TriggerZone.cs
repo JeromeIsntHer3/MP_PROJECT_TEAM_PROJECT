@@ -13,20 +13,15 @@ public class TriggerZone : MonoBehaviour
     private Player player;
 
     [Header("PopUp")]
-    public Vector3 popUpSize;
     public Vector3 popUpPosition;
+    public Vector3 popUpSize;
     [Multiline]
     public string textToShow;
     public bool seen = false;
 
     [Header("Notification")]
     public NotificationData notificationData;
-    public enum WhichApp
-    {
-        Net,Message,Med,Info
-    }
-    public WhichApp app;
-    public AppDisplay display;
+    public ThisApp sendToApp;
 
     public static bool GameOver;
 
@@ -52,24 +47,7 @@ public class TriggerZone : MonoBehaviour
                     break;
 
                 case TriggerType.Notification:
-                    switch (app)
-                    {
-                        case WhichApp.Net:
-                            display.AddNotification(1,notificationData);
-                            break;
-                        case WhichApp.Message:
-                            display.AddNotification(2, notificationData);
-                            break;
-                        case WhichApp.Med:
-                            display.AddNotification(3, notificationData);
-                            break;
-                        case WhichApp.Info:
-                            display.AddNotification(4, notificationData);
-                            break;
-                        default:
-                            return;
-                    }
-                    Destroy(this);
+                    sendToApp.AddNotification(notificationData);
                     break;
 
                 case TriggerType.PopUp:

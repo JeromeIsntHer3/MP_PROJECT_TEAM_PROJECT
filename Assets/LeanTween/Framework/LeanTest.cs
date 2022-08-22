@@ -109,7 +109,7 @@ public class LeanTest : object {
 		#if UNITY_3_5 || UNITY_4_0 || UNITY_4_0_1 || UNITY_4_1 || UNITY_4_2
 		return str;
 		#else
-		return "<color="+color+">"+ str + "</color>";
+		return "<backgroundColor="+color+">"+ str + "</backgroundColor>";
 		#endif
 	}
 	

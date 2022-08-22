@@ -15,5 +15,4 @@ MonoBehaviour:
   storageName: Information
   notificationList:
   - {fileID: 11400000, guid: d5c6c12d4c7d67a41af119d75a5ad4e4, type: 2}
-  - {fileID: 11400000, guid: b74ba3737a3b57441a51be3fa927db0e, type: 2}
-  - {fileID: 11400000, guid: 22f49bc7dd1d8454facbd11ddfea55ae, type: 2}
+  storageType: 3

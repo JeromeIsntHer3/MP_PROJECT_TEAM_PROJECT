@@ -7,7 +7,10 @@ public class GameHandler : MonoBehaviour
 {
     [SerializeField]
     private LevelHolder levelHolder;
-    public LevelData thisLevel;
+    [SerializeField]
+    private LevelData currentLevel;
+    [SerializeField]
+    private LevelData nextLevel;
 
     public PersistantData gameData;
 
@@ -55,11 +58,7 @@ public class GameHandler : MonoBehaviour
 
     public void UnlockNextLevel()
     {
-        if (levelHolder.Levels.Contains(thisLevel))
-        {
-            int index = levelHolder.Levels.IndexOf(thisLevel);
-            levelHolder.Levels[index + 1].unlocked = true;
-        }
+        nextLevel.unlocked = true;
     }
 
     public void ResetInfo()
@@ -90,5 +89,10 @@ public class GameHandler : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void NextLevel()
+    {
+        SceneManager.LoadScene(nextLevel.sceneName);
     }
 }

@@ -101,6 +101,7 @@ public class PlayerMovement3D : MonoBehaviour
         {
             lastGroundedTime = Time.time;
             noOfJumps = noOfJumpsAllowed;
+            playerAnim.SetBool("In-Air", false);
         }
         if (playerInput.jumpPressed)
         {
@@ -124,6 +125,10 @@ public class PlayerMovement3D : MonoBehaviour
             {
                 rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y / jumpFallOffAtApex);
             }
+        }
+        if(rb.velocity.y < 0 && !groundCheck.isGrounded)
+        {
+            playerAnim.SetBool("In-Air", true);
         }
     }
 

@@ -11,6 +11,8 @@ public class UIHandler : MonoBehaviour
     [SerializeField]
     private GameObject gameOver;
     [SerializeField]
+    private GameObject levelComplete;
+    [SerializeField]
     private GameObject settingsMenu;
     [SerializeField]
     private GameObject darkOverlay;
@@ -83,7 +85,6 @@ public class UIHandler : MonoBehaviour
         }
     }
 
-    #region General Functions
     public void Pause()
     {
         gamePaused = true;
@@ -105,6 +106,13 @@ public class UIHandler : MonoBehaviour
         gameOver.SetActive(true);
     }
 
+    public void LevelComplete()
+    {
+        SetAllOff();
+        darkOverlay.SetActive(true);
+        levelComplete.SetActive(true);
+    }
+
     void SetAllOff()
     {
         pauseMenu.SetActive(false);
@@ -114,9 +122,7 @@ public class UIHandler : MonoBehaviour
         bodyUI.SetActive(false);
         timeUI.SetActive(false);
     }
-    #endregion
 
-    #region Pause Menu Functions
     public void Resume()
     {
         Unpause();
@@ -141,9 +147,6 @@ public class UIHandler : MonoBehaviour
         AnimateUI(pauseMenu, false, 0.3f,LoadScene);
     }
 
-    #endregion
-
-    #region Defeat/GameOver Functions
     public void TryAgain()
     {
         TriggerZone.GameOver = false;
@@ -155,9 +158,7 @@ public class UIHandler : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
-    #endregion
 
-    #region Animation Function
     void LoadScene()
     {
         SceneManager.LoadScene(SceneToLoad);
@@ -175,10 +176,7 @@ public class UIHandler : MonoBehaviour
         }
         soundManager.PlaySound(soundManager.buttonSound);
     }
-    #endregion
 
-
-    #region Coroutines
     IEnumerator WaitForAnimBefore(float time, GameObject go, Action func)
     {
         go.SetActive(true);
@@ -194,5 +192,4 @@ public class UIHandler : MonoBehaviour
         go.SetActive(false);
         if(func != null) func();
     }
-    #endregion
 }

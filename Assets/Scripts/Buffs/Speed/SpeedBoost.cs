@@ -9,12 +9,12 @@ public class SpeedBoost : Buff
 
     public override void Effect(GameObject parent)
     {
-        PlayerMovement pm = parent.GetComponent<PlayerMovement>();
+        PlayerMovement3D pm = parent.GetComponent<PlayerMovement3D>();
         pm.Speed = newSpeed;
     }
     public override void EffectOver(GameObject parent)
     {
-        PlayerMovement pm = parent.GetComponent<PlayerMovement>();
+        PlayerMovement3D pm = parent.GetComponent<PlayerMovement3D>();
         pm.Speed = 20;
     }
 }

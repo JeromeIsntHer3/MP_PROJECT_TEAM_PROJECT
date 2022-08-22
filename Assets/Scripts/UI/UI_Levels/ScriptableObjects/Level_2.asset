@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Level_2
   m_EditorClassIdentifier: 
   sceneName: Level_2_Scene
-  unlocked: 1
+  unlocked: 0

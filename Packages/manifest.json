@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "com.febucci.custom-hierarchy": "file:C:/Users/jerom/Downloads/unitypackage-custom-hierarchy-1.2.0/unitypackage-custom-hierarchy-1.2.0",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.2d.tilemap": "1.0.0",
     "com.unity.ads": "3.7.5",

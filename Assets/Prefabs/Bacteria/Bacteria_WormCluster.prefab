@@ -127,13 +127,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 6125150097096751132}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 719b37cc46cfe5f4d80326e4c217afc5, type: 3}
+  m_Script: {fileID: 11500000, guid: 64a427c59a81388408f13e990936d394, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 30
-  player: {fileID: 0}
-  speed: 5
-  damage: 1
+  range: 1
+  playerTransform: {fileID: 0}
+  speed: 1
+  damage: 2
 --- !u!54 &-8023202100199342139
 Rigidbody:
   m_ObjectHideFlags: 0

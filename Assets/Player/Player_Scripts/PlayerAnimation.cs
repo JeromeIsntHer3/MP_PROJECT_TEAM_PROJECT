@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour
 {
-    [HideInInspector]
-    public Animator playerAnim;
+    private Animator playerAnim;
 
     void Awake()
     {

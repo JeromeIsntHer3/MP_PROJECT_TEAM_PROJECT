@@ -9,13 +9,13 @@ public class AdditionalJumps : Buff
 
     public override void Effect(GameObject parent)
     {
-        PlayerMovement3D pm = parent.GetComponent<PlayerMovement3D>();
+        PlayerMovement pm = parent.GetComponent<PlayerMovement>();
         pm.NoOfJumpsAllowed = jumps;
     }
 
     public override void EffectOver(GameObject parent)
     {
-        PlayerMovement3D pm = parent.GetComponent<PlayerMovement3D>();
+        PlayerMovement pm = parent.GetComponent<PlayerMovement>();
         pm.NoOfJumpsAllowed = 1;
     }
 }

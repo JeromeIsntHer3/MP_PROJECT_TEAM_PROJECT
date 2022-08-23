@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerInput))]
 [RequireComponent(typeof(Player))]
 
-public class PlayerMovement3D : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     //Component Variables
     [HideInInspector]
@@ -18,7 +18,6 @@ public class PlayerMovement3D : MonoBehaviour
     [Header("Movement Attributes")]
     [SerializeField]
     private float speed;
-    public float Speed { get { return speed; } set { speed = value; } }
     [SerializeField]
     private float lerpAmount = 1f;
 
@@ -38,12 +37,15 @@ public class PlayerMovement3D : MonoBehaviour
     [SerializeField]
     private float extraHeight;
     private int noOfJumpsAllowed;
-    public int NoOfJumpsAllowed { get { return noOfJumpsAllowed; } set { noOfJumpsAllowed = value; } }
     private int noOfJumps;
     private float? lastGroundedTime;
 
     private bool _isFacingRight;
     private SoundManager soundManager;
+
+    public float Speed { get { return speed; } set { speed = value; } }
+    public int NoOfJumpsAllowed { get { return noOfJumpsAllowed; } set { noOfJumpsAllowed = value; } }
+
 
     void Awake()
     {
@@ -51,7 +53,7 @@ public class PlayerMovement3D : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         playerAnim = GetComponent<PlayerAnimation>();
         groundCheck = GetComponentInChildren<GroundCheck>();
-        soundManager = FindObjectOfType<SoundManager>();
+        soundManager = SoundManager.instance;
     }
 
     void Move()
@@ -142,7 +144,7 @@ public class PlayerMovement3D : MonoBehaviour
             }
             else if (playerInput.movementInput.x < 0)
             {
-                rb.AddForce(transform.right * -apexBoost);
+                rb.AddForce(-transform.right * apexBoost);
             }
         }
     }

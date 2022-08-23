@@ -14,7 +14,6 @@ public class GameHandler : MonoBehaviour
 
     public PersistantData gameData;
 
-    [SerializeField]
     private SoundManager soundManager;
     [SerializeField]
     private Player player;
@@ -28,6 +27,7 @@ public class GameHandler : MonoBehaviour
 
     void OnEnable()
     {
+        soundManager = FindObjectOfType<SoundManager>();
         LoadData();
     }
 
@@ -38,27 +38,51 @@ public class GameHandler : MonoBehaviour
 
     void LoadData()
     {
-        soundManager.fxSlider.value = gameData.fxVolume;
-        soundManager.musicSlider.value = gameData.musicVolume;
+        LoadSettingsData();
         if (!player) return;
-        player.CurrHealth = gameData.playerHealth;
-        player.CurrProgress = gameData.playerProgress;
+        LoadPlayerData(gameData.playerHealth, gameData.playerRecovery, gameData.playerInfection);
         Debug.Log("Data Loaded");
     }
 
     public void SaveData()
     {
+        SaveSettingsData();
+        if (!player) return;
+        SavePlayerData();
+        Debug.Log("Data Saved");
+    }
+
+    void SavePlayerData()
+    {
+        gameData.playerHealth = player.GetStat(TypeOfStat.Health);
+        gameData.playerRecovery = player.GetStat(TypeOfStat.Recovery);
+        gameData.playerInfection = player.GetStat(TypeOfStat.Infection);
+    }
+    void LoadPlayerData(float health, float recovery, float infection)
+    {
+        player.SetStat(TypeOfStat.Health, health);
+        player.SetStat(TypeOfStat.Recovery, recovery);
+        player.SetStat(TypeOfStat.Infection, infection);
+    }
+
+    void SaveSettingsData()
+    {
         gameData.fxVolume = soundManager.fxSlider.value;
         gameData.musicVolume = soundManager.musicSlider.value;
-        if (!player) return;
-        gameData.playerHealth = player.CurrHealth;
-        gameData.playerProgress = player.CurrProgress;
-        Debug.Log("Data Saved");
+    }
+    void LoadSettingsData()
+    {
+        soundManager.fxSlider.value = gameData.fxVolume;
+        soundManager.musicSlider.value = gameData.musicVolume;
     }
 
     public void UnlockNextLevel()
     {
         nextLevel.unlocked = true;
+    }
+    public void NextLevel()
+    {
+        SceneManager.LoadScene(nextLevel.sceneName);
     }
 
     public void ResetInfo()
@@ -89,10 +113,5 @@ public class GameHandler : MonoBehaviour
                 }
             }
         }
-    }
-
-    public void NextLevel()
-    {
-        SceneManager.LoadScene(nextLevel.sceneName);
     }
 }

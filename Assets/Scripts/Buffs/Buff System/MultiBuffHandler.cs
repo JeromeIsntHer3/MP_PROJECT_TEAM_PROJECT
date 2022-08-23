@@ -8,10 +8,11 @@ public class MultiBuffHandler : MonoBehaviour
     private DisplayBuffHandler displayBuffHandler;
     private SoundManager sm;
 
+    [HideInInspector]
     public List<int> ids;
-
+    [HideInInspector]
     public List<Buff> activeBuffs;
-
+    [HideInInspector]
     public List<float> durationTimes;
 
     void Awake()

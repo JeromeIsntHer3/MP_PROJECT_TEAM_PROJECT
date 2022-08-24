@@ -6,6 +6,8 @@ using TMPro;
 
 public class SoundManager : MonoBehaviour
 {
+    public static SoundManager instance;
+
     [SerializeField]
     private AudioSource musicSource, effectsSource;
 
@@ -28,6 +30,11 @@ public class SoundManager : MonoBehaviour
     public TextMeshProUGUI fxValueText;
     public Slider musicSlider;
     public TextMeshProUGUI musicValueText;
+
+    void Awake()
+    {
+        instance = this;
+    }
 
     void Start()
     {
@@ -53,6 +60,7 @@ public class SoundManager : MonoBehaviour
     {
         musicSource.Stop();
     }
+
     public void SetEffectsVolume(float volume)
     {
         EffectsSource.volume = volume / 100;

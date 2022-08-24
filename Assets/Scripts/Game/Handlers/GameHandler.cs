@@ -1,98 +1,40 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class GameHandler : MonoBehaviour
 {
-    [SerializeField]
-    private LevelHolder levelHolder;
-    [SerializeField]
-    private LevelData currentLevel;
-    [SerializeField]
-    private LevelData nextLevel;
+    [SerializeField] private GameObject reality;
+    [SerializeField] private GameObject body;
 
-    public PersistantData gameData;
+    [SerializeField] private GameObject cam1;
+    [SerializeField] private GameObject cam2;
 
-    [SerializeField]
-    private SoundManager soundManager;
-    [SerializeField]
-    private Player player;
+    private PlayerInput playerInput;
 
-    [Header("Notification Storage Data")]
-    [SerializeField]
-    private NotificationStorage[] storages;
-
-    public delegate void PickUp();
-    public static PickUp OnPickUp;
-
-    void OnEnable()
+    void Awake()
     {
-        LoadData();
+        playerInput = FindObjectOfType<PlayerInput>();
     }
 
-    void OnDisable()
+    void Update()
     {
-        SaveData();
+        ChangePerspectives();
     }
 
-    void LoadData()
+    void ChangePerspectives()
     {
-        soundManager.fxSlider.value = gameData.fxVolume;
-        soundManager.musicSlider.value = gameData.musicVolume;
-        if (!player) return;
-        player.CurrHealth = gameData.playerHealth;
-        player.CurrProgress = gameData.playerProgress;
-        Debug.Log("Data Loaded");
-    }
-
-    public void SaveData()
-    {
-        gameData.fxVolume = soundManager.fxSlider.value;
-        gameData.musicVolume = soundManager.musicSlider.value;
-        if (!player) return;
-        gameData.playerHealth = player.CurrHealth;
-        gameData.playerProgress = player.CurrProgress;
-        Debug.Log("Data Saved");
-    }
-
-    public void UnlockNextLevel()
-    {
-        nextLevel.unlocked = true;
-    }
-
-    public void ResetInfo()
-    {
-        for (int i = 1; i < levelHolder.Levels.Count; i++)
+        if (!playerInput.swapPerspective)
         {
-            levelHolder.Levels[i].unlocked = false;
+            reality.SetActive(true);
+            cam1.SetActive(true);
+            cam2.SetActive(false);
+            body.SetActive(false);
         }
-
-        gameData.playerHealth = 100;
-
-        LoopStorage();
-
-        if (OnPickUp == null) return;
-        OnPickUp();
-    }
-
-    void LoopStorage()
-    {
-        foreach (NotificationStorage storage in storages)
+        else
         {
-            for (int i = 0;i < storage.notificationList.Count; i++)
-            {
-                storage.notificationList[i].seen = false;
-                if(storage.notificationList[i].seen == false)
-                {
-                    storage.notificationList.RemoveAt(i);
-                }
-            }
+            reality.SetActive(false);
+            cam1.SetActive(false);
+            cam2.SetActive(true);
+            body.SetActive(true);
         }
-    }
-
-    public void NextLevel()
-    {
-        SceneManager.LoadScene(nextLevel.sceneName);
-    }
+    } 
 }

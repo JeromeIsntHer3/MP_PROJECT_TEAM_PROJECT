@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class BacteriaHandler : MonoBehaviour
 {
+
+    public static BacteriaHandler instance;
+
     [SerializeField]
     private GameObject[] bacteria;
     [SerializeField]
@@ -17,6 +20,11 @@ public class BacteriaHandler : MonoBehaviour
     private Transform spawnSpot;
     private float timeToSpawn;
     private bool toSpawn;
+
+    void Awake()
+    {
+        instance = this;
+    }
 
     void Update()
     {

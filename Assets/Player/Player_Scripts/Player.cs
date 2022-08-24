@@ -1,144 +1,137 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 using System;
+
+public enum TypeOfStat { Health, Recovery, Infection }
 
 public class Player : MonoBehaviour
 {
-    [Header("Set Health and Progress")]
+    [Header("Default Values")]
     [SerializeField]
-    private float _currHealth;
+    private float baseInfectionRate = 0;
     [SerializeField]
-    private float _currProgress;
+    private bool infected;
 
-    private float dotDam;
-    private float hotHeal;
-    private bool doDOT;
-    private bool doHOT;
+    //Values To Be Set
+    public float currHealth;
+    private float currRecovery;
+    private float currInfection;
+    private float currInfectionRate;
 
-    [Header("Infection")]
-    [SerializeField]
-    private float _infectionProgress;
-    [SerializeField]
-    private float infectionAmount;
-    [SerializeField]
-    private float recoveryAmount;
-    private bool beingInfected;
+    private float overTimeDamage;
+    private float overTimeDuration;
+    private TypeOfStat statToChange;
 
-    private float prevHealth;
-    private float prevProgress;
+    public void SetStat(TypeOfStat typeOfChange, float amount)
+    {
+        switch (typeOfChange)
+        {
+            case (TypeOfStat.Health):
+                currHealth = amount;
+                break;
+            case (TypeOfStat.Recovery):
+                currRecovery = amount;
+                break;
+            case (TypeOfStat.Infection):
+                currInfection = amount;
+                break;
+        }
+    }
+
+    public float GetStat(TypeOfStat typeOfChange)
+    {
+        switch (typeOfChange)
+        {
+            case (TypeOfStat.Health):
+                return currHealth;
+            case (TypeOfStat.Recovery):
+                return currRecovery;
+            case (TypeOfStat.Infection):
+                return currInfection;
+            default:
+                Debug.Log("No Stat Returned");
+                return 0;
+        }
+    }
 
     [SerializeField]
     private GameObject barrier;
 
-    [HideInInspector]
-    public TimeHandler timeHandler;
+    public Image statusOverlay;
+
     private BacteriaHandler bacteriaHandler;
 
-    private Image image;
-
-    //PROPERTIES
-    public float CurrHealth { get { return _currHealth; } set { _currHealth = value; } }
-    public float CurrProgress { get { return _currProgress; } set { _currProgress = value; } }
-    public float DOTDam { get { return dotDam; } set { dotDam = value; } }
-    public float HOTDam { get { return hotHeal; } set { hotHeal = value; } }
-    public bool DoDOT { get { return doDOT; } set { doDOT = value; } }
-    public bool DoHOT { get { return doHOT; } set { doHOT = value; } }
-
-    
-    //Events for Changes In Health & Progress
-    //This Events run and are used in HealthChanged
-    //and ProgressChanged
-    public event EventHandler OnHealthChange, OnProgressChange;
-
-
-
-    //This is the function that will run when event is fired
-    //Add Functions to this function if want to run during
-    //Health Change
-    public void HealthChanged()
+    void Start()
     {
-        if (_currHealth > prevHealth || _currHealth < prevHealth)
+        bacteriaHandler = BacteriaHandler.instance;
+
+        currInfectionRate = baseInfectionRate;
+    }
+
+    void Update()
+    {
+        Infection();
+        ChangeStatUpdate();
+    }
+
+    void FixedUpdate()
+    {
+        StatClamps();
+    }
+
+    public void ChangeStat (TypeOfStat changeType, float amount, bool overTime = false, float overTimeAmount = 0, float duration = 0)
+    {
+        statToChange = changeType;
+        switch (statToChange)
         {
-            OnHealthChange?.Invoke(this, EventArgs.Empty);
+            case TypeOfStat.Health:
+                currHealth += amount;
+                break;
+            case TypeOfStat.Recovery:
+                currRecovery += amount;
+                break;
+            case TypeOfStat.Infection:
+                currInfection += amount;
+                break;
+            default:
+                break;
+        }
+        if (overTime)
+        {
+            overTimeDamage = overTimeAmount;
+            overTimeDuration = duration;
         }
     }
 
-
-    //This is the function that will run when event is fired
-    //Add Functions to this function if want to run during
-    //Progress Change
-    public void ProgressChanged()
+    void ChangeStatUpdate()
     {
-        if (_currProgress > prevProgress || _currProgress < prevProgress)
+        if(overTimeDuration > 0)
         {
-            OnProgressChange?.Invoke(this, EventArgs.Empty);
+            overTimeDuration -= Time.deltaTime;
+            switch (statToChange)
+            {
+                case TypeOfStat.Health:
+                    currHealth += overTimeDamage * Time.deltaTime;
+                    break;
+                case TypeOfStat.Recovery:
+                    currRecovery += overTimeDamage * Time.deltaTime;
+                    break;
+                case TypeOfStat.Infection:
+                    currInfection += overTimeDamage * Time.deltaTime;
+                    break;
+                default:
+                    break;
+            }
         }
     }
 
-    void Awake()
+    void StatClamps()
     {
-        timeHandler = FindObjectOfType<TimeHandler>();
-        bacteriaHandler = FindObjectOfType<BacteriaHandler>();
-        image = FindObjectOfType<AnimateOverlay>().gameObject.GetComponent<Image>();
+        currHealth = Mathf.Clamp(currHealth, 0, 100);
+        currRecovery = Mathf.Clamp(currRecovery, 0, 100);
+        currInfection = Mathf.Clamp(currInfection, 0, 100);
     }
-
-    void Start() { }
-
-    #region Interface Functions
-    public void Heal(float healAmount)
-    {
-        prevHealth = _currHealth;
-        _currHealth += healAmount;
-        if (_currHealth >= 100) _currHealth = 100;
-    }
-
-    public void Damage(float damageAmount)
-    {
-        prevHealth = _currHealth;
-        _currHealth -= damageAmount;
-        if (_currHealth <= 0) _currHealth = 0;
-    }
-
-    public void DOT(bool doDOT)
-    {
-        if (doDOT)
-        {
-            prevHealth = _currHealth;
-            _currHealth -= dotDam * Time.deltaTime;
-        }
-        else
-        {
-            dotDam = 0;
-        }
-    }
-
-    public void HOT(bool doHOT)
-    {
-        if (doHOT)
-        {
-            prevHealth = _currHealth;
-            _currHealth += hotHeal * Time.deltaTime;
-        }
-        else
-        {
-            hotHeal = 0;
-        }
-    }
-
-    public void ProgressIncrease(float increaseProgress, float cap)
-    {
-        prevProgress = _currProgress;
-        _currProgress += increaseProgress;
-        if (_currProgress >= cap) _currProgress = cap;
-    }
-
-    public void ProgressDecrease(float decreaseProgress)
-    {
-        prevProgress = _currProgress;
-        _currProgress -= decreaseProgress;
-        if (_currProgress <= 0) _currProgress = 0;
-    }
-    #endregion
 
     public void EnableBarrier()
     {
@@ -150,62 +143,39 @@ public class Player : MonoBehaviour
         barrier.SetActive(false);
     }
 
-    public void SetHealth(float healthSet)
-    {
-        _currHealth = healthSet;
-    }
-
     void Infection()
     {
-        if (beingInfected)
+        if (infected) 
         {
-            _infectionProgress += infectionAmount * Time.deltaTime;
-            
-            if(_infectionProgress >= 100)
-            {
-                _infectionProgress = 100;
-            }
+            currInfection += currInfectionRate * Time.deltaTime;
         }
-        else 
+        else
         {
-            _infectionProgress -= recoveryAmount * Time.deltaTime;
-            if(_infectionProgress <= 0)
-            {
-                _infectionProgress = 0;
-            }
+            currInfection -= currInfectionRate * Time.deltaTime;
         }
-        image.color = Color.Lerp(Color.black, Color.magenta,_infectionProgress/100);
+        currInfection = Mathf.Clamp(currInfection, 0, 100);
+        statusOverlay.color = Color.Lerp(Color.black, Color.magenta, currInfection / 100);
+
+        if (currInfection >= 100)
+        {
+            if (bacteriaHandler.BacteriaCount() > 25) { return; }
+            bacteriaHandler.SpawnBacteria(bacteriaHandler.BacteriaCount());
+        }
     }
 
-    void Update()
-    {
-        DOT(doDOT);
-        HOT(doHOT);
-
-        HealthChanged();
-        ProgressChanged();
-
-        Infection();
-    }
-
-    private void OnTriggerStay(Collider other)
+    void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Infected")
         {
-            beingInfected = true;
-            if(_infectionProgress >= 100)
-            {
-                if (bacteriaHandler.BacteriaCount() > 25) { return; }
-                bacteriaHandler.SpawnBacteria(bacteriaHandler.BacteriaCount());
-            }
+            infected = true;
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    void OnTriggerExit(Collider other)
     {
         if(other.tag == "Infected")
         {
-            beingInfected = false;
+            infected = false;
         }
     }
 }

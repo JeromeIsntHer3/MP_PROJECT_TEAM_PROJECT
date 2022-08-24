@@ -3,20 +3,18 @@ using UnityEngine;
 public class PillPickup : MonoBehaviour
 {
     [SerializeField]
-    private float thisHealAmount;
+    private float healAmount;
     [SerializeField]
-    private float thisProgressAmount;
+    private float recoveryAmount;
     [SerializeField]
-    private float thisProgressCap;
-    [SerializeField]
-    private GameObject[] pills; 
+    private GameObject[] pillPrefabs; 
 
     private Player player;
 
     void Awake()
     {
-        int index = Random.Range(0, pills.Length);
-        Instantiate(pills[index], this.transform);
+        int index = Random.Range(0, pillPrefabs.Length);
+        Instantiate(pillPrefabs[index], this.transform);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -24,22 +22,22 @@ public class PillPickup : MonoBehaviour
         if (other.tag == "Player")
         {
             player = other.GetComponent<Player>();
-            player.DoDOT = false;
-            float currTime = player.timeHandler.TimeCountDown;
+            player.StopAllCoroutines();
+            float currTime = TimeHandler.instance.TimeCountDown;
             if (5 > currTime && currTime > 0)
             {
-                player.ProgressIncrease(thisProgressAmount, thisProgressCap);
-                player.Heal(thisHealAmount);
+                player.ChangeStat(TypeOfStat.Recovery, recoveryAmount);
+                player.ChangeStat(TypeOfStat.Health,healAmount);
             }
             else if (15 > currTime && currTime > 5)
             {
-                player.ProgressIncrease(thisProgressAmount/2, thisProgressCap);
-                player.Heal(thisHealAmount/2);
+                player.ChangeStat(TypeOfStat.Recovery, recoveryAmount);
+                player.ChangeStat(TypeOfStat.Health, healAmount / 2);
             }
             else
             {
-                player.ProgressIncrease(thisProgressAmount / 4, thisProgressCap);
-                player.Damage(10);
+                player.ChangeStat(TypeOfStat.Recovery, recoveryAmount);
+                player.ChangeStat(TypeOfStat.Health, -healAmount);
             }
             Destroy(gameObject);
         }

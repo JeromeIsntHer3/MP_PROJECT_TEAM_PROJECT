@@ -11,7 +11,7 @@ public class TriggerZone : MonoBehaviour
     public TriggerType triggerType;
 
     private Player player;
-    private UIHandler uIHandler;
+    private MenusHandler uIHandler;
 
     [Header("PopUp")]
     public Vector3 popUpPosition;
@@ -24,12 +24,13 @@ public class TriggerZone : MonoBehaviour
     public NotificationData notificationData;
     public ThisApp sendToApp;
 
-    public static bool GameOver;
+    public static bool GameOver, LevelComplete;
 
     void Awake()
     {
         player = FindObjectOfType<Player>();
-        uIHandler = FindObjectOfType<UIHandler>();
+        uIHandler = FindObjectOfType<MenusHandler>();
+        GameOver = LevelComplete = false;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -44,14 +45,14 @@ public class TriggerZone : MonoBehaviour
                     if (player)
                     {
                         Destroy(player.gameObject);
-                        TriggerZone.GameOver = true;
+                        GameOver = true;
                     }
                     break;
 
                 case TriggerType.Notification:
                     sendToApp.AddNotification(notificationData);
-                    if(GameHandler.OnPickUp != null)
-                    GameHandler.OnPickUp();
+                    if(DataHandler.OnPickUp != null)
+                    DataHandler.OnPickUp();
                     break;
 
                 case TriggerType.PopUp:
@@ -62,7 +63,7 @@ public class TriggerZone : MonoBehaviour
                     break;
 
                 case TriggerType.GameFinish:
-                    uIHandler.LevelComplete();
+                    LevelComplete = true;                    
                     break;
 
                 default:

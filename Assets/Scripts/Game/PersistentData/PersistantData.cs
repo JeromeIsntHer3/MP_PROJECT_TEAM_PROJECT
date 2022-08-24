@@ -8,5 +8,6 @@ public class PersistantData : ScriptableObject
     public float musicVolume;
     public float fxVolume;
     public float playerHealth;
-    public float playerProgress;
+    public float playerRecovery;
+    public float playerInfection;
 }

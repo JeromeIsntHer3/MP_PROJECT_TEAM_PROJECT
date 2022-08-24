@@ -133,7 +133,7 @@ MonoBehaviour:
   range: 1
   playerTransform: {fileID: 0}
   speed: 1
-  damage: 2
+  damage: -2
 --- !u!54 &-8023202100199342139
 Rigidbody:
   m_ObjectHideFlags: 0

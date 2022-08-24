@@ -14,14 +14,14 @@ public class NotificationDisplay : MonoBehaviour
 
     void OnEnable()
     {
-        GameHandler.OnPickUp += ClearSlots;
-        GameHandler.OnPickUp += SetUpSlots;
+        DataHandler.OnPickUp += ClearSlots;
+        DataHandler.OnPickUp += SetUpSlots;
     }
 
     void OnDisable()
     {
-        GameHandler.OnPickUp -= ClearSlots;
-        GameHandler.OnPickUp -= SetUpSlots;
+        DataHandler.OnPickUp -= ClearSlots;
+        DataHandler.OnPickUp -= SetUpSlots;
     }
 
 

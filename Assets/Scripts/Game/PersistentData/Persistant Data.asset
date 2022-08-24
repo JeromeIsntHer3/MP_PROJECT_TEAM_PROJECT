@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dd213b195e6eda41846894ca8d649db, type: 3}
   m_Name: Persistant Data
   m_EditorClassIdentifier: 
-  musicVolume: 100
+  musicVolume: 50
   fxVolume: 50
   playerHealth: 100
   playerRecovery: 0

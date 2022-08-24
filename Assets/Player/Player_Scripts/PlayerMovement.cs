@@ -168,5 +168,9 @@ public class PlayerMovement : MonoBehaviour
         {
             CheckFaceDir(playerInput.movementInput.x < 0);
         }
+        if (TriggerZone.LevelComplete)
+        {
+            rb.velocity = new Vector2(0,rb.velocity.y);
+        }
     }
 }

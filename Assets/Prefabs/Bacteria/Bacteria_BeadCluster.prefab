@@ -50,7 +50,7 @@ MonoBehaviour:
   range: 5
   playerTransform: {fileID: 0}
   speed: 5
-  damage: 2
+  damage: -3
 --- !u!54 &-2900172504631881857
 Rigidbody:
   m_ObjectHideFlags: 0

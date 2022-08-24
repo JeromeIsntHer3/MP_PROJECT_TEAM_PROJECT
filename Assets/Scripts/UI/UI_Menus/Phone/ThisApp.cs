@@ -38,12 +38,12 @@ public class ThisApp : MonoBehaviour
     void OnEnable()
     {
         SetupAlerts();
-        GameHandler.OnPickUp += SetupAlerts;
+        DataHandler.OnPickUp += SetupAlerts;
     }
 
     private void OnDisable()
     {
-        GameHandler.OnPickUp -= SetupAlerts;
+        DataHandler.OnPickUp -= SetupAlerts;
     }
 
     public void SetupAlerts()

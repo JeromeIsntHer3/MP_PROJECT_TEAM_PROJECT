@@ -5,35 +5,48 @@ using UnityEngine.SceneManagement;
 
 public class DataHandler : MonoBehaviour
 {
-    [SerializeField]
-    private LevelHolder levelHolder;
-    [SerializeField]
-    private LevelData currentLevel;
-    [SerializeField]
-    private LevelData nextLevel;
+    [Header("Level Settings")]
+    [SerializeField] private LevelHolder levelHolder;
+    [SerializeField] private LevelData currentLevel;
+    [SerializeField] private LevelData nextLevel;
 
+    public LevelData Getlevel()
+    {
+        return currentLevel;
+    }
+
+    [Header("Game Data")]
     public PersistantData gameData;
 
-    private SoundManager soundManager;
-    [SerializeField]
-    private Player player;
+    [Header("Object References")]
+    [SerializeField] private ResultHandler results;
+    [SerializeField] private SoundManager soundManager;
+    [SerializeField] private Player player;
+    [SerializeField] private PlayerStats stats;
 
     [Header("Notification Storage Data")]
-    [SerializeField]
-    private NotificationStorage[] storages;
+    [SerializeField] private NotificationStorage[] storages;
 
     public delegate void PickUp();
     public static PickUp OnPickUp;
 
-    void OnEnable()
+    void Awake()
     {
         soundManager = FindObjectOfType<SoundManager>();
+    }
+
+    void OnEnable()
+    {
         LoadData();
+        TriggerZone.LevelCompleteEvent += UnlockNextLevel;
+        TriggerZone.LevelCompleteEvent += UpdateResults;
     }
 
     void OnDisable()
     {
         SaveData();
+        TriggerZone.LevelCompleteEvent -= UnlockNextLevel;
+        TriggerZone.LevelCompleteEvent -= UpdateResults;
     }
 
     void LoadData()
@@ -80,7 +93,7 @@ public class DataHandler : MonoBehaviour
     {
         nextLevel.unlocked = true;
     }
-    public void NextLevel()
+    public void LoadNextLevel()
     {
         SceneManager.LoadScene(nextLevel.sceneName);
     }
@@ -92,12 +105,15 @@ public class DataHandler : MonoBehaviour
             levelHolder.Levels[i].unlocked = false;
         }
 
-        gameData.playerHealth = 100;
-
         LoopStorage();
 
         if (OnPickUp == null) return;
         OnPickUp();
+    }
+
+    public void UpdateResults()
+    {
+        results.SetupResult(stats.GetInfectedDuration(),player.GetStat(TypeOfStat.Recovery).ToString(),stats.GetTimeInLevel());
     }
 
     void LoopStorage()

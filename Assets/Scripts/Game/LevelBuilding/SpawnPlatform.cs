@@ -13,7 +13,6 @@ public class SpawnPlatform : MonoBehaviour
         int index = Random.Range(0, platforms.Length);
         GameObject platform = Instantiate(platforms[index],transform);
         platform.transform.position = new Vector3(transform.position.x, transform.position.y);
-        Destroy(gameObject.GetComponent<MeshRenderer>());
-        Destroy(gameObject.GetComponent<MeshFilter>());
+        gameObject.GetComponent<MeshRenderer>().enabled = false;
     }
 }

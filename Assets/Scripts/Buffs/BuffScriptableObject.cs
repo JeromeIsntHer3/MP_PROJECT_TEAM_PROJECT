@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Buff : ScriptableObject
+public class BuffScriptableObject : ScriptableObject
 {
     public int id;
     public float buffDuration;

@@ -13,6 +13,8 @@ public class MenusHandler : MonoBehaviour
     [SerializeField]private GameObject settingsMenu;
     [SerializeField]private GameObject darkOverlay;
 
+    private DataHandler handler;
+
     private PlayerInput playerInput;
 
     void Awake()
@@ -20,25 +22,23 @@ public class MenusHandler : MonoBehaviour
         playerInput = FindObjectOfType<PlayerInput>();
     }
 
+    void OnEnable()
+    {
+        TriggerZone.GameOverEvent += GameOver;
+        TriggerZone.LevelCompleteEvent += LevelCompleted;
+    }
+
+    void OnDisable()
+    {
+        TriggerZone.GameOverEvent -= GameOver;
+        TriggerZone.LevelCompleteEvent -= LevelCompleted;
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(playerInput.pauseKey))
         {
             Pause();
-        }
-        if (TriggerZone.GameOver)
-        {
-            SetAllOff();
-            darkOverlay.SetActive(true);
-            gameOver.SetActive(true);
-            PlayerInput.keysEnabled = false;
-        }
-        if (TriggerZone.LevelComplete)
-        {
-            SetAllOff();
-            darkOverlay.SetActive(true);
-            levelComplete.SetActive(true);
-            PlayerInput.keysEnabled = false;
         }
     }
 
@@ -77,7 +77,25 @@ public class MenusHandler : MonoBehaviour
 
     public void TryAgain()
     {
-        SceneManager.LoadScene("In-Game_Demo");
+        handler = FindObjectOfType<DataHandler>();
+        SceneManager.LoadScene(handler.Getlevel().sceneName);
+        Debug.Log(handler.Getlevel().sceneName);
+    }
+
+    void GameOver()
+    {
+        SetAllOff();
+        darkOverlay.SetActive(true);
+        gameOver.SetActive(true);
+        PlayerInput.keysEnabled = false;
+    }
+
+    void LevelCompleted()
+    {
+        SetAllOff();
+        darkOverlay.SetActive(true);
+        levelComplete.SetActive(true);
+        PlayerInput.keysEnabled = false;
     }
 
     void SetAllOff()

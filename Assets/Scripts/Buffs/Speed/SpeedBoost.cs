@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Speed Boost", menuName = "Buff/Speed Boost")]
-public class SpeedBoost : Buff
+[CreateAssetMenu(fileName = "Speed Boost", menuName = "BuffScriptableObject/Speed Boost")]
+public class SpeedBoost : BuffScriptableObject
 {
     public float newSpeed;
 

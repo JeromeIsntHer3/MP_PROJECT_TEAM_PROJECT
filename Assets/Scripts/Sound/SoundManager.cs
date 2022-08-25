@@ -33,7 +33,7 @@ public class SoundManager : MonoBehaviour
 
     void Awake()
     {
-        instance = this;
+        instance = FindObjectOfType(typeof(SoundManager)) as SoundManager;
     }
 
     void Start()

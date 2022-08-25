@@ -373,6 +373,7 @@ GameObject:
   - component: {fileID: 18592606}
   - component: {fileID: 18592611}
   - component: {fileID: 18592610}
+  - component: {fileID: 18592612}
   m_Layer: 5
   m_Name: 'Canvas: Menus'
   m_TagString: Untagged
@@ -495,6 +496,24 @@ MonoBehaviour:
   levelComplete: {fileID: 174416192}
   settingsMenu: {fileID: 1654198052}
   darkOverlay: {fileID: 3544744384284004791}
+--- !u!114 &18592612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 18592605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36ea1ba8a7866d542bf0e5d7b0f7c4fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeInfectedText: {fileID: 1762212200}
+  recoveryText: {fileID: 558862222}
+  timeTakenText: {fileID: 1379784988}
+  gradeText: {fileID: 1289161073}
+  stats: {fileID: 1554753960}
+  player: {fileID: 1554753956}
 --- !u!1 &37238001
 GameObject:
   m_ObjectHideFlags: 0
@@ -1463,7 +1482,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 174416193}
-  - component: {fileID: 174416194}
   m_Layer: 5
   m_Name: LevelCompleteMenuAnimParent
   m_TagString: Untagged
@@ -1492,22 +1510,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &174416194
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 174416192}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36ea1ba8a7866d542bf0e5d7b0f7c4fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeInfectedText: {fileID: 1762212200}
-  recoveryText: {fileID: 558862222}
-  timeTakenText: {fileID: 1379784988}
-  gradeText: {fileID: 1289161073}
 --- !u!1 &194781632
 GameObject:
   m_ObjectHideFlags: 0
@@ -1587,7 +1589,7 @@ MonoBehaviour:
   currentLevel: {fileID: 11400000, guid: 153ee26d31b905d429d25f307ce697b5, type: 2}
   nextLevel: {fileID: 11400000, guid: 0d427fd924840f346b0b2d57afed6167, type: 2}
   gameData: {fileID: 11400000, guid: d04d6f4cbf8c1be4d8c0fee24d7c4956, type: 2}
-  results: {fileID: 174416194}
+  results: {fileID: 0}
   soundManager: {fileID: 529874731}
   player: {fileID: 1554753956}
   stats: {fileID: 1554753960}
@@ -6375,7 +6377,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1554753956}
-  result: {fileID: 174416194}
+  result: {fileID: 0}
   data: {fileID: 214467329}
 --- !u!4 &1163462846
 Transform:
@@ -9859,6 +9861,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fd55f174fc9fe64ebb014820db42e26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementInput: {x: 0, y: 0}
   jumpKey: 32
   pauseKey: 27
   swapKey: 9
@@ -24591,7 +24594,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8587046428766827568}
-  m_LocalRotation: {x: 0.098537624, y: 0.0000000042806607, z: -4.238689e-10, w: 0.99513334}
+  m_LocalRotation: {x: 0.09853762, y: -0.000000004280661, z: 4.238689e-10, w: 0.99513334}
   m_LocalPosition: {x: -6.14, y: 2.14, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -29732,7 +29735,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2585478605468525345}
-  m_LocalRotation: {x: 0.098537624, y: 0.0000000042806607, z: -4.238689e-10, w: 0.99513334}
+  m_LocalRotation: {x: 0.09853762, y: -0.000000004280661, z: 4.238689e-10, w: 0.99513334}
   m_LocalPosition: {x: -6.14, y: 2.14, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

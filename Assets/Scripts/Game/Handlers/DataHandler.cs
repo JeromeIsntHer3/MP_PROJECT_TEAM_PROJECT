@@ -39,14 +39,12 @@ public class DataHandler : MonoBehaviour
     {
         LoadData();
         TriggerZone.LevelCompleteEvent += UnlockNextLevel;
-        TriggerZone.LevelCompleteEvent += UpdateResults;
     }
 
     void OnDisable()
     {
         SaveData();
         TriggerZone.LevelCompleteEvent -= UnlockNextLevel;
-        TriggerZone.LevelCompleteEvent -= UpdateResults;
     }
 
     void LoadData()
@@ -71,6 +69,7 @@ public class DataHandler : MonoBehaviour
         gameData.playerRecovery = player.GetStat(TypeOfStat.Recovery);
         gameData.playerInfection = player.GetStat(TypeOfStat.Infection);
     }
+
     void LoadPlayerData(float health, float recovery, float infection)
     {
         player.SetStat(TypeOfStat.Health, health);
@@ -83,6 +82,7 @@ public class DataHandler : MonoBehaviour
         gameData.fxVolume = soundManager.fxSlider.value;
         gameData.musicVolume = soundManager.musicSlider.value;
     }
+
     void LoadSettingsData()
     {
         soundManager.fxSlider.value = gameData.fxVolume;
@@ -93,6 +93,7 @@ public class DataHandler : MonoBehaviour
     {
         nextLevel.unlocked = true;
     }
+
     public void LoadNextLevel()
     {
         SceneManager.LoadScene(nextLevel.sceneName);
@@ -109,11 +110,6 @@ public class DataHandler : MonoBehaviour
 
         if (OnPickUp == null) return;
         OnPickUp();
-    }
-
-    public void UpdateResults()
-    {
-        results.SetupResult(stats.GetInfectedDuration(),player.GetStat(TypeOfStat.Recovery).ToString(),stats.GetTimeInLevel());
     }
 
     void LoopStorage()

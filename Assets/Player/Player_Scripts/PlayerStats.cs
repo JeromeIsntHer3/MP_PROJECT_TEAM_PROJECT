@@ -1,21 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
     private Player player;
     private float timeInLevel;
-    public string GetTimeInLevel()
-    {
-        return timeInLevel.ToString();
-    }
-
     private float infectedDuration;
-    public string GetInfectedDuration()
-    {
-        return infectedDuration.ToString();
-    }
 
 
 
@@ -32,5 +25,15 @@ public class PlayerStats : MonoBehaviour
             infectedDuration += Time.deltaTime;
         }
         timeInLevel += Time.deltaTime;
+    }
+
+    public float TimeInLevel()
+    {
+        return timeInLevel;
+    }
+
+    public float InfectedDuration()
+    {
+        return infectedDuration;
     }
 }

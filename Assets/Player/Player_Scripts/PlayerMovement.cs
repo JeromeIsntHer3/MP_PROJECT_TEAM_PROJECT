@@ -53,6 +53,20 @@ public class PlayerMovement : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         playerAnim = GetComponent<PlayerAnimation>();
         groundCheck = GetComponentInChildren<GroundCheck>();
+    }
+
+    void OnEnable()
+    {
+        TriggerZone.LevelCompleteEvent += StopMovement;
+    }
+
+    void OnDisable()
+    {
+        TriggerZone.LevelCompleteEvent -= StopMovement;
+    }
+
+    private void Start()
+    {
         soundManager = SoundManager.instance;
     }
 
@@ -154,6 +168,11 @@ public class PlayerMovement : MonoBehaviour
         return Time.time - lastGroundedTime <= coyotoTimeBuffer;
     }
 
+    void StopMovement()
+    {
+        playerInput.movementInput = Vector2.zero;
+    }
+
     void Update()
     {
         ApexBoost();
@@ -167,10 +186,6 @@ public class PlayerMovement : MonoBehaviour
         if (playerInput.movementInput.x != 0)
         {
             CheckFaceDir(playerInput.movementInput.x < 0);
-        }
-        if (TriggerZone.LevelComplete)
-        {
-            rb.velocity = new Vector2(0,rb.velocity.y);
         }
     }
 }

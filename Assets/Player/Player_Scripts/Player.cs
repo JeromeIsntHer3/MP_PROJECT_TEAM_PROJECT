@@ -13,9 +13,14 @@ public class Player : MonoBehaviour
     [SerializeField]
     private bool infected;
 
+    public bool IsInfected()
+    {
+        return infected;
+    }
+
     //Values To Be Set
-    public float currHealth;
-    private float currRecovery;
+    [SerializeField]private float currHealth;
+    [SerializeField]private float currRecovery;
     private float currInfection;
     private float currInfectionRate;
 

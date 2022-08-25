@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System;
 
 public class TriggerZone : MonoBehaviour
 {
@@ -24,13 +25,12 @@ public class TriggerZone : MonoBehaviour
     public NotificationData notificationData;
     public ThisApp sendToApp;
 
-    public static bool GameOver, LevelComplete;
+    public static event Action GameOverEvent, LevelCompleteEvent;
 
     void Awake()
     {
         player = FindObjectOfType<Player>();
         uIHandler = FindObjectOfType<MenusHandler>();
-        GameOver = LevelComplete = false;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -45,7 +45,7 @@ public class TriggerZone : MonoBehaviour
                     if (player)
                     {
                         Destroy(player.gameObject);
-                        GameOver = true;
+                        GameOverEvent?.Invoke();
                     }
                     break;
 
@@ -63,7 +63,7 @@ public class TriggerZone : MonoBehaviour
                     break;
 
                 case TriggerType.GameFinish:
-                    LevelComplete = true;                    
+                    LevelCompleteEvent?.Invoke();                  
                     break;
 
                 default:

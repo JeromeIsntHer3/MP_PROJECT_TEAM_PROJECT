@@ -9,19 +9,18 @@ public class PillPickup : MonoBehaviour
     [SerializeField]
     private GameObject[] pillPrefabs; 
 
-    private Player player;
-
     void Awake()
     {
         int index = Random.Range(0, pillPrefabs.Length);
         Instantiate(pillPrefabs[index], this.transform);
+        GetComponent<MeshRenderer>().enabled = false;
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
-            player = other.GetComponent<Player>();
+            Player player = other.GetComponent<Player>();
             player.StopAllCoroutines();
             float currTime = TimeHandler.instance.TimeCountDown;
             if (5 > currTime && currTime > 0)

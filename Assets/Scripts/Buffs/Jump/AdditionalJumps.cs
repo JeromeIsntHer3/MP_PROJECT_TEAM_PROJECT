@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Additional Jump",menuName = "Buff/Jumps")]
-public class AdditionalJumps : Buff
+[CreateAssetMenu(fileName = "Additional Jump",menuName = "BuffScriptableObject/Jumps")]
+public class AdditionalJumps : BuffScriptableObject
 {
     public int jumps;
 

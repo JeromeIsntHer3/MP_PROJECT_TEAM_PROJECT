@@ -1,7 +1,7 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Barrier", menuName = "Buff/Barrier")]
-public class Barrier : Buff
+[CreateAssetMenu(fileName = "Barrier", menuName = "BuffScriptableObject/Barrier")]
+public class Barrier : BuffScriptableObject
 {
     public override void Effect(GameObject parent)
     {

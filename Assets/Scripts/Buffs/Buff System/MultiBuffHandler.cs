@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class MultiBuffHandler : MonoBehaviour
 {
-    private Buff collectedBuff;
+    private BuffScriptableObject collectedBuff;
     private DisplayBuffHandler displayBuffHandler;
     private SoundManager sm;
 
     [HideInInspector]
     public List<int> ids;
     [HideInInspector]
-    public List<Buff> activeBuffs;
+    public List<BuffScriptableObject> activeBuffs;
     [HideInInspector]
     public List<float> durationTimes;
 
@@ -39,7 +39,7 @@ public class MultiBuffHandler : MonoBehaviour
                 activeBuffs.RemoveAt(i);
             }
         }
-        foreach (Buff buff in activeBuffs)
+        foreach (BuffScriptableObject buff in activeBuffs)
         {
             if (!buff) return;
             buff.Effect(gameObject);
@@ -48,11 +48,12 @@ public class MultiBuffHandler : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<GameObjectBuffHolder>())
+        if (other.GetComponent<BuffHolder>())
         {
             sm.PlaySound(sm.pickUpSound);
 
-            collectedBuff = other.GetComponent<GameObjectBuffHolder>().thisBuff;
+            collectedBuff = other.GetComponent<BuffHolder>().thisBuff;
+
             if (ids.Contains(collectedBuff.id))
             {
                 int index = ids.IndexOf(collectedBuff.id);

@@ -53,6 +53,7 @@ public class MenusHandler : MonoBehaviour
     {
         SetAllOff();
         darkOverlay.SetActive(false);
+        PlayerInput.keysEnabled = true;
     }
 
     public void OpenSettings()

@@ -26986,9 +26986,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UIHandler, Assembly-CSharp
-        m_MethodName: Quit
+      - m_Target: {fileID: 732740568}
+        m_TargetAssemblyTypeName: MenusHandler, Assembly-CSharp
+        m_MethodName: QuitToMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -28766,6 +28766,7 @@ GameObject:
   - component: {fileID: 2088275816}
   - component: {fileID: 2088275815}
   - component: {fileID: 2088275823}
+  - component: {fileID: 2088275824}
   m_Layer: 0
   m_Name: Player_3D
   m_TagString: Player
@@ -28917,6 +28918,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c4a218df0e4e4d42b284e01f8b63869, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2088275824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2088275814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4943ed65efb22c9479b9d4a3c1c62a47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthSlider: {fileID: 1125822762}
+  healthSlider2: {fileID: 69768934}
+  recoverySlider: {fileID: 1731852999}
 --- !u!1 &2093287441
 GameObject:
   m_ObjectHideFlags: 0

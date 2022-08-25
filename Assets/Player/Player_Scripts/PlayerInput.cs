@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
@@ -7,7 +8,6 @@ public class PlayerInput : MonoBehaviour
     public bool jumpHeld { get; private set; }
     public bool jumpReleased { get; private set; }
     public bool swapPerspective { get; private set; }
-    public bool paused { get; private set; }
 
     public KeyCode jumpKey;
     public KeyCode pauseKey;
@@ -15,9 +15,21 @@ public class PlayerInput : MonoBehaviour
 
     public static bool keysEnabled = true;
 
+    public static event Action GamePaused;
+
     void Awake()
     {
         keysEnabled = true;
+    }
+
+    void OnEnable()
+    {
+        GamePaused += DisableKeys;
+    }
+
+    void OnDisable()
+    {
+        GamePaused -= DisableKeys;
     }
 
     void Update()
@@ -35,7 +47,12 @@ public class PlayerInput : MonoBehaviour
         }
         if (Input.GetKeyDown(pauseKey))
         {
-            paused = !paused;
+            GamePaused?.Invoke();
         }
+    }
+
+    void DisableKeys()
+    {
+        keysEnabled = false;
     }
 }

@@ -6,20 +6,15 @@ public class TriggerZone : MonoBehaviour
 {
     public enum TriggerType
     {
-        Die,PopUp,Notification,GameFinish
+        Die,Notification,GameFinish,Popup
     }
 
     public TriggerType triggerType;
 
     private Player player;
-    private MenusHandler uIHandler;
 
-    [Header("PopUp")]
-    public Vector3 popUpPosition;
-    public Vector3 popUpSize;
-    [Multiline]
-    public string textToShow;
-    public bool seen = false;
+    [Header("PopUpHandler")]
+    public PopUpStorage popUpStorage;
 
     [Header("Notification")]
     public NotificationData notificationData;
@@ -30,7 +25,6 @@ public class TriggerZone : MonoBehaviour
     void Awake()
     {
         player = FindObjectOfType<Player>();
-        uIHandler = FindObjectOfType<MenusHandler>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -55,11 +49,9 @@ public class TriggerZone : MonoBehaviour
                     DataHandler.OnPickUp();
                     break;
 
-                case TriggerType.PopUp:
-                    if (seen) return;
-                    PopUp popUp = FindObjectOfType<PopUp>();
-                    popUp.SetUpPopUp(popUpPosition, popUpSize, textToShow);
-                    //seen = true;
+                case TriggerType.Popup:
+                    PopUpHandler popUp = FindObjectOfType<PopUpHandler>();
+                    popUp.SetNewStorage(popUpStorage);
                     break;
 
                 case TriggerType.GameFinish:

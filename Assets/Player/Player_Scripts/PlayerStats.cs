@@ -20,10 +20,10 @@ public class PlayerStats : MonoBehaviour
 
     void Update()
     {
-        if (player.IsInfected())
-        {
-            infectedDuration += Time.deltaTime;
-        }
+        //if (player.IsInfected())
+        //{
+        //    infectedDuration += Time.deltaTime;
+        //}
         timeInLevel += Time.deltaTime;
     }
 

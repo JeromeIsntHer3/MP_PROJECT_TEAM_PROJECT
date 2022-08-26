@@ -8,27 +8,32 @@ public enum TypeOfStat { Health, Recovery, Infection }
 public class Player : MonoBehaviour
 {
     [Header("Default Values")]
-    [SerializeField]
-    private float baseInfectionRate = 0;
-    [SerializeField]
-    private bool infected;
-
-    public bool IsInfected()
-    {
-        return infected;
-    }
-
-    //Values To Be Set
     [SerializeField]private float currHealth;
     [SerializeField]private float currRecovery;
-    private float currInfection;
-    private float currInfectionRate;
+    [SerializeField]private float currInfection;
+    [SerializeField]private float currInfectionRate;
 
     private float overTimeDamage;
     private float overTimeDuration;
     private TypeOfStat statToChange;
 
-    public void SetStat(TypeOfStat typeOfChange, float amount)
+    [SerializeField]
+    private GameObject barrier;
+
+    public Image statusOverlay;
+
+    void Start()
+    {
+
+    }
+
+    void Update()
+    {
+        ChangeStatUpdate();
+        Infection();
+    }
+
+    public void SetStat(TypeOfStat typeOfChange, float amount, float infectionRate = 0)
     {
         switch (typeOfChange)
         {
@@ -40,6 +45,7 @@ public class Player : MonoBehaviour
                 break;
             case (TypeOfStat.Infection):
                 currInfection = amount;
+                currInfectionRate = infectionRate;
                 break;
         }
     }
@@ -60,30 +66,6 @@ public class Player : MonoBehaviour
         }
     }
 
-    [SerializeField]
-    private GameObject barrier;
-
-    public Image statusOverlay;
-
-    private BacteriaHandler bacteriaHandler;
-
-    void Start()
-    {
-        bacteriaHandler = BacteriaHandler.instance;
-
-        currInfectionRate = baseInfectionRate;
-    }
-
-    void Update()
-    {
-        Infection();
-        ChangeStatUpdate();
-    }
-
-    void FixedUpdate()
-    {
-        StatClamps();
-    }
 
     public void ChangeStat (TypeOfStat changeType, float amount, bool overTime = false, float overTimeAmount = 0, float duration = 0)
     {
@@ -107,6 +89,7 @@ public class Player : MonoBehaviour
             overTimeDamage = overTimeAmount;
             overTimeDuration = duration;
         }
+        StatClamps();
     }
 
     void ChangeStatUpdate()
@@ -129,6 +112,7 @@ public class Player : MonoBehaviour
                     break;
             }
         }
+        StatClamps();
     }
 
     void StatClamps()
@@ -138,49 +122,15 @@ public class Player : MonoBehaviour
         currInfection = Mathf.Clamp(currInfection, 0, 100);
     }
 
-    public void EnableBarrier()
-    {
-        barrier.SetActive(true);
-    }
-
-    public void DisableBarrier()
-    {
-        barrier.SetActive(false);
-    }
-
     void Infection()
     {
-        if (infected) 
-        {
-            currInfection += currInfectionRate * Time.deltaTime;
-        }
-        else
-        {
-            currInfection -= currInfectionRate * Time.deltaTime;
-        }
+        currInfection += currInfectionRate * Time.deltaTime;
         currInfection = Mathf.Clamp(currInfection, 0, 100);
-        statusOverlay.color = Color.Lerp(Color.black, Color.magenta, currInfection / 100);
+        statusOverlay.color = Color.Lerp(Color.black, new Color(181/255f,0,203/255f,255), currInfection / 100);
 
-        if (currInfection >= 100)
+        if(currInfection >= 100)
         {
-            if (bacteriaHandler.BacteriaCount() > 25) { return; }
-            bacteriaHandler.SpawnBacteria(bacteriaHandler.BacteriaCount());
-        }
-    }
-
-    void OnTriggerEnter(Collider other)
-    {
-        if(other.tag == "Infected")
-        {
-            infected = true;
-        }
-    }
-
-    void OnTriggerExit(Collider other)
-    {
-        if(other.tag == "Infected")
-        {
-            infected = false;
+            ChangeStat(TypeOfStat.Health, 0, true, -1, 999);
         }
     }
 }

@@ -4,25 +4,33 @@ using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour
 {
-    private Animator playerAnim;
+    private Animator anim;
+    private PlayerInput playerInput;
+    private Rigidbody rBody;
 
     void Awake()
     {
-        playerAnim = GetComponentInChildren<Animator>();
+        anim = GetComponentInChildren<Animator>();
+        playerInput = GetComponent<PlayerInput>();
+        rBody = GetComponent<Rigidbody>();
+
     }
 
-    public void SetSpeed(string animName, float speed)
+    void Update()
     {
-        playerAnim.SetFloat(animName, speed);
-    }
+        anim.SetFloat("Speed",Mathf.Abs(rBody.velocity.x));
+        if (playerInput.jumpPressed)
+        {
+            anim.SetTrigger("Jump");
+        }
 
-    public void TriggerJump(string animName)
-    {
-        playerAnim.SetTrigger(animName);
-    }
-
-    public void SetBool(string animName, bool set)
-    {
-        playerAnim.SetBool(animName, set);
+        if(rBody.velocity.y < -5 || rBody.velocity.y > 5)
+        {
+            anim.SetBool("In-Air", true);
+        }
+        else
+        {
+            anim.SetBool("In-Air", false);
+        }
     }
 }

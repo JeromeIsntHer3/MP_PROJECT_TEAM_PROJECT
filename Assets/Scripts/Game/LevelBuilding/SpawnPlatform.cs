@@ -11,8 +11,8 @@ public class SpawnPlatform : MonoBehaviour
     {
         if (platforms.Length == 0) return;
         int index = Random.Range(0, platforms.Length);
-        GameObject platform = Instantiate(platforms[index],transform);
+        GameObject platform = Instantiate(platforms[index],transform.GetChild(0));
         platform.transform.position = new Vector3(transform.position.x, transform.position.y);
-        gameObject.GetComponent<MeshRenderer>().enabled = false;
+        transform.GetChild(1).gameObject.SetActive(false);
     }
 }

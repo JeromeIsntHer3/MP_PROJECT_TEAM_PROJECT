@@ -50,7 +50,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 300800468726715835}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -110,4 +110,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 344d16962526d67489adc12a1b9fb09b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thisTrigger: {fileID: 0}
+  triggerType: 0
+  popUpPosition: {x: 0, y: 0, z: 0}
+  popUpSize: {x: 0, y: 0, z: 0}
+  textToShow: 
+  seen: 0
+  notificationData: {fileID: 0}
+  sendToApp: {fileID: 0}

@@ -12,7 +12,6 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody rb;
     [HideInInspector]
     public PlayerInput playerInput;
-    private PlayerAnimation playerAnim;
     private GroundCheck groundCheck;
 
     [Header("Movement Attributes")]
@@ -51,7 +50,6 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         playerInput = GetComponent<PlayerInput>();
-        playerAnim = GetComponent<PlayerAnimation>();
         groundCheck = GetComponentInChildren<GroundCheck>();
     }
 
@@ -76,11 +74,6 @@ public class PlayerMovement : MonoBehaviour
         topSpeedX = Mathf.Lerp(rb.velocity.x, topSpeedX, lerpAmount);
         rb.velocity = new Vector2(topSpeedX, rb.velocity.y);
         rb.AddForce(transform.right * topSpeedX);
-        playerAnim.SetSpeed("Speed",topSpeedX/10);
-        if (topSpeedX < 0)
-        {
-            playerAnim.SetSpeed("Speed", -topSpeedX/10);
-        }
     }
 
     void CheckFaceDir(bool isMovingRight)
@@ -117,19 +110,16 @@ public class PlayerMovement : MonoBehaviour
         {
             lastGroundedTime = Time.time;
             noOfJumps = noOfJumpsAllowed;
-            playerAnim.SetBool("In-Air", false);
         }
         if (playerInput.jumpPressed)
         {
             if (CoyoteJumpPossible())
             {
-                playerAnim.TriggerJump("Jump");
                 rb.velocity = new Vector3(rb.velocity.x, jumpForce,rb.velocity.z);
                 soundManager.PlaySound(soundManager.JumpSound);
             }
             else if (noOfJumps > 0)
             {
-                playerAnim.TriggerJump("Jump");
                 rb.velocity = new Vector3(rb.velocity.x, jumpForce,rb.velocity.z);
                 soundManager.PlaySound(soundManager.JumpSound);
             }
@@ -141,10 +131,6 @@ public class PlayerMovement : MonoBehaviour
             {
                 rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y / jumpFallOffAtApex);
             }
-        }
-        if(rb.velocity.y < 0 && !groundCheck.isGrounded)
-        {
-            playerAnim.SetBool("In-Air", true);
         }
     }
 

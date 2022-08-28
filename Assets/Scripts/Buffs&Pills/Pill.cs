@@ -6,7 +6,7 @@ public class Pill : MonoBehaviour
 {
     [SerializeField] private float healAmount;
     [SerializeField] private float recoveryAmount;
-    [SerializeField] private float infectionRateAmountDecrease;
+    [SerializeField] private float infectionAmountDecrease;
 
     void OnTriggerEnter(Collider other)
     {
@@ -31,7 +31,7 @@ public class Pill : MonoBehaviour
                     player.ChangeStat(TypeOfStat.Health, -healAmount);
                     break;
             }
-            player.ChangeStat(TypeOfStat.Infection, -infectionRateAmountDecrease);
+            player.ChangeStat(TypeOfStat.Infection, -infectionAmountDecrease);
             Destroy(gameObject);
         }
     }

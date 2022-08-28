@@ -53,16 +53,6 @@ public class PlayerMovement : MonoBehaviour
         groundCheck = GetComponentInChildren<GroundCheck>();
     }
 
-    void OnEnable()
-    {
-        TriggerZone.LevelCompleteEvent += StopMovement;
-    }
-
-    void OnDisable()
-    {
-        TriggerZone.LevelCompleteEvent -= StopMovement;
-    }
-
     private void Start()
     {
         soundManager = SoundManager.instance;
@@ -152,11 +142,6 @@ public class PlayerMovement : MonoBehaviour
     bool CoyoteJumpPossible()
     {
         return Time.time - lastGroundedTime <= coyotoTimeBuffer;
-    }
-
-    void StopMovement()
-    {
-        playerInput.movementInput = Vector2.zero;
     }
 
     void Update()

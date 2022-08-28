@@ -8,29 +8,26 @@ public enum TypeOfStat { Health, Recovery, Infection }
 public class Player : MonoBehaviour
 {
     [Header("Default Values")]
-    [SerializeField]private float currHealth;
-    [SerializeField]private float currRecovery;
-    [SerializeField]private float currInfection;
-    [SerializeField]private float currInfectionRate;
+    [SerializeField] private float currHealth;
+    [SerializeField] private float currRecovery;
+    [SerializeField] private float currInfection;
+    [SerializeField] private float currInfectionRate;
+    [SerializeField] private bool isAffectedByVirus;
 
     private float overTimeDamage;
     private float overTimeDuration;
+    private Vector3 currRespawnLocation;
     private TypeOfStat statToChange;
 
-    [SerializeField]
-    private GameObject barrier;
+    [SerializeField] private GameObject barrier;
 
     public Image statusOverlay;
-
-    void Start()
-    {
-
-    }
 
     void Update()
     {
         ChangeStatUpdate();
         Infection();
+        RecoveryToHealthDamage();
     }
 
     public void SetStat(TypeOfStat typeOfChange, float amount, float infectionRate = 0)
@@ -65,7 +62,6 @@ public class Player : MonoBehaviour
                 return 0;
         }
     }
-
 
     public void ChangeStat (TypeOfStat changeType, float amount, bool overTime = false, float overTimeAmount = 0, float duration = 0)
     {
@@ -115,6 +111,11 @@ public class Player : MonoBehaviour
         StatClamps();
     }
 
+    public void SetViral(bool affected)
+    {
+        isAffectedByVirus = affected;
+    }
+
     void StatClamps()
     {
         currHealth = Mathf.Clamp(currHealth, 0, 100);
@@ -130,7 +131,29 @@ public class Player : MonoBehaviour
 
         if(currInfection >= 100)
         {
-            ChangeStat(TypeOfStat.Health, 0, true, -1, 999);
+            currHealth -= Time.deltaTime;
         }
+    }
+
+    void RecoveryToHealthDamage()
+    {
+        if(currRecovery == 0 && isAffectedByVirus)
+        {
+            currHealth -= Time.deltaTime;
+        }
+        else
+        {
+            SetViral(false);
+        }
+    }
+
+    public void SetRespawnLocation(Vector3 location)
+    {
+        currRespawnLocation = location;
+    }
+
+    public void Respawn()
+    {
+        transform.position = currRespawnLocation;
     }
 }

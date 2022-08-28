@@ -24,7 +24,7 @@ public class PlayerAnimation : MonoBehaviour
             anim.SetTrigger("Jump");
         }
 
-        if(rBody.velocity.y < -5 || rBody.velocity.y > 5)
+        if(rBody.velocity.y < -1 || rBody.velocity.y > 1)
         {
             anim.SetBool("In-Air", true);
         }

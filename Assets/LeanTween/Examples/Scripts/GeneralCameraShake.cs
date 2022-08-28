@@ -55,7 +55,7 @@ public class GeneralCameraShake : MonoBehaviour {
 				********************/
 
 				// Make the boxes jump from the big stomping
-				GameObject[] boxes = GameObject.FindGameObjectsWithTag("Respawn"); // I just arbitrarily tagged the boxes with this since it was available in the scene
+				GameObject[] boxes = GameObject.FindGameObjectsWithTag("RespawnPoint"); // I just arbitrarily tagged the boxes with this since it was available in the scene
 		        foreach (GameObject box in boxes) {
 		            box.GetComponent<Rigidbody>().AddForce(Vector3.up * 100 * height);
 		        }

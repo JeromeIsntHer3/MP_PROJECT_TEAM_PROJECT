@@ -32,7 +32,7 @@ public class GeneralUISpace : MonoBehaviour {
 		LeanTween.scale( mainWindow, new Vector3(1f,1f,1f), 0.6f).setEase(LeanTweenType.easeOutBack);
 		LeanTween.alphaCanvas( mainWindow.GetComponent<CanvasGroup>(), 0f, 1f).setDelay(2f).setLoopPingPong().setRepeat(2);
 
-		// Fade the main paragraph in while moving upwards
+		// Fade the mainText paragraph in while moving upwards
 		mainParagraphText.anchoredPosition3D += new Vector3(0f,-10f,0f);
 		LeanTween.textAlpha( mainParagraphText, 0f, 0.6f).setFrom(0f).setDelay(0f);
 		LeanTween.textAlpha( mainParagraphText, 1f, 0.6f).setEase(LeanTweenType.easeOutQuad).setDelay(0.6f);

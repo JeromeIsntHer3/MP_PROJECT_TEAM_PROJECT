@@ -34,9 +34,16 @@ public class PlayerInput : MonoBehaviour
 
     void Update()
     {
-        if (!keysEnabled) return;
-        movementInput = new Vector2(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"));
+        if (keysEnabled)
+        {
+            movementInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        }
+        else
+        {
+            movementInput.x = 0;
+        }
 
+        if (!keysEnabled) return;
         jumpPressed = Input.GetKeyDown(jumpKey);
         jumpHeld = Input.GetKey(jumpKey);
         jumpReleased = Input.GetKeyUp(jumpKey);

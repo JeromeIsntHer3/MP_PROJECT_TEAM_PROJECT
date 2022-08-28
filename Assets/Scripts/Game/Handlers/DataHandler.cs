@@ -27,6 +27,8 @@ public class DataHandler : MonoBehaviour
     [Header("Notification Storage Data")]
     [SerializeField] private NotificationStorage[] storages;
 
+    [SerializeField] private TransitionHandler transitionHandler;
+
     public delegate void PickUp();
     public static PickUp OnPickUp;
 
@@ -96,7 +98,7 @@ public class DataHandler : MonoBehaviour
 
     public void LoadNextLevel()
     {
-        SceneManager.LoadScene(nextLevel.sceneName);
+        transitionHandler.StartCoroutine(transitionHandler.LoadLevel(nextLevel.sceneName));
     }
 
     public void ResetInfo()
@@ -110,6 +112,7 @@ public class DataHandler : MonoBehaviour
 
         if (OnPickUp == null) return;
         OnPickUp();
+        PlayerPrefs.DeleteAll();
     }
 
     void LoopStorage()

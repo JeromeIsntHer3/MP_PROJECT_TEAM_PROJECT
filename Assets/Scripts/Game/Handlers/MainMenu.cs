@@ -33,7 +33,7 @@ public class MainMenu : MonoBehaviour
 
     public void OnQuit()
     {
-
+        
     }
 
     void SetAllOff()

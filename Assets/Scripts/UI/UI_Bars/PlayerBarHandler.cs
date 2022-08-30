@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PlayerBarHandler : MonoBehaviour
 {
     [SerializeField]
-    private Slider healthSlider,healthSlider2, recoverySlider;
+    private Slider healthSlider, recoverySlider;
 
     private Player player;
 
@@ -18,7 +18,6 @@ public class PlayerBarHandler : MonoBehaviour
     void Update()
     {
         healthSlider.value = player.GetStat(TypeOfStat.Health);
-        healthSlider2.value = player.GetStat(TypeOfStat.Health);
         recoverySlider.value = player.GetStat(TypeOfStat.Recovery);
     }
 }

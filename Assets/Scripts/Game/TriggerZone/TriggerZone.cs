@@ -1,13 +1,12 @@
 using UnityEngine;
 using System.Collections;
 using System;
-using Unity.VisualScripting;
 
 public class TriggerZone : MonoBehaviour
 {
     public enum TriggerType
     {
-        RespawnPoint, Respawn, Die, Notification, GameFinish, Popup, Bacterial, Viral
+        RespawnPoint, Respawn, Die, Notification, GameFinish, Popup, Bacterial
     }
 
     public TriggerType triggerType;
@@ -25,10 +24,6 @@ public class TriggerZone : MonoBehaviour
     public float infectionIncrease;
     public float infectionRateIncrease;
 
-    [Header("Viral")]
-    public float recoveryDecreaseRate;
-    public float recoveryDecreaseDuration;
-
     public static event Action GameOverEvent, LevelCompleteEvent;
 
     void Awake()
@@ -38,7 +33,7 @@ public class TriggerZone : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player")
+        if(other.GetComponent<Player>())
         {
             switch (triggerType)
             {
@@ -60,6 +55,7 @@ public class TriggerZone : MonoBehaviour
 
                 case TriggerType.Popup:
                     PopUpHandler popUp = FindObjectOfType<PopUpHandler>();
+                    if (popUp == null) return;
                     popUp.SetNewStorage(popUpStorage);
                     break;
 
@@ -70,11 +66,6 @@ public class TriggerZone : MonoBehaviour
                 case TriggerType.Bacterial:
                     player.SetStat(TypeOfStat.Infection,0,infectionRateIncrease);
                     player.ChangeStat(TypeOfStat.Infection, infectionIncrease);
-                    break;
-
-                case TriggerType.Viral:
-                    player.ChangeStat(TypeOfStat.Recovery, 0, true, recoveryDecreaseRate, recoveryDecreaseDuration);
-                    player.SetViral(true);
                     break;
 
                 case TriggerType.RespawnPoint:

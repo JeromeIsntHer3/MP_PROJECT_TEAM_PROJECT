@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 300800468726715838}
   m_Layer: 6
   m_Name: TriggerZones
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -111,9 +111,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   triggerType: 0
-  popUpPosition: {x: 0, y: 0, z: 0}
-  popUpSize: {x: 0, y: 0, z: 0}
-  textToShow: 
-  seen: 0
+  popUpStorage: {fileID: 0}
   notificationData: {fileID: 0}
   sendToApp: {fileID: 0}
+  infectionIncrease: 0
+  infectionRateIncrease: 0
+  recoveryDecreaseRate: 0
+  recoveryDecreaseDuration: 0

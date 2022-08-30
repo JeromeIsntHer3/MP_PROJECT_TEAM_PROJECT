@@ -2,32 +2,31 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System;
+using System.Collections.Generic;
 
 public enum TypeOfStat { Health, Recovery, Infection }
 
 public class Player : MonoBehaviour
 {
-    [Header("Default Values")]
-    [SerializeField] private float currHealth;
-    [SerializeField] private float currRecovery;
-    [SerializeField] private float currInfection;
-    [SerializeField] private float currInfectionRate;
-    [SerializeField] private bool isAffectedByVirus;
+    //Main Values
+    private float currHealth;
+    private float currRecovery;
+    private float currInfection;
+    private float currInfectionRate;
 
+    //Values to be Set
     private float overTimeDamage;
     private float overTimeDuration;
     private Vector3 currRespawnLocation;
     private TypeOfStat statToChange;
 
-    [SerializeField] private GameObject barrier;
-
-    public Image statusOverlay;
+    [SerializeField] private Image statusOverlay;
+    [SerializeField] private GameObject interactBox;
 
     void Update()
     {
         ChangeStatUpdate();
         Infection();
-        RecoveryToHealthDamage();
     }
 
     public void SetStat(TypeOfStat typeOfChange, float amount, float infectionRate = 0)
@@ -65,8 +64,9 @@ public class Player : MonoBehaviour
 
     public void ChangeStat (TypeOfStat changeType, float amount, bool overTime = false, float overTimeAmount = 0, float duration = 0)
     {
-        statToChange = changeType;
-        switch (statToChange)
+        TypeOfStat stat;
+        stat = changeType;
+        switch (stat)
         {
             case TypeOfStat.Health:
                 currHealth += amount;
@@ -111,11 +111,6 @@ public class Player : MonoBehaviour
         StatClamps();
     }
 
-    public void SetViral(bool affected)
-    {
-        isAffectedByVirus = affected;
-    }
-
     void StatClamps()
     {
         currHealth = Mathf.Clamp(currHealth, 0, 100);
@@ -135,18 +130,6 @@ public class Player : MonoBehaviour
         }
     }
 
-    void RecoveryToHealthDamage()
-    {
-        if(currRecovery == 0 && isAffectedByVirus)
-        {
-            currHealth -= Time.deltaTime;
-        }
-        else
-        {
-            SetViral(false);
-        }
-    }
-
     public void SetRespawnLocation(Vector3 location)
     {
         currRespawnLocation = location;
@@ -155,5 +138,15 @@ public class Player : MonoBehaviour
     public void Respawn()
     {
         transform.position = currRespawnLocation;
+    }
+
+    public void SetInteractBox(bool set)
+    {
+        interactBox.SetActive(set);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        
     }
 }

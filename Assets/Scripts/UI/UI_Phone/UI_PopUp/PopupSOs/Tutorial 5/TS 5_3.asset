@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 226928b818a02d34bbc5d7da7c84f3a6, type: 3}
+  m_Name: TS 5_3
+  m_EditorClassIdentifier: 
+  headerText: Foods
+  mainText: You may have also spotted another object behind the Pill, being a Food.
+    Foods are another form of 'Pick-Up'. Instead of being a direct stat change, they
+    give you additional abilities that and help to boost the positive and stifle
+    the possible negative side effects of the pills.

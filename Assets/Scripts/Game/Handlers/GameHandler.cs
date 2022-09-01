@@ -1,40 +1,88 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameHandler : MonoBehaviour
 {
-    [SerializeField] private GameObject reality;
-    [SerializeField] private GameObject body;
+    [Header("Level Information")]
+    [SerializeField] private LevelData currentLevel;
+    [SerializeField] private LevelData nextLevel;
 
-    [SerializeField] private GameObject cam1;
-    [SerializeField] private GameObject cam2;
+    [Header("Game Data")]
+    [SerializeField] private PersistantData gameData;
 
-    private PlayerInput playerInput;
+    [Header("Player")]
+    private Player player;
+
+    [Header("Settings")]
+    private SoundManager soundManager;
 
     void Awake()
     {
-        playerInput = FindObjectOfType<PlayerInput>();
+        player = FindObjectOfType<Player>();
+        soundManager = FindObjectOfType<SoundManager>();
     }
 
-    void Update()
+    void OnEnable()
     {
-        ChangePerspectives();
+        LoadData();
     }
 
-    void ChangePerspectives()
+    void OnDisable()
     {
-        if (!playerInput.swapPerspective)
-        {
-            reality.SetActive(true);
-            cam1.SetActive(true);
-            cam2.SetActive(false);
-            body.SetActive(false);
-        }
-        else
-        {
-            reality.SetActive(false);
-            cam1.SetActive(false);
-            cam2.SetActive(true);
-            body.SetActive(true);
-        }
-    } 
+        SaveData();
+    }
+
+    void LoadData()
+    {
+        LoadSettingsData();
+        if (!player) return;
+        LoadPlayerData(gameData.playerHealth, gameData.playerRecovery, gameData.playerInfection);
+        Debug.Log("Data Loaded");
+    }
+
+    public void SaveData()
+    {
+        SaveSettingsData();
+        if (!player) return;
+        SavePlayerData();
+        Debug.Log("Data Saved");
+    }
+
+    void SavePlayerData()
+    {
+        gameData.playerHealth = player.GetStat(TypeOfStat.Health);
+        gameData.playerRecovery = player.GetStat(TypeOfStat.Recovery);
+        gameData.playerInfection = player.GetStat(TypeOfStat.Infection);
+    }
+
+    void LoadPlayerData(float health, float recovery, float infection)
+    {
+        player.SetStat(TypeOfStat.Health, health);
+        player.SetStat(TypeOfStat.Recovery, recovery);
+        player.SetStat(TypeOfStat.Infection, infection);
+    }
+
+    void SaveSettingsData()
+    {
+        gameData.fxVolume = soundManager.fxSlider.value;
+        gameData.musicVolume = soundManager.musicSlider.value;
+    }
+
+    void LoadSettingsData()
+    {
+        soundManager.fxSlider.value = gameData.fxVolume;
+        soundManager.musicSlider.value = gameData.musicVolume;
+    }
+
+    public void UnlockNextLevel()
+    {
+        nextLevel.unlocked = true;
+    }
+
+    public void LoadNextLevel()
+    {
+        
+    }
 }

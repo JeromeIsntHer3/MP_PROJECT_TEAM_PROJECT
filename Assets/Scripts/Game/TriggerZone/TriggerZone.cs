@@ -6,7 +6,7 @@ public class TriggerZone : MonoBehaviour
 {
     public enum TriggerType
     {
-        RespawnPoint, Respawn, Die, Notification, GameFinish, Popup, Bacterial
+        RespawnPoint, Respawn, Die, GameFinish, Popup, Bacterial
     }
 
     public TriggerType triggerType;
@@ -45,12 +45,6 @@ public class TriggerZone : MonoBehaviour
                         player.Die();
                         GameOverEvent?.Invoke();
                     }
-                    break;
-
-                case TriggerType.Notification:
-                    sendToApp.AddNotification(notificationData);
-                    if(DataHandler.OnPickUp != null)
-                    DataHandler.OnPickUp();
                     break;
 
                 case TriggerType.Popup:

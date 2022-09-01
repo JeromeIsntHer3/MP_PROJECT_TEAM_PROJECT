@@ -42,6 +42,7 @@ public class PlayerMovement : MonoBehaviour
     private bool _isFacingRight;
     private SoundManager soundManager;
 
+    public float IncreasedGravity { get { return increasedGravScale; } set { increasedGravScale = value; } }
     public float Speed { get { return speed; } set { speed = value; } }
     public int NoOfJumpsAllowed { get { return noOfJumpsAllowed; } set { noOfJumpsAllowed = value; } }
 

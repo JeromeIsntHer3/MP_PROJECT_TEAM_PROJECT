@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class SpawnPlatform : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject[] platforms;
+    [SerializeField] private GameObject[] platforms;
 
     void Start()
     {

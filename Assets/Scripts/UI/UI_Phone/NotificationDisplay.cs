@@ -13,15 +13,11 @@ public class NotificationDisplay : MonoBehaviour
     public NotificationStorage Storage;
 
     void OnEnable()
-    {
-        DataHandler.OnPickUp += ClearSlots;
-        DataHandler.OnPickUp += SetUpSlots;
+    { 
     }
 
     void OnDisable()
     {
-        DataHandler.OnPickUp -= ClearSlots;
-        DataHandler.OnPickUp -= SetUpSlots;
     }
 
 

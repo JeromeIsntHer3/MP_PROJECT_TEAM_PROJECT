@@ -13,7 +13,7 @@ public class MenusHandler : MonoBehaviour
     [SerializeField]private GameObject settingsMenu;
     [SerializeField]private GameObject darkOverlay;
 
-    private DataHandler handler;
+    private GameHandler handler;
 
     private PlayerInput playerInput;
 
@@ -78,9 +78,9 @@ public class MenusHandler : MonoBehaviour
 
     public void TryAgain()
     {
-        handler = FindObjectOfType<DataHandler>();
-        SceneManager.LoadScene(handler.Getlevel().sceneName);
-        Debug.Log(handler.Getlevel().sceneName);
+        //handler = FindObjectOfType<GameHandler>();
+        //SceneManager.LoadScene(handler.Getlevel().sceneName);
+        //Debug.Log(handler.Getlevel().sceneName);
     }
 
     void GameOver()

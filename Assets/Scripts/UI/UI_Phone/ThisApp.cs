@@ -38,12 +38,10 @@ public class ThisApp : MonoBehaviour
     void OnEnable()
     {
         SetupAlerts();
-        DataHandler.OnPickUp += SetupAlerts;
     }
 
     private void OnDisable()
     {
-        DataHandler.OnPickUp -= SetupAlerts;
     }
 
     public void SetupAlerts()

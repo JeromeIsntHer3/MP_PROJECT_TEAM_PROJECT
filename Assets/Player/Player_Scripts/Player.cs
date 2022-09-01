@@ -20,6 +20,9 @@ public class Player : MonoBehaviour
     private Vector3 currRespawnLocation;
     private TypeOfStat statToChange;
 
+    [SerializeField] private ParticleSystem psystem;
+    [SerializeField] private GameObject avatar;
+    [SerializeField] private GameObject particle;
     [SerializeField] private Image statusOverlay;
     [SerializeField] private GameObject interactBox;
 
@@ -143,6 +146,16 @@ public class Player : MonoBehaviour
     public void SetInteractBox(bool set)
     {
         interactBox.SetActive(set);
+    }
+
+    public void Die()
+    {
+        PlayerMovement pm = GetComponent<PlayerMovement>();
+        pm.rb.isKinematic = true;
+        avatar.SetActive(false);
+        particle.SetActive(true);
+        psystem.Play();
+        psystem.Stop();
     }
 
     private void OnTriggerEnter(Collider other)

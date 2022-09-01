@@ -6,10 +6,9 @@ using UnityEngine.UI;
 public class ConsumableSO : ScriptableObject
 {
     public Sprite consumableSprite;
+    public Sprite inStoreSprite;
     [TextArea]
     public string consumableDescription;
-    [TextArea]
-    public string consumableStatus;
     public int consumablePrice;
 
     public virtual void ConsumableFunction(GameObject parent) { }

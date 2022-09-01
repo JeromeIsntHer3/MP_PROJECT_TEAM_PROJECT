@@ -5,5 +5,5 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Consumeable", menuName = "Consumable/Storage")]
 public class ConsumableStorageSO : ScriptableObject
 {
-    public List<ConsumableSO> consumableScriptableObjects;
+    public List<ConsumableSO> consumableSOs;
 }

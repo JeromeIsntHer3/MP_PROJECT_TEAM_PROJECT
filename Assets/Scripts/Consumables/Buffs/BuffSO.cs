@@ -7,7 +7,6 @@ public class BuffSO : ConsumableSO
     public override void ConsumableFunction(GameObject parent)
     {
         BuffHandler buffHandler = parent.GetComponent<BuffHandler>();
-        Debug.Log(buffHandler);
         buffHandler.AddNewBuff(this);
     }
 

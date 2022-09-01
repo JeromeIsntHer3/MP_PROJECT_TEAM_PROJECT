@@ -42,7 +42,7 @@ public class TriggerZone : MonoBehaviour
                     sm.PlaySound(sm.DieSound);
                     if (player)
                     {
-                        Destroy(player.gameObject);
+                        player.Die();
                         GameOverEvent?.Invoke();
                     }
                     break;

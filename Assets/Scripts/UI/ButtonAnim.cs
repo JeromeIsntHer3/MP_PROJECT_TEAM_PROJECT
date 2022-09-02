@@ -26,18 +26,18 @@ public class ButtonAnim : MonoBehaviour
     public void Grow()
     {
         if (thisButton.interactable == false) return;
-        LeanTween.scale(buttonTransform.gameObject, hoverSize, animSpeed);
-        LeanTween.rotate(buttonTransform.gameObject, hoverRotation, animSpeed);
+        LeanTween.scale(buttonTransform.gameObject, hoverSize, animSpeed).setIgnoreTimeScale(true);
+        LeanTween.rotate(buttonTransform.gameObject, hoverRotation, animSpeed).setIgnoreTimeScale(true);
         if (!text) return;
-        LeanTween.rotate(text.gameObject, textHoverRotation, animSpeed);
+        LeanTween.rotate(text.gameObject, textHoverRotation, animSpeed).setIgnoreTimeScale(true);
     }
 
     public void Shrink()
     {
         if (thisButton.interactable == false) return;
-        LeanTween.scale(buttonTransform.gameObject, Vector3.one, animSpeed);
-        LeanTween.rotate(buttonTransform.gameObject, Vector3.zero, animSpeed);
+        LeanTween.scale(buttonTransform.gameObject, Vector3.one, animSpeed).setIgnoreTimeScale(true);
+        LeanTween.rotate(buttonTransform.gameObject, Vector3.zero, animSpeed).setIgnoreTimeScale(true);
         if (!text) return;
-        LeanTween.rotate(text.gameObject, Vector3.zero, animSpeed);
+        LeanTween.rotate(text.gameObject, Vector3.zero, animSpeed).setIgnoreTimeScale(true);
     }
 }

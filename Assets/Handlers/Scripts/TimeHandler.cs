@@ -40,7 +40,6 @@ public class TimeHandler : MonoBehaviour
 
     void TimeCycle()
     {
-        Debug.Log(pillEaten);
         if (!timeDisplay) return;
         if(timeCountdown == timeCycle)
         {

@@ -1,9 +1,11 @@
+using TMPro;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
     [SerializeField] private ConsumableStorageSO inventoryConsumableStorage;
     [SerializeField] private int currency;
+    [SerializeField] private TextMeshProUGUI points;
 
     public delegate void InventoryChanged();
     public InventoryChanged inventoryChanged;
@@ -23,6 +25,7 @@ public class Inventory : MonoBehaviour
     public void ChangeCurrency(int amount)
     {
         currency += amount;
+        points.text = currency.ToString();
     }
 
     public ConsumableStorageSO GetInventory()

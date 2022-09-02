@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5743437418133382092}
-  - component: {fileID: 3538131966245989271}
   - component: {fileID: 5078746902510310737}
   m_Layer: 0
   m_Name: Pill_Flat
@@ -34,21 +33,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3538131966245989271
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4971720320386251126}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4fc41fe06aada64091885f0483bb62f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healAmount: 0
-  recoveryAmount: 0
-  infectionRateAmountDecrease: 0
 --- !u!65 &5078746902510310737
 BoxCollider:
   m_ObjectHideFlags: 0

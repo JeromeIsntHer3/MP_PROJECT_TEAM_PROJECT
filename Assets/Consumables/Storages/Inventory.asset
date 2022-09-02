@@ -13,6 +13,4 @@ MonoBehaviour:
   m_Name: Inventory
   m_EditorClassIdentifier: 
   consumableSOs:
-  - {fileID: 11400000, guid: ea74a9b9685750f48a88d066f0a67ac7, type: 2}
-  - {fileID: 11400000, guid: e5cf4113c41d81840bf7f425a8e66eee, type: 2}
-  - {fileID: 11400000, guid: 22540964924b5604b9e27c7b652fa0e8, type: 2}
+  - {fileID: 11400000, guid: bef2fc1b4fd101b45871455297ffce72, type: 2}

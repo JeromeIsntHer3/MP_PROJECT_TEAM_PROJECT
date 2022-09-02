@@ -24,6 +24,7 @@ public class GameHandler : MonoBehaviour
     void Awake()
     {
         player = FindObjectOfType<Player>();
+        Debug.Log(player);
         soundManager = transform.GetComponentInChildren<SoundManager>();
         transitionHandler = transform.GetComponentInChildren<TransitionHandler>();
     }

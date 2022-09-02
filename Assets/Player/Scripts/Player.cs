@@ -30,6 +30,7 @@ public class Player : MonoBehaviour
     {
         ChangeStatUpdate();
         Infection();
+        EatOnTime();
     }
 
     public void SetStat(TypeOfStat typeOfChange, float amount, float infectionRate = 0)
@@ -130,6 +131,34 @@ public class Player : MonoBehaviour
         if(currInfection >= 100)
         {
             currHealth -= Time.deltaTime;
+        }
+    }
+
+    void EatOnTime()
+    {
+        if (!TimeHandler.instance.HasEatenPill() && TimeHandler.instance.TimeReset())
+        {
+            switch (TimeHandler.instance.Cycles())
+            {
+                case < 1:
+                    break;
+                case < 6:
+                    ChangeStat(TypeOfStat.Health, -5);
+                    ChangeStat(TypeOfStat.Recovery, -5);
+                    break;
+                case < 11:
+                    ChangeStat(TypeOfStat.Health, -10);
+                    ChangeStat(TypeOfStat.Recovery, -10);
+                    break;
+                case < 16:
+                    ChangeStat(TypeOfStat.Health, -15);
+                    ChangeStat(TypeOfStat.Recovery, -15);
+                    break;
+                default:
+                    ChangeStat(TypeOfStat.Health, -20);
+                    ChangeStat(TypeOfStat.Recovery, -20);
+                    break;
+            }
         }
     }
 

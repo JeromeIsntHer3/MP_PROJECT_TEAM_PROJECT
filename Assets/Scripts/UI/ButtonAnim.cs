@@ -2,30 +2,42 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class ButtonAnim : MonoBehaviour
 {
     [Header("UI Object")]
-    public float hoverSize;
-    public float hoverRotation;
+    public Vector3 hoverSize;
+    public Vector3 hoverRotation;
     public float animSpeed;
+    private RectTransform buttonTransform;
+    private Button thisButton;
 
     [Header("UI Text")]
     public TextMeshProUGUI text;
-    public float textHoverRotation;
+    public Vector3 textHoverRotation;
+
+    void Awake()
+    {
+        thisButton = GetComponent<Button>();
+        buttonTransform = GetComponent<RectTransform>();
+    }
 
     public void Grow()
     {
-        transform.LeanScale(new Vector2(hoverSize,hoverSize), animSpeed).setIgnoreTimeScale(true);
-        transform.LeanRotate(new Vector3(0, 0, hoverRotation),animSpeed).setIgnoreTimeScale(true);
+        if (thisButton.interactable == false) return;
+        LeanTween.scale(buttonTransform.gameObject, hoverSize, animSpeed);
+        LeanTween.rotate(buttonTransform.gameObject, hoverRotation, animSpeed);
         if (!text) return;
-        text.transform.LeanRotateZ(textHoverRotation, 0.5f).setEasePunch().setIgnoreTimeScale(true);
+        LeanTween.rotate(text.gameObject, textHoverRotation, animSpeed);
     }
+
     public void Shrink()
     {
-        transform.LeanScale(new Vector2(1, 1), animSpeed).setIgnoreTimeScale(true);
-        transform.LeanRotate(new Vector3(0, 0, 0), animSpeed).setIgnoreTimeScale(true);
+        if (thisButton.interactable == false) return;
+        LeanTween.scale(buttonTransform.gameObject, Vector3.one, animSpeed);
+        LeanTween.rotate(buttonTransform.gameObject, Vector3.zero, animSpeed);
         if (!text) return;
-        text.transform.LeanRotateZ(0, 0.5f).setIgnoreTimeScale(true);
+        LeanTween.rotate(text.gameObject, Vector3.zero, animSpeed);
     }
 }

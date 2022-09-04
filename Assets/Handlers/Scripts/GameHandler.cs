@@ -5,9 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameHandler : MonoBehaviour
 {
-    [Header("LevelUISlot Information")]
-    [SerializeField] private LevelSO currentLevel;
-    [SerializeField] private LevelSO nextLevel;
+    public static GameHandler instance;
 
     [Header("Game Data")]
     [SerializeField] private PersistantData gameData;
@@ -18,14 +16,10 @@ public class GameHandler : MonoBehaviour
     [Header("Settings")]
     private SoundManager soundManager;
 
-    [Header("Other Handlers")]
-    private TransitionHandler transitionHandler;
-
     void Awake()
     {
         player = FindObjectOfType<Player>();
         soundManager = transform.GetComponentInChildren<SoundManager>();
-        transitionHandler = transform.GetComponentInChildren<TransitionHandler>();
     }
 
     void OnEnable()
@@ -69,10 +63,5 @@ public class GameHandler : MonoBehaviour
     public void UnlockLevel(LevelSO levelToUnlock)
     {
         levelToUnlock.unlocked = true;
-    }
-
-    public void LoadLevel(int sceneIndex)
-    {
-        StartCoroutine(transitionHandler.LoadLevel(sceneIndex));
     }
 }

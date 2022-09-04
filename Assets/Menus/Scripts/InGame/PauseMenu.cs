@@ -27,6 +27,6 @@ public class PauseMenu : Menu
     }
     void ToQuit()
     {
-        SceneManager.LoadScene(0);
+        GameEvents.current.LoadLevel(0);
     }
 }

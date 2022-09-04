@@ -38,13 +38,12 @@ public class LevelUISlot : MonoBehaviour
     {
         CharacterMenuAnimation menuscene = FindObjectOfType<CharacterMenuAnimation>();
         menuscene.start = true;
-        StartCoroutine(CharAnimMove());
+        StartCoroutine(WaitCharMove());
     }
 
-    IEnumerator CharAnimMove()
+    IEnumerator WaitCharMove()
     {
         yield return new WaitForSeconds(4);
-        GameHandler gameHandler = FindObjectOfType<GameHandler>();
-        gameHandler.LoadLevel(levelData.levelNumber);
+        GameEvents.current.LoadLevel(levelData.levelNumber);
     }
 }

@@ -9,11 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1dd213b195e6eda41846894ca8d649db, type: 3}
-  m_Name: Persistant Data
+  m_Script: {fileID: 11500000, guid: 34816343f78b60d4298a56e19397757d, type: 3}
+  m_Name: Question&Answers 11
   m_EditorClassIdentifier: 
-  musicVolume: 50
-  fxVolume: 50
-  playerHealth: 100
-  playerRecovery: 0
-  playerInfection: 0
+  question: Question 1
+  options:
+  - Option 1
+  - Option 2
+  - Option 3
+  correctOrWrong: 000000
+  answered: 0

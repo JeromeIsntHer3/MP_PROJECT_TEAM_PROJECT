@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class GameEvents : MonoBehaviour
 {
-    public static GameEvents current;
+    public static GameEvents current { get; private set; }
 
     void Awake()
     {

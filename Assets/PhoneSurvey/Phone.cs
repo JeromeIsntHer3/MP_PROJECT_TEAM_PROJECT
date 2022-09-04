@@ -16,7 +16,6 @@ public class Phone : MonoBehaviour
 
     private RectTransform thisTransform;
     private QuestionSO currQuestion;
-    private int questionsAnsweredCorrectly = 0;
 
     void Awake()
     {
@@ -75,14 +74,9 @@ public class Phone : MonoBehaviour
         if (isCorrect)
         {
             Debug.Log("correct Answer");
-            questionsAnsweredCorrectly++;
+            GameHandler.instance.AnsweredCorrectly();
         }
         StartCoroutine(ThankYouForAnswerin());
-    }
-
-    public int GetAnswerCorrect()
-    {
-        return questionsAnsweredCorrectly;
     }
 
     IEnumerator ThankYouForAnswerin()

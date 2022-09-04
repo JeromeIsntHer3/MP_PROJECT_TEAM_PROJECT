@@ -22,7 +22,8 @@ public class GameOverMenu : MonoBehaviour
 
     void TryAgain()
     {
-
+        GameHandler.instance.SetToDefaultStats();
+        GameHandler.instance.ReloadScene();
     }
 
     void QuitToMenu()

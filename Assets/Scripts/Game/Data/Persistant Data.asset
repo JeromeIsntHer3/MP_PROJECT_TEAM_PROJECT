@@ -15,7 +15,7 @@ MonoBehaviour:
   musicVolume: 50
   fxVolume: 50
   playerHealth: 100
-  playerRecovery: 100
+  playerRecovery: 0
   playerInfection: 0
   playerCoins: 0
   defaultVolume: 50

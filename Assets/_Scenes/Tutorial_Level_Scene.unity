@@ -66531,7 +66531,6 @@ GameObject:
   - component: {fileID: 1564122162}
   - component: {fileID: 1564122161}
   - component: {fileID: 1564122160}
-  - component: {fileID: 1564122159}
   - component: {fileID: 1564122158}
   - component: {fileID: 1564122157}
   - component: {fileID: 1564122156}
@@ -66600,18 +66599,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthSlider: {fileID: 2005983506}
   recoverySlider: {fileID: 1109933124}
---- !u!114 &1564122159
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1564122154}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84bea63f25e4e0948bda0212bbc5c882, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1564122160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66624,15 +66611,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01e7a8c8078d2e8489d658e4cc7ac18b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  playerInput: {fileID: 0}
   speed: 10
-  lerpAmount: 1
+  acceleration: 1
   jumpForce: 20
   baseGravScale: -40
   increasedGravScale: -52
   apexBoost: 10
-  jumpFallOffAtApex: 2
+  fallOffAtApex: 2
   coyotoTimeBuffer: 0.1
   extraHeight: 0.95
 --- !u!114 &1564122161
@@ -66647,7 +66632,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ca1c367bc8097949a7d1aaa8ed86071, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  missedEatingDamage: 50
+  missedEatingDamage: 10
   statusOverlay: {fileID: 922749881}
   interactBox: {fileID: 1250005928}
 --- !u!114 &1564122162

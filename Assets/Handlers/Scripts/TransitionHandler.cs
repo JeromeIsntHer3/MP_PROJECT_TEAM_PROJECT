@@ -10,6 +10,16 @@ public class TransitionHandler : MonoBehaviour
     public float duration;
     public bool hasSceneTrasition;
 
+    void OnEnable()
+    {
+        GameEvents.current.OnLoadLevel += LevelLoad;
+    }
+
+    void OnDisable()
+    {
+        GameEvents.current.OnLoadLevel -= LevelLoad;
+    }
+
     void Awake()
     {
         if (!hasSceneTrasition)
@@ -21,6 +31,11 @@ public class TransitionHandler : MonoBehaviour
             circleShadow.transform.localScale = transitionScale;
             LeanTween.scale(circleShadow, Vector3.zero, duration);
         }
+    }
+
+    void LevelLoad(int level)
+    {
+        StartCoroutine(LoadLevel(level));
     }
 
     public IEnumerator LoadLevel(int sceneIndex)

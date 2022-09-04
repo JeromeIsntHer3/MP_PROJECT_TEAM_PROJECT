@@ -20,6 +20,8 @@ public class StoreUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI chat;
     [SerializeField] private ConsumableSO selectedConsumable;
 
+    [SerializeField] private GameObject survey;
+
     private StoreSlotUI[] storeSlots;
 
     void OnEnable()
@@ -38,6 +40,8 @@ public class StoreUI : MonoBehaviour
         store.storeChanged -= UpdateSlots;
 
         buyItem?.onClick.RemoveListener(Buy);
+
+        survey.SetActive(true);
     }
 
     void UpdateSlots()

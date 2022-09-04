@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
-public class CharacterMenuAnimation
-    : MonoBehaviour
+public class CharacterMenuAnimation : MonoBehaviour
 {
     public PlayableDirector playableDirector;
     public bool start = false;

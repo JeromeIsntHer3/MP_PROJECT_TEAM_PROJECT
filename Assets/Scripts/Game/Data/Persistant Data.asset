@@ -19,7 +19,7 @@ MonoBehaviour:
   playerInfection: 0
   playerCoins: 0
   defaultVolume: 50
-  defaultRecovery: 100
+  defaultRecovery: 0
   defaultInfection: 0
   defaultHealth: 100
   defaultCoins: 0

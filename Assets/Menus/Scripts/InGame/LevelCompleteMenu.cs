@@ -14,8 +14,6 @@ public class LevelCompleteMenu : MonoBehaviour
     [SerializeField] private TextMeshProUGUI timeTakenText;
     [SerializeField] private TextMeshProUGUI resultText;
 
-    private int totalScore;
-
     void OnEnable()
     {
         nextButton?.onClick.AddListener(GoToNextLevel);
@@ -51,5 +49,39 @@ public class LevelCompleteMenu : MonoBehaviour
         TimeSpan timePlaying = TimeSpan.FromSeconds(GameHandler.instance.TimeToComplete());
         string timeString = timePlaying.ToString("mm':'ss");
         timeTakenText.text = timeString;
+
+        float coinGrade = (GameHandler.instance.CoinsCollected() / 250) * 100;
+        float pillGrade = 100 - ((GameHandler.instance.PillsMissed() / 10) * 100);
+        float timeGrade = 100 - ((GameHandler.instance.TimeToComplete() / 900) * 100);
+
+        float finalGrade = (coinGrade + pillGrade + timeGrade) / 300 * 100;
+
+        switch (finalGrade)
+        {
+            case <= 25:
+                resultText.text = "D";
+                break;
+            case <= 40:
+                resultText.text = "D+";
+                break;
+            case <= 55:
+                resultText.text = "C";
+                break;
+            case <= 65:
+                resultText.text = "C+";
+                break;
+            case <= 75:
+                resultText.text = "B";
+                break;
+            case <= 85:
+                resultText.text = "B+";
+                break;
+            case <= 90:
+                resultText.text = "A";
+                break;
+            case <= 100:
+                resultText.text = "S";
+                break;
+        } 
     }
 }

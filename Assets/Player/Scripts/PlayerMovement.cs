@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -8,43 +9,43 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     //Component Variables
-    [HideInInspector]
-    public Rigidbody rb;
-    [HideInInspector]
-    public PlayerInput playerInput;
+    private Rigidbody rb;
+    private PlayerInput playerInput;
     private GroundCheck groundCheck;
+    private Animator anim;
 
     [Header("Movement Attributes")]
-    [SerializeField]
-    private float speed;
-    [SerializeField]
-    private float lerpAmount = 1f;
+    [SerializeField] private float speed;
+    [SerializeField] private float acceleration = 1f;
 
     [Header("Jump Attributes")]
-    [SerializeField]
-    private float jumpForce;
-    [SerializeField]
-    private float baseGravScale;
-    [SerializeField]
-    private float increasedGravScale;
-    [SerializeField]
-    private float apexBoost;
-    [SerializeField]
-    private float jumpFallOffAtApex;
-    [SerializeField]
-    private float coyotoTimeBuffer;
-    [SerializeField]
-    private float extraHeight;
-    private int noOfJumpsAllowed;
-    private int noOfJumps;
+    [SerializeField] private float jumpForce;
+    [SerializeField] private float baseGravScale;
+    [SerializeField] private float increasedGravScale;
+    [SerializeField] private float apexBoost;
+    [SerializeField] private float fallOffAtApex;
+    [SerializeField] private float coyotoTimeBuffer;
+    [SerializeField] private float extraHeight;
+
+    //Animation
+    private static readonly int Idle = Animator.StringToHash("Idle");
+    private static readonly int Walk = Animator.StringToHash("Walk");
+    private static readonly int Land = Animator.StringToHash("Land");
+    private static readonly int Air = Animator.StringToHash("In-Air");
+    private static readonly int Jump = Animator.StringToHash("Jump");
+    int currAnimState;
+    float currAnimLock;
+    bool landed;
+
+    private int numberOfJumpsAvailable;
+    private int numberOfJumps;
     private float? lastGroundedTime;
 
     private bool _isFacingRight;
-    private SoundManager soundManager;
 
     public float IncreasedGravity { get { return increasedGravScale; } set { increasedGravScale = value; } }
     public float Speed { get { return speed; } set { speed = value; } }
-    public int NoOfJumpsAllowed { get { return noOfJumpsAllowed; } set { noOfJumpsAllowed = value; } }
+    public int NoOfJumpsAllowed { get { return numberOfJumpsAvailable; } set { numberOfJumpsAvailable = value; } }
 
 
     void Awake()
@@ -52,17 +53,13 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         playerInput = GetComponent<PlayerInput>();
         groundCheck = GetComponentInChildren<GroundCheck>();
-    }
-
-    private void Start()
-    {
-        soundManager = SoundManager.instance;
+        anim = GetComponentInChildren<Animator>();
     }
 
     void Move()
     {
         float topSpeedX = speed * playerInput.movementInput.x;
-        topSpeedX = Mathf.Lerp(rb.velocity.x, topSpeedX, lerpAmount);
+        topSpeedX = Mathf.Lerp(rb.velocity.x, topSpeedX, acceleration);
         rb.velocity = new Vector2(topSpeedX, rb.velocity.y);
         rb.AddForce(transform.right * topSpeedX);
     }
@@ -95,32 +92,32 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void Jump()
+    void PlayerJump()
     {
-        if (groundCheck.isGrounded)
+        if (Grounded())
         {
+            landed = true;
             lastGroundedTime = Time.time;
-            noOfJumps = noOfJumpsAllowed;
+            numberOfJumps = numberOfJumpsAvailable;
+            landed = false;
         }
         if (playerInput.jumpPressed)
         {
             if (CoyoteJumpPossible())
             {
                 rb.velocity = new Vector3(rb.velocity.x, jumpForce,rb.velocity.z);
-                soundManager.PlaySound(soundManager.JumpSound);
             }
-            else if (noOfJumps > 0)
+            else if (numberOfJumps > 0)
             {
                 rb.velocity = new Vector3(rb.velocity.x, jumpForce,rb.velocity.z);
-                soundManager.PlaySound(soundManager.JumpSound);
             }
         }
         if (playerInput.jumpReleased)
         {
-            noOfJumps -= 1;
+            numberOfJumps -= 1;
             if (rb.velocity.y > 0)
             {
-                rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y / jumpFallOffAtApex);
+                rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y / fallOffAtApex);
             }
         }
     }
@@ -145,11 +142,41 @@ public class PlayerMovement : MonoBehaviour
         return Time.time - lastGroundedTime <= coyotoTimeBuffer;
     }
 
+    bool Grounded()
+    {
+        return groundCheck.isGrounded;
+    }
+
+    void Animate()
+    {
+        int state = GetAnimState();
+
+        if (state == currAnimState) return;
+        anim.CrossFade(state, 0.4f, 0);
+        currAnimState = state;
+    }
+
+    int GetAnimState()
+    {
+        if (Time.time < currAnimLock) return currAnimState;
+
+        if (landed) return LockState(Land, 0.2f);
+        if (Grounded()) return playerInput.movementInput.x == 0 ? Idle : Walk;
+        return rb.velocity.y > 0 ? Jump : Air;
+
+        int LockState(int s, float t)
+        {
+            currAnimLock = Time.time + t;
+            return s;
+        }
+    }
+
     void Update()
     {
         ApexBoost();
-        Jump();
+        PlayerJump();
         Gravity();
+        Animate();
     }
 
     void FixedUpdate()

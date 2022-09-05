@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     private float currRecovery;
     private float currInfection;
     private float currInfectionRate;
+    [SerializeField] private float missedEatingDamage;
 
     //Values to be Set
     private float overTimeDamage;
@@ -28,6 +29,14 @@ public class Player : MonoBehaviour
         ChangeStatUpdate();
         Infection();
         EatOnTime();
+        if(currRecovery >= 100)
+        {
+            GameEvents.current.GameComplete();
+        }
+        if (currHealth <= 0)
+        {
+            GameEvents.current.GameOver();
+        }
     }
 
     public void SetStat(TypeOfStat typeOfChange, float amount, float infectionRate = 0)
@@ -128,10 +137,6 @@ public class Player : MonoBehaviour
         if(currInfection >= 100)
         {
             currHealth -= Time.deltaTime;
-            if(currHealth <= 0)
-            {
-                GameEvents.current.GameOver();
-            }
         }
     }
 
@@ -139,25 +144,26 @@ public class Player : MonoBehaviour
     {
         if (!TimeHandler.instance.HasEatenPill() && TimeHandler.instance.TimeReset())
         {
+            GameHandler.instance.MissedPill();
             switch (TimeHandler.instance.Cycles())
             {
                 case < 1:
                     break;
                 case < 6:
-                    ChangeStat(TypeOfStat.Health, -5);
-                    ChangeStat(TypeOfStat.Recovery, -5);
+                    ChangeStat(TypeOfStat.Health, -missedEatingDamage);
+                    ChangeStat(TypeOfStat.Recovery, -missedEatingDamage);
                     break;
                 case < 11:
-                    ChangeStat(TypeOfStat.Health, -10);
-                    ChangeStat(TypeOfStat.Recovery, -10);
+                    ChangeStat(TypeOfStat.Health, -missedEatingDamage * 2);
+                    ChangeStat(TypeOfStat.Recovery, -missedEatingDamage * 2);
                     break;
                 case < 16:
-                    ChangeStat(TypeOfStat.Health, -15);
-                    ChangeStat(TypeOfStat.Recovery, -15);
+                    ChangeStat(TypeOfStat.Health, -missedEatingDamage * 3);
+                    ChangeStat(TypeOfStat.Recovery, -missedEatingDamage * 3);
                     break;
                 default:
-                    ChangeStat(TypeOfStat.Health, -20);
-                    ChangeStat(TypeOfStat.Recovery, -20);
+                    ChangeStat(TypeOfStat.Health, -missedEatingDamage * 4);
+                    ChangeStat(TypeOfStat.Recovery, -missedEatingDamage * 4);
                     break;
             }
         }

@@ -21,9 +21,27 @@ public class InGameMenuHandler : MonoBehaviour
         resumeButton?.onClick.AddListener(Resume);
     }
 
+    void Start()
+    {
+        GameEvents.current.OnGameComplete += GameCompleted;
+        GameEvents.current.OnGameOver += GameEnded;
+    }
+
     void OnDisable()
     {
         resumeButton?.onClick.RemoveListener(Resume);
+        GameEvents.current.OnGameComplete -= GameCompleted;
+        GameEvents.current.OnGameOver -= GameEnded;
+    }
+
+    void GameCompleted()
+    {
+        levelComplete.SetActive(true);
+    }
+
+    void GameEnded()
+    {
+        gameOver.SetActive(true);
     }
 
     void Resume()

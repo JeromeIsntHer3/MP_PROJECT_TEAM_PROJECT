@@ -37,4 +37,9 @@ public class Inventory : MonoBehaviour
     {
         return currency;
     }
+
+    public void SetCurrency(int currency)
+    {
+        this.currency = currency;
+    }
 }

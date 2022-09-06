@@ -8493,7 +8493,7 @@ GameObject:
   - component: {fileID: 282610184}
   - component: {fileID: 282610183}
   m_Layer: 5
-  m_Name: Text
+  m_Name: CoinsText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14272,7 +14272,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdecd5c9e12605049b81f19ff93fea1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameData: {fileID: 11400000, guid: d04d6f4cbf8c1be4d8c0fee24d7c4956, type: 2}
+  playerData: {fileID: 11400000, guid: 3148005908016494b80d084ece82bdb7, type: 2}
+  settingsData: {fileID: 11400000, guid: beb2695bdfb34c248a419fb5005d4dec, type: 2}
   gameRunning: 0
 --- !u!4 &299096602
 Transform:
@@ -19715,7 +19716,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 466008041}
-  m_LocalRotation: {x: 0.09853762, y: 0.000000004280661, z: -4.238689e-10, w: 0.99513334}
+  m_LocalRotation: {x: 0.098537624, y: -0.0000000042806607, z: 4.238689e-10, w: 0.99513334}
   m_LocalPosition: {x: -26.9, y: 36.4, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -29441,7 +29442,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 776054274}
-  m_LocalRotation: {x: 0.09853762, y: 0.000000004280661, z: -4.238689e-10, w: 0.99513334}
+  m_LocalRotation: {x: 0.098537624, y: -0.0000000042806607, z: 4.238689e-10, w: 0.99513334}
   m_LocalPosition: {x: -26.9, y: 36.4, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -45320,7 +45321,7 @@ MonoBehaviour:
   m_Direction: 0
   m_MinValue: 0
   m_MaxValue: 100
-  m_WholeNumbers: 1
+  m_WholeNumbers: 0
   m_Value: 100
   m_OnValueChanged:
     m_PersistentCalls:
@@ -66537,7 +66538,6 @@ GameObject:
   - component: {fileID: 1564122161}
   - component: {fileID: 1564122160}
   - component: {fileID: 1564122158}
-  - component: {fileID: 1564122157}
   - component: {fileID: 1564122156}
   - component: {fileID: 1564122155}
   m_Layer: 0
@@ -66561,7 +66561,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventoryConsumableStorage: {fileID: 11400000, guid: d3b0b0c14cbe19f478715f0a9c84a204, type: 2}
   currency: 0
-  points: {fileID: 282610183}
+  coins: {fileID: 282610183}
 --- !u!114 &1564122156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66578,18 +66578,6 @@ MonoBehaviour:
   buffTimes: []
   slotPrefab: {fileID: 7204629912014532068, guid: a50108f6e7a372f49969962aacb53486, type: 3}
   parentDisplay: {fileID: 851496311}
---- !u!114 &1564122157
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1564122154}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c4a218df0e4e4d42b284e01f8b63869, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1564122158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68608,7 +68596,7 @@ MonoBehaviour:
   buttonSound: {fileID: 8300000, guid: 99dd3aafdeb29a34e8d3c5502b0a7f85, type: 3}
   mainMenuTheme: {fileID: 8300000, guid: 34c20cfb5dc0b0449a7a2466307e0a3f, type: 3}
   inGameTheme: {fileID: 8300000, guid: bd2562d1bc3b0d5488b5f90b823e1f02, type: 3}
-  fxSlider: {fileID: 7676982}
+  effectsSlider: {fileID: 7676982}
   fxValueText: {fileID: 949152821}
   musicSlider: {fileID: 607964756}
   musicValueText: {fileID: 1843211597}
@@ -74386,7 +74374,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 5414149010395894687, guid: 64e68c34baab9bd4db8ab0bf788abc5f, type: 3}
-  transforms: []
+  childTransforms: []
 --- !u!4 &1833707480
 Transform:
   m_ObjectHideFlags: 0
@@ -80060,7 +80048,7 @@ MonoBehaviour:
   m_Direction: 0
   m_MinValue: 0
   m_MaxValue: 100
-  m_WholeNumbers: 1
+  m_WholeNumbers: 0
   m_Value: 100
   m_OnValueChanged:
     m_PersistentCalls:

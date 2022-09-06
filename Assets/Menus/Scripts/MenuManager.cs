@@ -23,10 +23,7 @@ public static class MenuManager
     public static void GoTo(TypeOfMenu to, GameObject callback)
     {
         if (!hasInit) Initialise();
-        Debug.Log(menusAndObjects[to]);
         menusAndObjects[to].SetActive(true);
-        Debug.Log(callback);
         callback.SetActive(false);
-        Debug.Log(hasInit);
     }
 }

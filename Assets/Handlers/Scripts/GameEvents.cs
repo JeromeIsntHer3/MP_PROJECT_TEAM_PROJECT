@@ -9,7 +9,10 @@ public class GameEvents : MonoBehaviour
 
     void Awake()
     {
-        current = this;
+        if (current == null)
+        {
+            current = this;
+        }
     }
 
     public event Action OnGameComplete;

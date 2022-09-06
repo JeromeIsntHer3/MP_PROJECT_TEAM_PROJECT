@@ -17,7 +17,7 @@ public class PathSplineTrack : MonoBehaviour {
 	private float trackPosition; // ratio 0,1 of the avatars position on the track
 
 	void Start () {
-		// Make the track from the provided transforms
+		// Make the track from the provided childTransforms
 		track = new LTSpline( new Vector3[] {trackOnePoints[0].position, trackOnePoints[1].position, trackOnePoints[2].position, trackOnePoints[3].position, trackOnePoints[4].position, trackOnePoints[5].position, trackOnePoints[6].position} );
 
 		// Optional technique to show the trails in game

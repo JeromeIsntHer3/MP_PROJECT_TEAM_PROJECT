@@ -74,7 +74,7 @@ public class Phone : MonoBehaviour
         if (isCorrect)
         {
             Debug.Log("correct Answer");
-            GameHandler.instance.AnsweredCorrectly();
+            //GameHandler.instance.AnsweredCorrectly();
         }
         StartCoroutine(ThankYouForAnswerin());
     }

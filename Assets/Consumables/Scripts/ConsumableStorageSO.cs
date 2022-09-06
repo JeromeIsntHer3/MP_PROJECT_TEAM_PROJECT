@@ -6,4 +6,14 @@ using UnityEngine;
 public class ConsumableStorageSO : ScriptableObject
 {
     public List<ConsumableSO> consumableSOs;
+
+    public void AddConsumable(ConsumableSO consumable)
+    {
+        consumableSOs.Add(consumable);
+    }
+
+    public void RemoveConsumable(ConsumableSO consumable)
+    {
+        consumableSOs.Remove(consumable);
+    }
 }

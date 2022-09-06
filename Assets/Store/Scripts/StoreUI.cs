@@ -41,7 +41,7 @@ public class StoreUI : MonoBehaviour
 
         buyItem?.onClick.RemoveListener(Buy);
 
-        survey.SetActive(true);
+        if(survey != null) survey.SetActive(true);
     }
 
     void UpdateSlots()

@@ -1538,7 +1538,7 @@ public class LeanTween : MonoBehaviour {
     }
 
     /**
-    * <summary>Rotate a GameObject in the objects local space (on the transforms localEulerAngles object)</summary>
+    * <summary>Rotate a GameObject in the objects local space (on the childTransforms localEulerAngles object)</summary>
     * 
     * @method LeanTween.rotateLocal
     * @param {GameObject} gameObject:GameObject Gameobject that you wish to rotate
@@ -2459,7 +2459,7 @@ public class LeanTween : MonoBehaviour {
     // Mark: LeanTween Following
 
     /**
-    * <summary>Follow another transforms position/scale/backgroundColor with a damp transition (eases in and out to destination with no overshoot)</summary>
+    * <summary>Follow another childTransforms position/scale/backgroundColor with a damp transition (eases in and out to destination with no overshoot)</summary>
     * 
     * @method LeanTween.followDamp
     * @param {Transform} transform:Transform the transform you wish to be the follower
@@ -2526,7 +2526,7 @@ public class LeanTween : MonoBehaviour {
     }
 
     /**
-    * <summary>Follow another transforms position/scale/backgroundColor with a springy transition (eases in and out to destination with possible overshoot bounciness)</summary>
+    * <summary>Follow another childTransforms position/scale/backgroundColor with a springy transition (eases in and out to destination with possible overshoot bounciness)</summary>
     * 
     * @method LeanTween.followSpring
     * @param {Transform} transform:Transform the transform you wish to be the follower
@@ -2595,7 +2595,7 @@ public class LeanTween : MonoBehaviour {
     }
 
     /**
-    * <summary>Follow another transforms position/scale/backgroundColor (with an ease that bounces back some when it reaches it's destination)</summary>
+    * <summary>Follow another childTransforms position/scale/backgroundColor (with an ease that bounces back some when it reaches it's destination)</summary>
     * 
     * @method LeanTween.followBounceOut
     * @param {Transform} transform:Transform the transform you wish to be the follower
@@ -2664,7 +2664,7 @@ public class LeanTween : MonoBehaviour {
     }
 
     /**
-    * <summary>Follow another transforms position/scale/backgroundColor with a constant speed</summary>
+    * <summary>Follow another childTransforms position/scale/backgroundColor with a constant speed</summary>
     * 
     * @method LeanTween.followLinear
     * @param {Transform} transform:Transform the transform you wish to be the follower

@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Image statusOverlay;
     [SerializeField] private GameObject interactBox;
 
+
     void Update()
     {
         ChangeStatUpdate();
@@ -36,6 +37,77 @@ public class Player : MonoBehaviour
         if (currHealth <= 0)
         {
             GameEvents.current.GameOver();
+        }
+    }
+
+    void ChangeStatUpdate()
+    {
+        if(overTimeDuration > 0)
+        {
+            overTimeDuration -= Time.deltaTime;
+            switch (statToChange)
+            {
+                case TypeOfStat.Health:
+                    currHealth += overTimeDamage * Time.deltaTime;
+                    break;
+                case TypeOfStat.Recovery:
+                    currRecovery += overTimeDamage * Time.deltaTime;
+                    break;
+                case TypeOfStat.Infection:
+                    currInfection += overTimeDamage * Time.deltaTime;
+                    break;
+                default:
+                    break;
+            }
+        }
+        StatClamps();
+    }
+
+    void StatClamps()
+    {
+        currHealth = Mathf.Clamp(currHealth, 0, 100);
+        currRecovery = Mathf.Clamp(currRecovery, 0, 100);
+        currInfection = Mathf.Clamp(currInfection, 0, 100);
+    }
+
+    void Infection()
+    {
+        currInfection += currInfectionRate * Time.deltaTime;
+        currInfection = Mathf.Clamp(currInfection, 0, 100);
+        statusOverlay.color = Color.Lerp(Color.black, new Color(181/255f,0,203/255f,255), currInfection / 100);
+
+        if(currInfection >= 100)
+        {
+            currHealth -= Time.deltaTime;
+        }
+    }
+
+    void EatOnTime()
+    {
+        if (!TimeHandler.instance.HasEatenPill() && TimeHandler.instance.TimeReset())
+        {
+            //GameHandler.instance.MissedPill();
+            switch (TimeHandler.instance.Cycles())
+            {
+                case < 1:
+                    break;
+                case < 6:
+                    ChangeStat(TypeOfStat.Health, -missedEatingDamage);
+                    ChangeStat(TypeOfStat.Recovery, -missedEatingDamage);
+                    break;
+                case < 11:
+                    ChangeStat(TypeOfStat.Health, -missedEatingDamage * 2);
+                    ChangeStat(TypeOfStat.Recovery, -missedEatingDamage * 2);
+                    break;
+                case < 16:
+                    ChangeStat(TypeOfStat.Health, -missedEatingDamage * 3);
+                    ChangeStat(TypeOfStat.Recovery, -missedEatingDamage * 3);
+                    break;
+                default:
+                    ChangeStat(TypeOfStat.Health, -missedEatingDamage * 4);
+                    ChangeStat(TypeOfStat.Recovery, -missedEatingDamage * 4);
+                    break;
+            }
         }
     }
 
@@ -96,77 +168,6 @@ public class Player : MonoBehaviour
             overTimeDuration = duration;
         }
         StatClamps();
-    }
-
-    void ChangeStatUpdate()
-    {
-        if(overTimeDuration > 0)
-        {
-            overTimeDuration -= Time.deltaTime;
-            switch (statToChange)
-            {
-                case TypeOfStat.Health:
-                    currHealth += overTimeDamage * Time.deltaTime;
-                    break;
-                case TypeOfStat.Recovery:
-                    currRecovery += overTimeDamage * Time.deltaTime;
-                    break;
-                case TypeOfStat.Infection:
-                    currInfection += overTimeDamage * Time.deltaTime;
-                    break;
-                default:
-                    break;
-            }
-        }
-        StatClamps();
-    }
-
-    void StatClamps()
-    {
-        currHealth = Mathf.Clamp(currHealth, 0, 100);
-        currRecovery = Mathf.Clamp(currRecovery, 0, 100);
-        currInfection = Mathf.Clamp(currInfection, 0, 100);
-    }
-
-    void Infection()
-    {
-        currInfection += currInfectionRate * Time.deltaTime;
-        currInfection = Mathf.Clamp(currInfection, 0, 100);
-        statusOverlay.color = Color.Lerp(Color.black, new Color(181/255f,0,203/255f,255), currInfection / 100);
-
-        if(currInfection >= 100)
-        {
-            currHealth -= Time.deltaTime;
-        }
-    }
-
-    void EatOnTime()
-    {
-        if (!TimeHandler.instance.HasEatenPill() && TimeHandler.instance.TimeReset())
-        {
-            GameHandler.instance.MissedPill();
-            switch (TimeHandler.instance.Cycles())
-            {
-                case < 1:
-                    break;
-                case < 6:
-                    ChangeStat(TypeOfStat.Health, -missedEatingDamage);
-                    ChangeStat(TypeOfStat.Recovery, -missedEatingDamage);
-                    break;
-                case < 11:
-                    ChangeStat(TypeOfStat.Health, -missedEatingDamage * 2);
-                    ChangeStat(TypeOfStat.Recovery, -missedEatingDamage * 2);
-                    break;
-                case < 16:
-                    ChangeStat(TypeOfStat.Health, -missedEatingDamage * 3);
-                    ChangeStat(TypeOfStat.Recovery, -missedEatingDamage * 3);
-                    break;
-                default:
-                    ChangeStat(TypeOfStat.Health, -missedEatingDamage * 4);
-                    ChangeStat(TypeOfStat.Recovery, -missedEatingDamage * 4);
-                    break;
-            }
-        }
     }
 
     public void Respawn()

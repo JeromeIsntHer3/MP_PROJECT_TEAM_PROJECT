@@ -10,7 +10,7 @@ public class TransitionHandler : MonoBehaviour
     public float duration;
     public bool hasSceneTrasition;
 
-    void OnEnable()
+    void Start()
     {
         GameEvents.current.OnLoadLevel += LevelLoad;
     }

@@ -26,7 +26,7 @@ public class SoundManager : MonoBehaviour
     public AudioClip inGameTheme;
 
     [Header("Sliders")]
-    public Slider fxSlider;
+    public Slider effectsSlider;
     public TextMeshProUGUI fxValueText;
     public Slider musicSlider;
     public TextMeshProUGUI musicValueText;
@@ -38,9 +38,9 @@ public class SoundManager : MonoBehaviour
 
     void Start()
     {
-        effectsSource.volume = fxSlider.value/100;
+        effectsSource.volume = effectsSlider.value/100;
         musicSource.volume = musicSlider.value/100;
-        fxValueText.text = fxSlider.value.ToString();
+        fxValueText.text = effectsSlider.value.ToString();
         musicValueText.text = musicSlider.value.ToString();
         PlayLoop(inGameTheme);
     }

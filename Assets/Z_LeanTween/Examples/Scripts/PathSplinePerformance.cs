@@ -25,7 +25,7 @@ public class PathSplinePerformance : MonoBehaviour {
 	void Start () {
 		Application.targetFrameRate = 240;
 
-		// Make the track from the provided transforms
+		// Make the track from the provided childTransforms
 		List<Vector3> randList = new List<Vector3>();
 		float degree = 0f;
 		int nodeLength = trackNodes + 1;// We need to add some extra because the first and last nodes just act as *guides* to the first and last curvature

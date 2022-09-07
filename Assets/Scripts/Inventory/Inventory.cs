@@ -5,41 +5,37 @@ public class Inventory : MonoBehaviour
 {
     [SerializeField] private ConsumableStorageSO inventoryConsumableStorage;
     [SerializeField] private int currency;
-    [SerializeField] private TextMeshProUGUI points;
+    [SerializeField] private TextMeshProUGUI coins;
 
     public delegate void InventoryChanged();
     public InventoryChanged inventoryChanged;
 
     public void Add(ConsumableSO consumable)
     {
-        inventoryConsumableStorage.consumableSOs.Add(consumable);
+        inventoryConsumableStorage.AddConsumable(consumable);
         inventoryChanged?.Invoke();
     }
 
     public void Remove(ConsumableSO consumable)
     {
-        inventoryConsumableStorage.consumableSOs.Remove(consumable);
+        inventoryConsumableStorage.RemoveConsumable(consumable);
         inventoryChanged?.Invoke();
+    }
+
+    public ConsumableStorageSO GetInventoryStorage()
+    {
+        return inventoryConsumableStorage;
     }
 
     public void ChangeCurrency(int amount)
     {
         currency += amount;
-        points.text = currency.ToString();
-    }
-
-    public ConsumableStorageSO GetInventory()
-    {
-        return inventoryConsumableStorage;
+        GameHandler.instance.CurrencyIncrease(amount);
+        coins.text = currency.ToString();
     }
 
     public int GetCurrency()
     {
         return currency;
-    }
-
-    public void SetCurrency(int currency)
-    {
-        this.currency = currency;
     }
 }

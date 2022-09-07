@@ -979,7 +979,7 @@ RectTransform:
   - {fileID: 1268512076}
   - {fileID: 1833481163}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2228,7 +2228,7 @@ Transform:
   - {fileID: 363687244}
   - {fileID: 1900181279}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &645773236
 GameObject:
@@ -2475,7 +2475,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &824373838
 GameObject:
@@ -2509,7 +2509,7 @@ Transform:
   - {fileID: 214299873}
   - {fileID: 9221655071188829903}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &824373840
 MonoBehaviour:
@@ -2523,9 +2523,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdecd5c9e12605049b81f19ff93fea1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentLevel: {fileID: 0}
-  nextLevel: {fileID: 0}
-  gameData: {fileID: 11400000, guid: d04d6f4cbf8c1be4d8c0fee24d7c4956, type: 2}
+  playerData: {fileID: 11400000, guid: 3148005908016494b80d084ece82bdb7, type: 2}
+  settingsData: {fileID: 11400000, guid: beb2695bdfb34c248a419fb5005d4dec, type: 2}
 --- !u!1 &834560580
 GameObject:
   m_ObjectHideFlags: 0
@@ -2710,7 +2709,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &933702711
 GameObject:
@@ -3537,7 +3536,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &1267416062
 GameObject:
@@ -3669,6 +3668,7 @@ MonoBehaviour:
   typeOfMenu: 1
   back: {fileID: 1257996943659989117}
   levelStorage:
+  - {fileID: 11400000, guid: 3d6171cbad67c4449aba690bc548169c, type: 2}
   - {fileID: 11400000, guid: d858c1c0ed678f1418ff932752f624fa, type: 2}
   - {fileID: 11400000, guid: 1537287269d79a1468c70966965b218f, type: 2}
   - {fileID: 11400000, guid: 31c16fbf6d90f3c459b365ed0157124d, type: 2}
@@ -4371,7 +4371,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1625130094
 GameObject:
@@ -5264,7 +5264,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1833481162
 GameObject:
@@ -5747,7 +5747,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1926292220
 GameObject:
@@ -6135,6 +6135,50 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
   m_EffectDistance: {x: 5, y: -5}
   m_UseGraphicAlpha: 1
+--- !u!1 &2078117609
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2078117611}
+  - component: {fileID: 2078117610}
+  m_Layer: 0
+  m_Name: GameEvents
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2078117610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2078117609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9a0c8d9baadeb145a91ab9a895f1ea6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &2078117611
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2078117609}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2086557523
 GameObject:
   m_ObjectHideFlags: 0
@@ -7992,8 +8036,8 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6478536213147159724, guid: a4abc62848109c9488a5ac93a53c28d1, type: 3}
-  - {fileID: -876546973899608171, guid: a4abc62848109c9488a5ac93a53c28d1, type: 3}
+  - {fileID: 2100000, guid: a03baed05d8afab43b7e49db89e90158, type: 2}
+  - {fileID: 2100000, guid: a03baed05d8afab43b7e49db89e90158, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -13823,7 +13867,7 @@ Transform:
   - {fileID: 5733351420320184531}
   - {fileID: 956995617542452415}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!320 &5195550607889968647
 PlayableDirector:
@@ -17903,8 +17947,8 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6478536213147159724, guid: a4abc62848109c9488a5ac93a53c28d1, type: 3}
-  - {fileID: -876546973899608171, guid: a4abc62848109c9488a5ac93a53c28d1, type: 3}
+  - {fileID: 2100000, guid: a03baed05d8afab43b7e49db89e90158, type: 2}
+  - {fileID: 2100000, guid: a03baed05d8afab43b7e49db89e90158, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -19200,7 +19244,7 @@ MonoBehaviour:
   buttonSound: {fileID: 8300000, guid: 99dd3aafdeb29a34e8d3c5502b0a7f85, type: 3}
   mainMenuTheme: {fileID: 8300000, guid: 34c20cfb5dc0b0449a7a2466307e0a3f, type: 3}
   inGameTheme: {fileID: 8300000, guid: bd2562d1bc3b0d5488b5f90b823e1f02, type: 3}
-  fxSlider: {fileID: 1767317243}
+  effectsSlider: {fileID: 1767317243}
   fxValueText: {fileID: 1786697619}
   musicSlider: {fileID: 243186006}
   musicValueText: {fileID: 1215109775}

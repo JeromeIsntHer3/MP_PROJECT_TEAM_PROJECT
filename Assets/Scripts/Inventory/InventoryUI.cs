@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class InventoryUI : MonoBehaviour
 {
+    [Header("Inventory")]
     [SerializeField] private Inventory playerInventory;
     [SerializeField] private GameObject inventoryUI;
     [SerializeField] private Transform inventoryParent;
@@ -65,9 +66,9 @@ public class InventoryUI : MonoBehaviour
 
     void SetupSlots()
     {
-        for (int i = 0; i < playerInventory.GetInventory().consumableSOs.Count; i++)
+        for (int i = 0; i < playerInventory.GetInventoryStorage().consumableSOs.Count; i++)
         {
-            inventorySlots[i].SetSlot(playerInventory.GetInventory().consumableSOs[i],this);
+            inventorySlots[i].SetSlot(playerInventory.GetInventoryStorage().consumableSOs[i],this);
         }
     }
 

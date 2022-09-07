@@ -16,6 +16,7 @@ MonoBehaviour:
     health: 100
     recovery: 0
     infection: 0
+    infectionRate: 0
     inventory: {fileID: 11400000, guid: d3b0b0c14cbe19f478715f0a9c84a204, type: 2}
   defaultPlayerData:
     d_health: 100

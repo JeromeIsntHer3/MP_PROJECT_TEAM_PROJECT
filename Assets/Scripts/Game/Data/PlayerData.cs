@@ -10,6 +10,7 @@ public class PlayerData : ScriptableObject
         public float health;
         public float recovery;
         public float infection;
+        public float infectionRate;
         public ConsumableStorageSO inventory;
     }
 

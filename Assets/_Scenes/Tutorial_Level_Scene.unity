@@ -14274,7 +14274,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: 3148005908016494b80d084ece82bdb7, type: 2}
   settingsData: {fileID: 11400000, guid: beb2695bdfb34c248a419fb5005d4dec, type: 2}
-  gameRunning: 0
 --- !u!4 &299096602
 Transform:
   m_ObjectHideFlags: 0
@@ -19716,8 +19715,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 466008041}
-  m_LocalRotation: {x: 0.098537624, y: -0.0000000042806607, z: 4.238689e-10, w: 0.99513334}
-  m_LocalPosition: {x: -26.9, y: 36.4, z: -10}
+  m_LocalRotation: {x: 0.098537624, y: 0.0000000042806607, z: -4.238689e-10, w: 0.99513334}
+  m_LocalPosition: {x: 0.85, y: 6.83, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -29442,8 +29441,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 776054274}
-  m_LocalRotation: {x: 0.098537624, y: -0.0000000042806607, z: 4.238689e-10, w: 0.99513334}
-  m_LocalPosition: {x: -26.9, y: 36.4, z: -10}
+  m_LocalRotation: {x: 0.098537624, y: 0.0000000042806607, z: -4.238689e-10, w: 0.99513334}
+  m_LocalPosition: {x: 0.85, y: 6.83, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -66625,6 +66624,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ca1c367bc8097949a7d1aaa8ed86071, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerData: {fileID: 11400000, guid: 3148005908016494b80d084ece82bdb7, type: 2}
   missedEatingDamage: 10
   statusOverlay: {fileID: 922749881}
   interactBox: {fileID: 1250005928}
@@ -66682,7 +66682,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1564122154}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -26.9, y: 31.4, z: 0}
+  m_LocalPosition: {x: 0.85, y: 1.83, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

@@ -13,12 +13,13 @@ public class LevelCompleteMenu : MonoBehaviour
     [SerializeField] private TextMeshProUGUI pillsText;
     [SerializeField] private TextMeshProUGUI timeTakenText;
     [SerializeField] private TextMeshProUGUI resultText;
+    [SerializeField] private PlayerData playerData;
 
     void OnEnable()
     {
         nextButton?.onClick.AddListener(GoToNextLevel);
         quitButton?.onClick.AddListener(QuitToMenu);
-        //ShowResults();
+        ShowResults();
     }
 
     void OnDisable()
@@ -37,46 +38,46 @@ public class LevelCompleteMenu : MonoBehaviour
         GameEvents.current.LoadLevel(0);
     }
 
-    //void ShowResults()
-    //{
-    //    coinsText.text = GameHandler.instance.CoinsCollected().ToString();
-    //    pillsText.text = GameHandler.instance.PillsMissed().ToString();
-    //    TimeSpan timePlaying = TimeSpan.FromSeconds(GameHandler.instance.TimeToComplete());
-    //    string timeString = timePlaying.ToString("mm':'ss");
-    //    timeTakenText.text = timeString;
+    void ShowResults()
+    {
+        coinsText.text = playerData.inGamePlayerData.currency.ToString();
+        pillsText.text = playerData.inGamePlayerData.pillsNotEaten.ToString();
+        TimeSpan timePlaying = TimeSpan.FromSeconds(playerData.inGamePlayerData.timePlayed);
+        string timeString = timePlaying.ToString("mm':'ss");
+        timeTakenText.text = timeString;
 
-    //    float coinGrade = (GameHandler.instance.CoinsCollected() / 250) * 100;
-    //    float pillGrade = 100 - ((GameHandler.instance.PillsMissed() / 10) * 100);
-    //    float timeGrade = 100 - ((GameHandler.instance.TimeToComplete() / 900) * 100);
+        float coinGrade = (playerData.inGamePlayerData.currency * 100);
+        float pillGrade = 100 - ((playerData.inGamePlayerData.pillsNotEaten / 10) * 100);
+        float timeGrade = 100 - ((playerData.inGamePlayerData.timePlayed / 900) * 100);
 
-    //    float finalGrade = (coinGrade + pillGrade + timeGrade) / 300 * 100;
+        float finalGrade = (coinGrade + pillGrade + timeGrade) / 300 * 100;
 
-    //    switch (finalGrade)
-    //    {
-    //        case <= 25:
-    //            resultText.text = "D";
-    //            break;
-    //        case <= 40:
-    //            resultText.text = "D+";
-    //            break;
-    //        case <= 55:
-    //            resultText.text = "C";
-    //            break;
-    //        case <= 65:
-    //            resultText.text = "C+";
-    //            break;
-    //        case <= 75:
-    //            resultText.text = "B";
-    //            break;
-    //        case <= 85:
-    //            resultText.text = "B+";
-    //            break;
-    //        case <= 90:
-    //            resultText.text = "A";
-    //            break;
-    //        case <= 100:
-    //            resultText.text = "S";
-    //            break;
-    //    } 
-    //}
+        switch (finalGrade)
+        {
+            case <= 25:
+                resultText.text = "D";
+                break;
+            case <= 40:
+                resultText.text = "D+";
+                break;
+            case <= 55:
+                resultText.text = "C";
+                break;
+            case <= 65:
+                resultText.text = "C+";
+                break;
+            case <= 75:
+                resultText.text = "B";
+                break;
+            case <= 85:
+                resultText.text = "B+";
+                break;
+            case <= 90:
+                resultText.text = "A";
+                break;
+            case <= 100:
+                resultText.text = "S";
+                break;
+        }
+    }
 }

@@ -14,11 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inGamePlayerData:
     health: 100
-    recovery: 0
+    recovery: 100
     infection: 0
     infectionRate: 0
     inventory: {fileID: 11400000, guid: d3b0b0c14cbe19f478715f0a9c84a204, type: 2}
+    currency: 0
+    pillsNotEaten: 0
+    timePlayed: 3.1772316
+    questionsCorrect: 0
   defaultPlayerData:
     d_health: 100
     d_recovery: 0
     d_infection: 0
+    d_infectionRate: 0
+    d_currency: 0
+    d_pillsNotEaten: 0
+    d_timePlayed: 0
+    d_questionsCorrect: 0

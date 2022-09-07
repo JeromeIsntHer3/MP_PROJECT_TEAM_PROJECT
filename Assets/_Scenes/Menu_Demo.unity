@@ -2525,7 +2525,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: 3148005908016494b80d084ece82bdb7, type: 2}
   settingsData: {fileID: 11400000, guid: beb2695bdfb34c248a419fb5005d4dec, type: 2}
-  gameRunning: 0
 --- !u!1 &834560580
 GameObject:
   m_ObjectHideFlags: 0
@@ -8037,8 +8036,8 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6478536213147159724, guid: a4abc62848109c9488a5ac93a53c28d1, type: 3}
-  - {fileID: -876546973899608171, guid: a4abc62848109c9488a5ac93a53c28d1, type: 3}
+  - {fileID: 2100000, guid: a03baed05d8afab43b7e49db89e90158, type: 2}
+  - {fileID: 2100000, guid: a03baed05d8afab43b7e49db89e90158, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -17948,8 +17947,8 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6478536213147159724, guid: a4abc62848109c9488a5ac93a53c28d1, type: 3}
-  - {fileID: -876546973899608171, guid: a4abc62848109c9488a5ac93a53c28d1, type: 3}
+  - {fileID: 2100000, guid: a03baed05d8afab43b7e49db89e90158, type: 2}
+  - {fileID: 2100000, guid: a03baed05d8afab43b7e49db89e90158, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

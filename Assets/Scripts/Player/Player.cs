@@ -27,6 +27,14 @@ public class Player : MonoBehaviour
         ChangeStatUpdate();
         Infection();
         EatOnTime();
+        if(playerData.inGamePlayerData.health <= 0)
+        {
+            GameEvents.current.GameOver();
+        }
+        if(playerData.inGamePlayerData.recovery >= 100)
+        {
+            GameEvents.current.GameComplete();
+        }
     }
 
     void ChangeStatUpdate()
@@ -75,6 +83,7 @@ public class Player : MonoBehaviour
     {
         if (!TimeHandler.instance.HasEatenPill() && TimeHandler.instance.TimeReset())
         {
+            GameHandler.instance.PillsNotEaten();
             //GameHandler.instance.MissedPill();
             switch (TimeHandler.instance.Cycles())
             {

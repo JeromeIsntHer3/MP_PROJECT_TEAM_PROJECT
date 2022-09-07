@@ -26,10 +26,14 @@ public class GameHandler : MonoBehaviour
             instance = this;
         }
         
-
         player = FindObjectOfType<Player>();
         if(player != null) playerInventory = player.GetComponent<Inventory>();
         soundManager = transform.GetComponentInChildren<SoundManager>();
+    }
+
+    void Start()
+    {
+        GameEvents.current.OnGameComplete += TotalTimePlayed;
     }
 
     void OnEnable()
@@ -97,4 +101,28 @@ public class GameHandler : MonoBehaviour
         settingsData.inGameSettingsData.effectsVolume = settingsData.defaultSettingsData.d_effectsVolume;
         settingsData.inGameSettingsData.musicVolume = settingsData.defaultSettingsData.d_musicVolume;
     }
+
+    #region ScoreTracking
+
+    public void AnsweredCorrectly()
+    {
+        playerData.inGamePlayerData.questionsCorrect += 1;
+    }
+
+    public void CurrencyIncrease(int amount)
+    {
+        playerData.inGamePlayerData.currency += amount;
+    }
+
+    public void TotalTimePlayed()
+    {
+        playerData.inGamePlayerData.timePlayed =  Time.time;
+    }
+
+    public void PillsNotEaten()
+    {
+        playerData.inGamePlayerData.pillsNotEaten += 1;
+    }
+
+    #endregion
 }

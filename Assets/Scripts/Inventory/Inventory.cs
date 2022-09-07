@@ -30,6 +30,7 @@ public class Inventory : MonoBehaviour
     public void ChangeCurrency(int amount)
     {
         currency += amount;
+        GameHandler.instance.CurrencyIncrease(amount);
         coins.text = currency.ToString();
     }
 

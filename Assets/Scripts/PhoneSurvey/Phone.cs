@@ -28,11 +28,6 @@ public class Phone : MonoBehaviour
         SetUpSlots();
     }
 
-    void OnDisable()
-    {
-        
-    }
-
     void SetUpSlots()
     {
         OptionSlot[] optionSlots = displayParent.GetComponentsInChildren<OptionSlot>();
@@ -66,7 +61,7 @@ public class Phone : MonoBehaviour
             uiElementParent.GetChild(i).gameObject.SetActive(active);
         }
         questionAnswered.SetActive(!active);
-        LeanTween.move(thisTransform, onScreenPosition, animDurr);
+        LeanTween.move(thisTransform, onScreenPosition, animDurr).setEaseInOutSine();
     }
 
     public void SelectedOptionResponse(bool isCorrect)
@@ -74,7 +69,7 @@ public class Phone : MonoBehaviour
         if (isCorrect)
         {
             Debug.Log("correct Answer");
-            //GameHandler.instance.AnsweredCorrectly();
+            GameHandler.instance.AnsweredCorrectly();
         }
         StartCoroutine(ThankYouForAnswerin());
     }
@@ -82,8 +77,14 @@ public class Phone : MonoBehaviour
     IEnumerator ThankYouForAnswerin()
     {
         SetUpPhone(false);
-        yield return new WaitForSeconds(2);
-        LeanTween.move(thisTransform, offScreenPosition, animDurr);
+        yield return new WaitForSeconds(animDurr);
+        LeanTween.move(thisTransform, offScreenPosition, animDurr).setEaseInOutSine();
+        StartCoroutine(SetOff());
+    }
+
+    IEnumerator SetOff()
+    {
+        yield return new WaitForSeconds(animDurr);
         gameObject.SetActive(false);
     }
 }

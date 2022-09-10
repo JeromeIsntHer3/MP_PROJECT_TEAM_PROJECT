@@ -11,21 +11,13 @@ public class Player : MonoBehaviour
     //Main Values
     [SerializeField] private PlayerData playerData;
     [SerializeField] private float missedEatingDamage;
-
     //Values to be Set
-    private float overTimeDamage;
-    private float overTimeDuration;
     private Vector3 currRespawnLocation;
-    private TypeOfStat statToChange;
 
-    [SerializeField] private Image statusOverlay;
-    [SerializeField] private GameObject interactBox;
 
 
     void Update()
     {
-        ChangeStatUpdate();
-        Infection();
         EatOnTime();
         if(playerData.inGamePlayerData.health <= 0)
         {
@@ -37,46 +29,11 @@ public class Player : MonoBehaviour
         }
     }
 
-    void ChangeStatUpdate()
-    {
-        if(overTimeDuration > 0)
-        {
-            overTimeDuration -= Time.deltaTime;
-            switch (statToChange)
-            {
-                case TypeOfStat.Health:
-                    playerData.inGamePlayerData.health += overTimeDamage * Time.deltaTime;
-                    break;
-                case TypeOfStat.Recovery:
-                    playerData.inGamePlayerData.recovery += overTimeDamage * Time.deltaTime;
-                    break;
-                case TypeOfStat.Infection:
-                    playerData.inGamePlayerData.infection += overTimeDamage * Time.deltaTime;
-                    break;
-                default:
-                    break;
-            }
-        }
-        StatClamps();
-    }
-
     void StatClamps()
     {
         playerData.inGamePlayerData.health = Mathf.Clamp(playerData.inGamePlayerData.health, 0, 100);
         playerData.inGamePlayerData.recovery = Mathf.Clamp(playerData.inGamePlayerData.recovery, 0, 100);
         playerData.inGamePlayerData.infection = Mathf.Clamp(playerData.inGamePlayerData.infection, 0, 100);
-    }
-
-    void Infection()
-    {
-        playerData.inGamePlayerData.infection += playerData.inGamePlayerData.infectionRate * Time.deltaTime;
-        playerData.inGamePlayerData.infection = Mathf.Clamp(playerData.inGamePlayerData.infection, 0, 100);
-        statusOverlay.color = Color.Lerp(Color.black, new Color(181/255f,0,203/255f,255), playerData.inGamePlayerData.infection / 100);
-
-        if(playerData.inGamePlayerData.infection >= 100)
-        {
-            playerData.inGamePlayerData.health -= Time.deltaTime;
-        }
     }
 
     void EatOnTime()
@@ -141,7 +98,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void ChangeStat (TypeOfStat changeType, float amount, bool overTime = false, float overTimeAmount = 0, float duration = 0)
+    public void ChangeStat (TypeOfStat changeType, float amount)
     {
         TypeOfStat stat;
         stat = changeType;
@@ -159,11 +116,6 @@ public class Player : MonoBehaviour
             default:
                 break;
         }
-        if (overTime)
-        {
-            overTimeDamage = overTimeAmount;
-            overTimeDuration = duration;
-        }
         StatClamps();
     }
 
@@ -175,10 +127,5 @@ public class Player : MonoBehaviour
     public void SetRespawnLocation(Vector3 location)
     {
         currRespawnLocation = location;
-    }
-
-    public void SetInteractBox(bool set)
-    {
-        interactBox.SetActive(set);
     }
 }

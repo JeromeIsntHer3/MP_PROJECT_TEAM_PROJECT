@@ -9,11 +9,6 @@ public class Buff_HealthSO : BuffSO
     public override void StartEffect(GameObject parent)
     {
         Player player = parent.GetComponent<Player>();
-        player.ChangeStat(TypeOfStat.Health,5,true,Health,5);
-    }
-
-    public override void EndEffect(GameObject parent)
-    {
-        
+        player.ChangeStat(TypeOfStat.Health,Random.Range(1,Health));
     }
 }

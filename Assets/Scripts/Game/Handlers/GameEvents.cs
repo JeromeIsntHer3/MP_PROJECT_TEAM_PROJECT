@@ -41,22 +41,4 @@ public class GameEvents : MonoBehaviour
             OnLoadLevel(level);
         }
     }
-
-    public event Action OnOutOfBounds;
-    public void OutOfBounds()
-    {
-        if(OnOutOfBounds != null)
-        {
-            OnOutOfBounds();
-        }
-    }
-
-    public event Action OnQuitToMenu;
-    public void QuitToMenu()
-    {
-        if(OnQuitToMenu != null)
-        {
-            OnQuitToMenu();
-        }
-    }
 }

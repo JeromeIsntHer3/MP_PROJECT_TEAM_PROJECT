@@ -53,7 +53,7 @@ public class Bacteria : MonoBehaviour
         if (other.tag == "Player")
         {
             Player player = other.GetComponent<Player>();
-            player.ChangeStat(TypeOfStat.Health, 0, true, damage, 5);
+            player.ChangeStat(TypeOfStat.Health, 2);
             soundManager.PlaySound(soundManager.HitSound);
             Destroy(gameObject);
         }

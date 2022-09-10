@@ -7,11 +7,9 @@ public class PlayerInput : MonoBehaviour
     public bool jumpPressed { get; private set; }
     public bool jumpHeld { get; private set; }
     public bool jumpReleased { get; private set; }
-    public bool swapPerspective { get; private set; }
 
     public KeyCode jumpKey;
     public KeyCode pauseKey;
-    public KeyCode swapKey;
 
     public static bool keysEnabled = true;
 
@@ -48,10 +46,6 @@ public class PlayerInput : MonoBehaviour
         jumpHeld = Input.GetKey(jumpKey);
         jumpReleased = Input.GetKeyUp(jumpKey);
 
-        if (Input.GetKeyDown(swapKey))
-        {
-            swapPerspective = !swapPerspective;
-        }
         if (Input.GetKeyDown(pauseKey))
         {
             GamePaused?.Invoke();

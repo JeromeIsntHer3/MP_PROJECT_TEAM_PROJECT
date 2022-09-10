@@ -26,7 +26,7 @@ public class ObjectSpawner : MonoBehaviour
         Coin coin = temp.GetComponent<Coin>();
         if (coin)
         {
-            coin.currencyValue = Random.Range(0, 5);
+            coin.currencyValue = Random.Range(1, 5);
         }
     }
 }

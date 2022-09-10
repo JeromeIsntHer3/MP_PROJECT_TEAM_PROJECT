@@ -25,7 +25,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float apexBoost;
     [SerializeField] private float fallOffAtApex;
     [SerializeField] private float coyotoTimeBuffer;
-    [SerializeField] private float extraHeight;
 
     //Animation
     private static readonly int Idle = Animator.StringToHash("Idle");

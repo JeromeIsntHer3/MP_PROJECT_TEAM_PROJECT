@@ -10,11 +10,6 @@ public class DisplayBuffSlot : MonoBehaviour
     private float maxDuration;
     private float currDuration;
 
-    void OnEnable()
-    {
-        currDuration = maxDuration;
-    }
-
     void Update()
     {
         if(currDuration > 0)

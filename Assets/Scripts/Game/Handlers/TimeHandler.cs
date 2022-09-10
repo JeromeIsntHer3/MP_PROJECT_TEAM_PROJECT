@@ -22,7 +22,6 @@ public class TimeHandler : MonoBehaviour
     private TextMeshProUGUI timeDisplay;
 
     private float timeCountdown;
-    public float CurrentTime { get { return timeCountdown; } }
 
     void Awake()
     {
@@ -101,7 +100,7 @@ public class TimeHandler : MonoBehaviour
         return cycles;
     }
 
-    public void Update()
+    void Update()
     {
         TimeCycle();
         if (TimeReset())

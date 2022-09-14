@@ -32,7 +32,7 @@ public class Phone : MonoBehaviour
     {
         OptionSlot[] optionSlots = displayParent.GetComponentsInChildren<OptionSlot>();
         if (optionSlots.Length == 0) return;
-        for (int i = 0; i < optionSlots.Length - 1; i++)
+        for (int i = 0; i < optionSlots.Length; i++)
         {
             optionSlots[i].SetOptionSlot(currQuestion.options[i],currQuestion.correctOrWrong[i], this);
         }
@@ -66,6 +66,7 @@ public class Phone : MonoBehaviour
 
     public void SelectedOptionResponse(bool isCorrect)
     {
+        currQuestion.answered = true;
         if (isCorrect)
         {
             Debug.Log("correct Answer");

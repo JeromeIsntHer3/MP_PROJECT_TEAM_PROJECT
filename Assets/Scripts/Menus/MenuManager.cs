@@ -10,12 +10,13 @@ public static class MenuManager
     public static void Initialise()
     {
         GameObject parent = GameObject.Find("Canvas: Menus");
+        menusAndObjects.Clear();
         hasInit = true;
         if (!parent) Debug.Log("CANVAS IS MISSING, PLEASE CHECK FOR SPELLING ERROR IN CANVASES");
         for(int i = 0; i < parent.transform.childCount; i++)
         {
             if (parent.transform.GetChild(i).GetComponent<Menu>() == null) return;
-            menusAndObjects.Add(parent.transform.GetChild(i).GetComponent<Menu>().typeOfMenu, parent.transform.GetChild(i).gameObject);
+            menusAndObjects.TryAdd(parent.transform.GetChild(i).GetComponent<Menu>().typeOfMenu, parent.transform.GetChild(i).gameObject);
             Debug.Log(parent.transform.GetChild(i).GetComponent<Menu>().typeOfMenu + " " + parent.transform.GetChild(i).gameObject.name);
         }
     }

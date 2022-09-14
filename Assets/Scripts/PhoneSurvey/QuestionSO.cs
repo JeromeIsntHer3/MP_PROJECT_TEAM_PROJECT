@@ -6,7 +6,9 @@ using UnityEngine;
 public class QuestionSO : ScriptableObject
 {
     [TextArea] public string question;
-    [TextArea] public List<string> options;
+    public List<Response> options;
     public List<bool> correctOrWrong;
     public bool answered;
 }
+
+public enum Response { True, False, Unsure }

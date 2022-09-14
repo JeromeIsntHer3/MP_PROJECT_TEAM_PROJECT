@@ -27,10 +27,10 @@ public class OptionSlot : MonoBehaviour
         manager.SelectedOptionResponse(correct);
     }
 
-    public void SetOptionSlot(string option, bool correct, Phone manager)
+    public void SetOptionSlot(Response option, bool correct, Phone manager)
     {
         this.correct = correct;
         this.manager = manager;
-        optionText.text = option;
+        optionText.text = option.ToString();
     }
 }

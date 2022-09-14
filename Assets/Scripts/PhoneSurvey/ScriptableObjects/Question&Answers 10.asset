@@ -12,10 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34816343f78b60d4298a56e19397757d, type: 3}
   m_Name: Question&Answers 10
   m_EditorClassIdentifier: 
-  question: Question 10
-  options:
-  - Option 1
-  - Option 2
-  - Option 3
-  correctOrWrong: 000000
+  question: Antibiotics Resistance only affects those who take Antibitoics.
+  options: 000000000100000002000000
+  correctOrWrong: 000100
   answered: 0

@@ -12,10 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34816343f78b60d4298a56e19397757d, type: 3}
   m_Name: Question&Answers 5
   m_EditorClassIdentifier: 
-  question: Question 5
-  options:
-  - Option 1
-  - Option 2
-  - Option 3
-  correctOrWrong: 000000
-  answered: 0
+  question: I have left over antibiotics, I can keep them for future use.
+  options: 000000000100000002000000
+  correctOrWrong: 000100
+  answered: 1

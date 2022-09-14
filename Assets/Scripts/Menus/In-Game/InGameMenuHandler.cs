@@ -14,6 +14,7 @@ public class InGameMenuHandler : MonoBehaviour
     void Awake()
     {
         playerInput = FindObjectOfType<PlayerInput>();
+        MenuManager.Initialise();
     }
 
     void OnEnable()

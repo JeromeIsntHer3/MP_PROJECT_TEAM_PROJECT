@@ -10,6 +10,7 @@ public class GameHandler : MonoBehaviour
     [Header("Game Data")]
     [SerializeField] private PlayerData playerData;
     [SerializeField] private SettingsData settingsData;
+    [SerializeField] private QuestionStorageSO questionData;
  
     [Header("Player")]
     private Player player;
@@ -97,9 +98,17 @@ public class GameHandler : MonoBehaviour
         playerData.inGamePlayerData.health = playerData.defaultPlayerData.d_health;
         playerData.inGamePlayerData.recovery = playerData.defaultPlayerData.d_recovery;
         playerData.inGamePlayerData.infection = playerData.defaultPlayerData.d_infection;
+        playerData.inGamePlayerData.questionsCorrect = playerData.defaultPlayerData.d_questionsCorrect;
+        playerData.inGamePlayerData.timePlayed = playerData.defaultPlayerData.d_timePlayed;
+        playerData.inGamePlayerData.pillsNotEaten = playerData.defaultPlayerData.d_pillsNotEaten;
+        playerData.inGamePlayerData.currency = playerData.defaultPlayerData.d_currency;
         //Settings
         settingsData.inGameSettingsData.effectsVolume = settingsData.defaultSettingsData.d_effectsVolume;
         settingsData.inGameSettingsData.musicVolume = settingsData.defaultSettingsData.d_musicVolume;
+        for(int i = 0; i < questionData.Questions.Count; i++)
+        {
+            questionData.Questions[i].answered = false;
+        }
     }
 
     #region ScoreTracking

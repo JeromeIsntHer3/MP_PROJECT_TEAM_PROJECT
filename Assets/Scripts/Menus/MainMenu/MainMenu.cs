@@ -12,6 +12,7 @@ public class MainMenu : Menu
     {
         thisTransform = GetComponentInParent<CanvasGroup>();
         StartCoroutine(GameStart());
+        MenuManager.Initialise();
     }
 
     IEnumerator GameStart()

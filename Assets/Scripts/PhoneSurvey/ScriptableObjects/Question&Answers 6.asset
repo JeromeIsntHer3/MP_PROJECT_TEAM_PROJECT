@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34816343f78b60d4298a56e19397757d, type: 3}
   m_Name: Question&Answers 6
   m_EditorClassIdentifier: 
-  question: Question 6
-  options:
-  - Option 1
-  - Option 2
-  - Option 3
-  correctOrWrong: 000000
+  question: Eating probiotic foods like Yoghurt will help me prevent stomach problems
+    after eating Antibiotics.
+  options: 000000000100000002000000
+  correctOrWrong: 010000
   answered: 0

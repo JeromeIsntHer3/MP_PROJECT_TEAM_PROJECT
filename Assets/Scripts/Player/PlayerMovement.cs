@@ -105,10 +105,12 @@ public class PlayerMovement : MonoBehaviour
             if (CoyoteJumpPossible())
             {
                 rb.velocity = new Vector3(rb.velocity.x, jumpForce,rb.velocity.z);
+                SoundManager.instance.PlaySound(SoundManager.instance.JumpSound);
             }
             else if (numberOfJumps > 0)
             {
                 rb.velocity = new Vector3(rb.velocity.x, jumpForce,rb.velocity.z);
+                SoundManager.instance.PlaySound(SoundManager.instance.JumpSound);
             }
         }
         if (playerInput.jumpReleased)

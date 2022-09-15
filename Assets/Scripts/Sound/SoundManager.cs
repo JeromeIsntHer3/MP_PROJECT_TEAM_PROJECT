@@ -7,18 +7,13 @@ using TMPro;
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager instance;
+    public SettingsData settings;
 
     [SerializeField]
     private AudioSource musicSource, effectsSource;
 
-    public AudioSource MusicSource { get { return musicSource; } set { musicSource = value; } }
-    public AudioSource EffectsSource { get { return effectsSource; } set { effectsSource = value; } }
-
     [Header("Gameplay")]
-    public AudioClip HitSound;
-    public AudioClip DieSound;
     public AudioClip JumpSound;
-    public AudioClip pickUpSound;
     public AudioClip buttonSound;
 
     [Header("SoundTrack")]
@@ -38,6 +33,9 @@ public class SoundManager : MonoBehaviour
 
     void Start()
     {
+        effectsSlider.value = settings.inGameSettingsData.effectsVolume;
+        musicSlider.value = settings.inGameSettingsData.musicVolume;
+
         effectsSource.volume = effectsSlider.value/100;
         musicSource.volume = musicSlider.value/100;
         fxValueText.text = effectsSlider.value.ToString();
@@ -63,13 +61,15 @@ public class SoundManager : MonoBehaviour
 
     public void SetEffectsVolume(float volume)
     {
-        EffectsSource.volume = volume / 100;
+        settings.inGameSettingsData.effectsVolume = volume;
+        effectsSource.volume = volume / 100;
         fxValueText.text = volume.ToString();
     }
 
     public void SetMusicVolume(float mVolume)
     {
-        MusicSource.volume = mVolume / 100;
+        settings.inGameSettingsData.musicVolume = mVolume;
+        musicSource.volume = mVolume / 100;
         musicValueText.text = mVolume.ToString();
     }
 }

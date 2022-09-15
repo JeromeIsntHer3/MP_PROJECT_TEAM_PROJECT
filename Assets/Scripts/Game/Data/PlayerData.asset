@@ -18,10 +18,10 @@ MonoBehaviour:
     infection: 0
     infectionRate: 0
     inventory: {fileID: 11400000, guid: d3b0b0c14cbe19f478715f0a9c84a204, type: 2}
-    currency: 50
-    pillsNotEaten: 1
-    timePlayed: 3
-    questionsCorrect: 5
+    currency: 0
+    pillsNotEaten: 0
+    timePlayed: 0
+    questionsCorrect: 0
   defaultPlayerData:
     d_health: 100
     d_recovery: 0

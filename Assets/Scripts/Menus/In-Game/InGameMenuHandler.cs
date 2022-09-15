@@ -48,6 +48,7 @@ public class InGameMenuHandler : MonoBehaviour
     void Resume()
     {
         pauseMenu.SetActive(false);
+        PlayerInput.keysEnabled = true;
     }
 
     void Update()
@@ -57,10 +58,12 @@ public class InGameMenuHandler : MonoBehaviour
             if (!pauseMenu.activeInHierarchy)
             {
                 pauseMenu.SetActive(true);
+                PlayerInput.keysEnabled = false;
             }
             else
             {
                 pauseMenu.SetActive(false);
+                PlayerInput.keysEnabled = true;
             }
         }
     }

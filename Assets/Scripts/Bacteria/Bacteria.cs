@@ -54,7 +54,6 @@ public class Bacteria : MonoBehaviour
         {
             Player player = other.GetComponent<Player>();
             player.ChangeStat(TypeOfStat.Health, 2);
-            soundManager.PlaySound(soundManager.HitSound);
             Destroy(gameObject);
         }
     }

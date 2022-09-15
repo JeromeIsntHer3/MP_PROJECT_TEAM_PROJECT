@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: SettingsData
   m_EditorClassIdentifier: 
   inGameSettingsData:
-    musicVolume: 0
-    effectsVolume: 0
+    musicVolume: 50
+    effectsVolume: 50
   defaultSettingsData:
-    d_musicVolume: 0
-    d_effectsVolume: 0
+    d_musicVolume: 50
+    d_effectsVolume: 50

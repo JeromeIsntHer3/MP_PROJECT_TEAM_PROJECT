@@ -15,5 +15,5 @@ MonoBehaviour:
   consumableSprite: {fileID: 21300000, guid: da9342f402535d645b2d37681249d6cc, type: 3}
   inStoreSprite: {fileID: 0}
   consumableDescription: Pills Good For U vry Vry nice
-  consumablePrice: 10
-  recoveryAmountToAdd: 5
+  consumablePrice: 15
+  recoveryAmountToAdd: 35

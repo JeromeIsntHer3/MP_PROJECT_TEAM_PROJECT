@@ -14,4 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   consumableSOs:
   - {fileID: 11400000, guid: bef2fc1b4fd101b45871455297ffce72, type: 2}
+  - {fileID: 11400000, guid: 97e3709ca6f78d341a3adfad70530e45, type: 2}
+  - {fileID: 11400000, guid: 8b760c3f7a4c4004ea37498cac567868, type: 2}
+  - {fileID: 11400000, guid: 97e3709ca6f78d341a3adfad70530e45, type: 2}
+  - {fileID: 11400000, guid: bef2fc1b4fd101b45871455297ffce72, type: 2}
   - {fileID: 11400000, guid: bef2fc1b4fd101b45871455297ffce72, type: 2}

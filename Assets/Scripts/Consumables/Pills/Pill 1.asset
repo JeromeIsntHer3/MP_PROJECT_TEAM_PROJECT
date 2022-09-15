@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Pill 1
   m_EditorClassIdentifier: 
   consumableSprite: {fileID: 21300000, guid: df207225380ccc8418070d8eb09da083, type: 3}
+  inStoreSprite: {fileID: 0}
   consumableDescription: Pills Good For U vry Vry nice
-  consumableStatus: Spoiled
   consumablePrice: 10
-  rotValue: 100
-  recoveryAmountToAdd: 5
+  recoveryAmountToAdd: 20

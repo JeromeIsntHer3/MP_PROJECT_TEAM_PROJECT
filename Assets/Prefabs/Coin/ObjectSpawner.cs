@@ -6,6 +6,7 @@ public class ObjectSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject prefab;
     [SerializeField] private List<Transform> childTransforms;
+    [SerializeField] private float spawnTime;
 
 
     void Awake()
@@ -14,14 +15,18 @@ public class ObjectSpawner : MonoBehaviour
         {
             childTransforms.Add(transform.GetChild(i).transform);
         }
-        InvokeRepeating("Spawn", 5, 5);
+        InvokeRepeating("Spawn", 0, spawnTime);
     }
 
     void Spawn()
     {
         if (childTransforms.Count == 0) return;
         int index = Random.Range(0, childTransforms.Count);
-        if (childTransforms[index].transform.childCount > 0) return;
+        if (childTransforms[index].transform.childCount > 0)
+        {
+            index++;
+            return;
+        }
         GameObject temp = Instantiate(prefab, childTransforms[index]);
         Coin coin = temp.GetComponent<Coin>();
         if (coin)

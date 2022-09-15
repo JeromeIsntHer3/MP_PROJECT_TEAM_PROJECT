@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameHandler : MonoBehaviour
 {
     public static GameHandler instance;
+    public bool newGame;
 
     [Header("Game Data")]
     [SerializeField] private PlayerData playerData;
@@ -30,6 +31,11 @@ public class GameHandler : MonoBehaviour
         player = FindObjectOfType<Player>();
         if(player != null) playerInventory = player.GetComponent<Inventory>();
         soundManager = transform.GetComponentInChildren<SoundManager>();
+
+        if (newGame)
+        {
+            SetToDefaultStats(false);
+        }
     }
 
     void Start()
@@ -92,7 +98,7 @@ public class GameHandler : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    public void SetToDefaultStats()
+    public void SetToDefaultStats(bool all)
     {
         //Player
         playerData.inGamePlayerData.health = playerData.defaultPlayerData.d_health;
@@ -102,6 +108,7 @@ public class GameHandler : MonoBehaviour
         playerData.inGamePlayerData.timePlayed = playerData.defaultPlayerData.d_timePlayed;
         playerData.inGamePlayerData.pillsNotEaten = playerData.defaultPlayerData.d_pillsNotEaten;
         playerData.inGamePlayerData.currency = playerData.defaultPlayerData.d_currency;
+        if (!all) return;
         //Settings
         settingsData.inGameSettingsData.effectsVolume = settingsData.defaultSettingsData.d_effectsVolume;
         settingsData.inGameSettingsData.musicVolume = settingsData.defaultSettingsData.d_musicVolume;

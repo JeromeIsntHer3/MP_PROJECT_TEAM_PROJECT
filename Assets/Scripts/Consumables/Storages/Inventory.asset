@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0aaf50e76a070494788ae484d0e0f72e, type: 3}
   m_Name: Inventory
   m_EditorClassIdentifier: 
-  consumableSOs: []
+  consumableSOs:
+  - {fileID: 11400000, guid: bef2fc1b4fd101b45871455297ffce72, type: 2}
+  - {fileID: 11400000, guid: 97e3709ca6f78d341a3adfad70530e45, type: 2}
+  - {fileID: 11400000, guid: 8b760c3f7a4c4004ea37498cac567868, type: 2}
+  - {fileID: 11400000, guid: 6983ce2fa2814a04d9a14696acec69d0, type: 2}

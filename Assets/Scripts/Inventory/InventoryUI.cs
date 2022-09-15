@@ -21,6 +21,14 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI currPrice;
     [SerializeField] private ConsumableSO currConsumable;
 
+    [Header("Currently Prescribed")]
+    [SerializeField] private Image currentPillToTakeImage;
+    [SerializeField] private PlayerData playerData;
+    [SerializeField] private PillSO[] pills;
+    private bool pillEaten = true;
+    private PillSO currentPillToTake;
+
+
     private InventorySlotUI[] inventorySlots;
 
     void OnEnable()
@@ -42,6 +50,16 @@ public class InventoryUI : MonoBehaviour
         openInventory?.onClick.RemoveListener(OpenUIInventory);
         clickToEat?.onClick.RemoveListener(OnClickEat);
         clickToThrow?.onClick.RemoveListener(OnClickThrow);
+    }
+
+    void Update()
+    {
+        if (pillEaten)
+        {
+            int index = Random.Range(0, pills.Length - 1);
+            SetCurrentPill(index);
+            pillEaten = false;
+        }
     }
 
     void OpenUIInventory()
@@ -83,9 +101,37 @@ public class InventoryUI : MonoBehaviour
     void OnClickEat()
     {
         if (currConsumable == null) return;
-        currConsumable.ConsumableFunction(playerInventory.gameObject);
-        playerInventory.Remove(currConsumable);
-        currConsumable = null;
+        if(currConsumable is BuffSO)
+        {
+            EatEffect(true);
+        }
+        else if(currConsumable is PillSO)
+        {
+            if(currConsumable == currentPillToTake)
+            {
+                EatEffect(true);
+            }
+            else
+            {
+                EatEffect(false);
+            }
+        }
+    }
+
+    void EatEffect(bool positive)
+    {
+        if (positive)
+        {
+            currConsumable.ConsumableFunction(playerInventory.gameObject);
+            playerInventory.Remove(currConsumable);
+            currConsumable = null;
+        }
+        else
+        {
+            playerData.inGamePlayerData.health -= 10;
+            playerInventory.Remove(currConsumable);
+            currConsumable = null;
+        }
     }
 
     void OnClickThrow()
@@ -93,6 +139,12 @@ public class InventoryUI : MonoBehaviour
         if (currConsumable == null) return;
         playerInventory.Remove(currConsumable);
         currConsumable = null;
+    }
+
+    void SetCurrentPill(int index)
+    {
+        currentPillToTake = pills[index];
+        currentPillToTakeImage.sprite = pills[index].consumableSprite;
     }
 
     public void OnClickSlot(string conDetails, ConsumableSO selectedConsumable)

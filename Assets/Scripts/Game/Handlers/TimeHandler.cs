@@ -9,7 +9,7 @@ public class TimeHandler : MonoBehaviour
 
     public static TimeHandler instance;
 
-    private bool pillEaten = false;
+    public bool pillEaten = false;
     private int cycles;
 
     [SerializeField]
@@ -20,6 +20,9 @@ public class TimeHandler : MonoBehaviour
 
     [SerializeField]
     private TextMeshProUGUI timeDisplay;
+
+    [SerializeField]
+    private PlayerData playerData;
 
     private float timeCountdown;
 
@@ -74,14 +77,12 @@ public class TimeHandler : MonoBehaviour
         }
     }
 
-    public void StopTime()
-    {
-        timeCountdown = 0;
-        tick = 0;
-    }
-
     public void EatPill()
     {
+        if (pillEaten)
+        {
+            playerData.inGamePlayerData.health -= 10;
+        }
         pillEaten = true;
     }
 

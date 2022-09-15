@@ -6,13 +6,28 @@ using UnityEngine.UI;
 public class Store : MonoBehaviour
 {
     [SerializeField] private ConsumableStorageSO storeStorage;
+    [SerializeField] private ConsumableSO[] consumables;
     [SerializeField] private GameObject storeUI;
     [SerializeField] private GameObject inventoryUI;
     [SerializeField] private Button openStoreButton;
     private Inventory inventory;
+    private float refreshTime;
 
     public delegate void StoreChanged();
     public StoreChanged storeChanged;
+
+    void Update()
+    {
+        if(refreshTime > 0)
+        {
+            refreshTime -= Time.deltaTime;
+        }
+        else
+        {
+            RefreshStore();
+            refreshTime = 30;
+        }
+    }
 
     public void Add(ConsumableSO consumable)
     {
@@ -53,6 +68,15 @@ public class Store : MonoBehaviour
         {
             storeUI.SetActive(false);
             inventoryUI.SetActive(false);
+        }
+    }
+
+    void RefreshStore()
+    {
+        if(storeStorage.consumableSOs.Count < 6)
+        {
+            int index = Random.Range(0,consumables.Length-1);
+            Add(consumables[index]);
         }
     }
 

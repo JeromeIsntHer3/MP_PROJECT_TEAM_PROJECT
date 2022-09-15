@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   consumableSprite: {fileID: 21300000, guid: 23bca95bad7599840abc96653d35b35e, type: 3}
   inStoreSprite: {fileID: 0}
-  consumableDescription: Pills Good For U vry Vry nice
-  consumablePrice: 5
-  recoveryAmountToAdd: 10
+  consumableDescription: A Pill that treats basic ailments.
+  consumablePrice: 10
+  recoveryAmountToAdd: 20

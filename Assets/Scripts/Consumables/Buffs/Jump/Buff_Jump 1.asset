@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Buff_Jump 1
   m_EditorClassIdentifier: 
   consumableSprite: {fileID: 21300000, guid: 803ec2ca6a4458a488e5ec7b423c9dab, type: 3}
+  inStoreSprite: {fileID: 21300000, guid: 96620027f4b3ed14cb8d981e67f4fcdd, type: 3}
   consumableDescription: 'This snack helps to boost your leg strength!
 
     <i> We
     are not responsible for any negative side effect </i>'
-  consumablePrice: 20
+  consumablePrice: 10
   duration: 5
-  inStoreSprite: {fileID: 21300000, guid: 96620027f4b3ed14cb8d981e67f4fcdd, type: 3}
   NoOfJumps: 2

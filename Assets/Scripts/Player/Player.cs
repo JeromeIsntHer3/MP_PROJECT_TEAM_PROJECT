@@ -100,9 +100,7 @@ public class Player : MonoBehaviour
 
     public void ChangeStat (TypeOfStat changeType, float amount)
     {
-        TypeOfStat stat;
-        stat = changeType;
-        switch (stat)
+        switch (changeType)
         {
             case TypeOfStat.Health:
                 playerData.inGamePlayerData.health += amount;

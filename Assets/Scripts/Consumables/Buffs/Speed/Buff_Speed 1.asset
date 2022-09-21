@@ -15,6 +15,6 @@ MonoBehaviour:
   consumableSprite: {fileID: 21300000, guid: fa982c0e449a60742a3c82f5df88d246, type: 3}
   inStoreSprite: {fileID: 21300000, guid: 3c8c96b01ecf25549a812525e407d0f7, type: 3}
   consumableDescription: Move Fast Fast move
-  consumablePrice: 10
+  consumablePrice: 5
   duration: 5
   speed: 20

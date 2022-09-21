@@ -25,11 +25,15 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] private Image currentPillToTakeImage;
     [SerializeField] private PlayerData playerData;
     [SerializeField] private PillSO[] pills;
-    private bool pillEaten = true;
-    private PillSO currentPillToTake;
+    [SerializeField] private PillSO currentPillToTake;
 
 
     private InventorySlotUI[] inventorySlots;
+
+    void Awake()
+    {
+        ChangeCurrentPill();
+    }
 
     void OnEnable()
     {
@@ -52,21 +56,12 @@ public class InventoryUI : MonoBehaviour
         clickToThrow?.onClick.RemoveListener(OnClickThrow);
     }
 
-    void Update()
-    {
-        if (pillEaten)
-        {
-            int index = Random.Range(0, pills.Length - 1);
-            SetCurrentPill(index);
-            pillEaten = false;
-        }
-    }
-
     void OpenUIInventory()
     {
         if (!inventoryUI.activeInHierarchy)
         {
             inventoryUI.SetActive(true);
+            UpdateUI();
         }
         else
         {
@@ -107,6 +102,7 @@ public class InventoryUI : MonoBehaviour
         }
         else if(currConsumable is PillSO)
         {
+            TimeHandler.instance.EatPill();
             if(currConsumable == currentPillToTake)
             {
                 EatEffect(true);
@@ -129,6 +125,7 @@ public class InventoryUI : MonoBehaviour
         else
         {
             playerData.inGamePlayerData.health -= 10;
+            Debug.Log("Wrong Pill");
             playerInventory.Remove(currConsumable);
             currConsumable = null;
         }
@@ -151,5 +148,11 @@ public class InventoryUI : MonoBehaviour
     {
         currDetails.text = conDetails;
         currConsumable = selectedConsumable;
+    }
+
+    public void ChangeCurrentPill()
+    {
+        int index = Random.Range(0, pills.Length - 1);
+        SetCurrentPill(index);
     }
 }

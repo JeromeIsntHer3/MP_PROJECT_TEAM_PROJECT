@@ -25,10 +25,12 @@ public class TimeHandler : MonoBehaviour
     private PlayerData playerData;
 
     private float timeCountdown;
+    private InventoryUI ui;
 
     void Awake()
     {
         instance = this;
+        ui = FindObjectOfType<InventoryUI>();
     }
 
     public void OnEnable()
@@ -73,7 +75,7 @@ public class TimeHandler : MonoBehaviour
             case < 30:
                 return TimeStatus.TooEarly;
             default:
-                return TimeStatus.Perfect;
+                return TimeStatus.TooEarly;
         }
     }
 
@@ -84,6 +86,7 @@ public class TimeHandler : MonoBehaviour
             playerData.inGamePlayerData.health -= 10;
         }
         pillEaten = true;
+        ui.ChangeCurrentPill();
     }
 
     public bool HasEatenPill()
